@@ -1,0 +1,9 @@
+#frm {
+	border: solid gray 1px;
+	width: 220px;
+	height: 100px;
+	border-radius: 5px;
+	margin: 100px auto;
+	background: rgba(0,0,0,0.3);
+
+}
