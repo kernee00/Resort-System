@@ -2,22 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Register Page</title>
+   <link rel="stylesheet" href="style.css">
+    
     <!---we had linked our css file----->
 </head>
 <body>
     <div class="FULL-PAGE">
         <div class="navbar">
-            <div>
-                <a href='website.html'>Resort</a>
-            </div>
+         
+                <h1 class ="logo">Resort<span>Booking</span></h1>
+           
             <nav>
                 <ul id='MenuItems'>
                     <li><a href='#'>Home</a></li>
                     <li><a href='#'>About Us</a></li>
+                     <li><a href='loginV2.php'>Login</a></li>
             
-                    <li><button class='loginbtn' >Login</button></li>
+                    <!---<li><button class='loginbtn' >Login</button></li>-->
                 </ul>
             </nav>
         </div>

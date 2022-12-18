@@ -25,8 +25,8 @@
             </nav>
         </div>
 	<div id = "frm">
-		<form action = "displayResortSearch.php" method = "POST">
-			<h2>RESORT NAME</h2>
+		<form action = "displayKeywordSearch.php" method = "POST">
+			<h2>KEYWORDS</h2>
 			<p>
 				<label>Search by:</label>
 			 <input type ="text" class ='input-field' placeholder = 'Enter Resort Name' required id = "resortName" name = "resortName" />

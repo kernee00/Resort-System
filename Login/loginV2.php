@@ -11,13 +11,14 @@
 <body>
     <div class="FULL-PAGE">
         <div class="navbar">
-            <div>
-                <a href='website.html'>Resort</a>
-            </div>
+                        
+            	<h1 class ="logo">Resort<span>Booking</span></h1>
+           
             <nav>
                 <ul id='MenuItems'>
                     <li><a href='#'>Home</a></li>
                     <li><a href='#'>About Us</a></li>
+                   
           
                     <li><button class='loginbtn' >Login</button></li>
                 </ul>

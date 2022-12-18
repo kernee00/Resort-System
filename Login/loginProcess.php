@@ -20,7 +20,9 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 			if ($row['ownerID'] == $username && $row['accPassword'] == $password) {
 
 				echo "Login success! Welcome ".$row['ownerName']."!";
-				$user = "owner";
+				$role = "owner";
+				$user_id = $row['ownerID'];
+				header("location:../Admin/adminMain.php");
 			} else {
 
 				//echo "Failed to login!";
@@ -35,7 +37,9 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 			if ($row['custID'] == $username && $row['custPassword'] == $password) {
 
 				echo "Login success! Welcome ".$row['custName']."!";
-				$user = "customer";
+				$role = "customer";
+				$user_id = $row['custID'];
+				header("location:../Admin/adminMain.php");
 			}
 
 			else {
@@ -51,7 +55,11 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 			if ($row['adminID'] == $username && $row['adminPassword'] == $password) {
 
 				echo "Login success! Welcome ".$row['adminName']."!";
-				$user = "admin";
+				$_SESSION['role'] = "admin";
+				$_SESSION['user_id'] = $username;
+				header("location:../Admin/adminMain.php");
+				exit();
+						
 			}
 
 			else {

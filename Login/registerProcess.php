@@ -63,7 +63,7 @@ if($password != $confirmPassword)
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();
-		if($conn->query($result))
+		if($success>0)
 		{
 			echo "<script>alert('Owner register succesful! Please try to login.');</script>";
 			echo"<meta http-equiv='refresh' content='0; url=loginV2.php'/>";
@@ -83,7 +83,7 @@ if($password != $confirmPassword)
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();
-		if($conn->query($result))
+		if($success>0)
 		{
 			echo "<script>alert('Customer register succesful! Please try to login.');</script>";
 			echo"<meta http-equiv='refresh' content='0; url=loginV2.php'/>";
