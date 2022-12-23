@@ -5,12 +5,13 @@
 
 
       $user_id = $_SESSION['user_id'];
-      $role = $_SESSION['role'];
+      $owner_id = $_POST['owner_id'];
 
-       if(isset($_POST['update_profile'])){
-
-         $user_id = $_SESSION['user_id'];
-        $sql = "SELECT * FROM admin WHERE adminID = '$user_id'";
+      if(isset($_POST['update_profile'])){
+        $owner_id = $_POST['owner_id'];
+      
+ 
+        $sql = "SELECT * FROM owner WHERE ownerID = '$owner_id'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
@@ -18,30 +19,47 @@
 
             while ($row = mysqli_fetch_assoc($result)){
 
-                $name = $row['adminName'];
-                $phone = $row['adminPhoneNo'];
-                $email = $row['adminEmail'];
-                $password = $row['adminPassword'];
+                $name = $row['ownerName'];
+                $phone = $row['ownerPhoneNo'];
+                $email = $row['ownerEmail'];
+                $password = $row['accPassword'];
                 $image = $row['profile_image'];
 
                
             }
         }
    
-        $current_pass = $_POST['update_pass'];
         
+        //to verify admin password before update
+        $sql1 = "SELECT adminPassword FROM admin WHERE adminID = '$user_id'";
+        $result1 = mysqli_query($conn, $sql1);
+        $resultCheck1 = mysqli_num_rows($result1);
 
-        if ($current_pass != $password) {
+        if ($resultCheck1 > 0){
 
-            echo "<script>alert('The current password is incorrect. Please retry.');</script>";
-            echo"<meta http-equiv='refresh' content='0; url=updateProfile.php'/>";
+            while ($row1 = mysqli_fetch_assoc($result1)){
+
+                $admin_password = $row1['adminPassword'];
+         
+
+               
+            }
+        }
+        
+        $admin_pass = $_POST['admin_pass'];
+        //echo"$admin_password";
+
+        if ($admin_pass != $admin_password) {
+
+            echo "<script>alert('The admin password is incorrect. Please retry.');</script>";
+            echo"<meta http-equiv='refresh' content='0; url=manageOwner.php'/>";
         
         }
 
         else {
                  if (empty($_POST['update_name'])) {
            $new_name = $name;
-        }
+            }
         else{
 
             $new_name = $_POST['update_name'];
@@ -83,21 +101,13 @@
       if($new_pass2 != $new_pass1)
     {
         echo "<script>alert('The two passwords do not match.');</script>";
-        echo"<meta http-equiv='refresh' content='0; url=updateProfile.php'/>";
-    }
-else {
-
-
-    $new_image = addslashes(file_get_contents($_FILES['update_image']['tmp_name']));
-
-    if(empty($new_image)){
-
-        $new_image = $image;
-
+        echo"<meta http-equiv='refresh' content='0; url=updateOwner.php'/>";
     }
 
+    else {
 
-$update_profile = "update admin set adminName = '$new_name', adminPhoneNo = '$new_phone', adminEmail = '$new_email', adminPassword = '$new_pass2', profile_image = '$new_image' WHERE adminID = '$user_id'";
+
+$update_profile = "update owner set ownerName = '$new_name', ownerPhoneNo = '$new_phone', ownerEmail = '$new_email', accPassword = '$new_pass2' WHERE ownerID = '$owner_id'";
 
 $run_profile = mysqli_query($conn,$update_profile);
 
@@ -105,7 +115,7 @@ if($run_profile){
 
 echo "<script> alert('Profile has been updated successfully. Redirecting to main page.') </script>";
 
-   echo"<meta http-equiv='refresh' content='0; url=adminMain.php'/>";
+   echo"<meta http-equiv='refresh' content='0; url=manageOwner.php'/>";
 
 }
 

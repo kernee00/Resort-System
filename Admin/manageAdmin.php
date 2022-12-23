@@ -3,31 +3,8 @@
     include_once '../connection.php';
     include_once 'adminNavBar.php';
 
-   if (isset($_SESSION['user_id'])){
-    $user_id = $_SESSION['user_id'];
-        $sql = "SELECT * FROM admin WHERE adminID = '$user_id'";
-        $result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result);
-
-        if ($resultCheck > 0){
-
-            while ($row = mysqli_fetch_assoc($result)){
-
-                $name = $row['adminName'];
-                $phone = $row['adminPhoneNo'];
-                $email = $row['adminEmail'];
-                $password = $row['adminPassword'];
-
-               
-            }
-        }
-
-    }
-
-    else {
-
-        echo "Session timed-out. Login again.";
-    }
+     $user_id = $_SESSION['user_id'];
+     $role = "admin";
 
 ?>
 
@@ -65,12 +42,12 @@
 
 <body>
 
-    <h1 style="margin-left:40% ;margin-top:80px"   class="">Owners Information</h1>
+    <h1 style="margin-left:40% ;margin-top:80px"   class="">Admin Information</h1>
 
     <table class="table" border="2" cellspacing="7">
         <tr>
-        <th>Owner ID</th>
-        <th>Owner Name</th>
+        <th>Admin ID</th>
+        <th>Admin Name</th>
         <th>Contact Number</th>
         <th>Email</th>
         <th>Password</th>
@@ -80,30 +57,30 @@
         </tr>
 
         <?php 
-            $query="SELECT  * FROM  owner" ;
+        // except the first admin who has the highest privileges
+            $query="SELECT  * FROM  admin WHERE adminID != 'admin1'" ;
         $result=$conn->query($query);
         //display data from db
         if(mysqli_num_rows($result)>=1){
             while ($row=$result->fetch_assoc()) {
 
-                echo "<tr><td>".$row["ownerID"]."</td>
-                <td>".$row["ownerName"]."</td>
-                <td>".$row["ownerPhoneNo"]."</td>
-                <td>".$row['ownerEmail']."</td>
-                <td>".$row['accPassword']."</td>
-                <td><a href = 'updateOwner.php?ownerID=$row[ownerID] & ownerName = $row[ownerName] & phone = $row[ownerPhoneNo] & email = $row[ownerEmail]& pass = $row[accPassword]'><input type = 'submit' value = 'Update' id = 'button'></a></td>
-                <td><a href = 'deleteOwner.php?ownerID=$row[ownerID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Delete' id = 'button'></td>
+                echo "<tr><td>".$row["adminID"]."</td>
+                <td>".$row["adminName"]."</td>
+                <td>".$row["adminPhoneNo"]."</td>
+                <td>".$row['adminEmail']."</td>
+                <td>".$row['adminPassword']."</td>
+                <td><a href = 'updateOwner.php?ownerID=$row[adminID] & ownerName = $row[adminName] & phone = $row[adminPhoneNo] & email = $row[adminEmail]& pass = $row[adminPassword]'><input type = 'submit' value = 'Update' id = 'button'></a></td>
+                <td><a href = 'deleteOwner.php?ownerID=$row[adminID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Delete' id = 'button'></td>
 
                 </tr>";
-                 //assign role
-                $_SESSION['role'] = "owner";
-               
+                //assign role
+                $_SESSION['role'] = "admin";
                
             }
 
         }
 
-          else
+        else
         {
             echo "<tr><td>No data found.";
         }

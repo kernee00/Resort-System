@@ -17,6 +17,7 @@
            
                 <ul>
                     <li><a href='adminMain.php'>Profile</a></li>
+                    <li><a href='manageAdmin.php'>Manage Admin</a></li>
                     <li><a href='manageOwner.php'>Manage Owner</a></li>
                      <li><a href='manageResort.php'>Manage Resort</a></li>
                     <li><a href='managePayment.php'>Manage Payment</a></li>
