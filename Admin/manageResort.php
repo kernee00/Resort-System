@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-    <title>Admin Main</title>
+    <title>Manage Resort</title>
     <link rel="stylesheet" href="manageStyle.css">
 
     <style type = "text/css">
@@ -21,7 +21,7 @@
 
             border-collapse:  collapse;
             width:  100%;
-            max-width: 1500px;  
+            max-width: 1500px;
             color:  #337ab7;
             font-size: 25px;
             text-align: center;
@@ -42,40 +42,48 @@
 
 <body>
 
-    <h1 style="margin-left:40% ;margin-top:80px"   class="">Admin Information</h1>
+    <h1 style="margin-left:40% ;margin-top:80px"   class="">Resorts Information</h1>
 
     <table class="table" border="2" cellspacing="7">
         <tr>
-        <th>Admin ID</th>
-        <th>Admin Name</th>
-        <th>Contact Number</th>
-        <th>Email</th>
-        <th>Password</th>
-         <th colspan="2" align="center">Action</th>
+        <th>Resort ID</th>
+        <th>Resort Name</th>
+        <th>Address</th>
+        <th>Contact No.</th>
+        <th>Ratings</th>
+        <th>Price Per Night (RM)</th>
+        <th>Keywords</th>
+        <th>Owner ID</th>
+        <th>Action</th>
+
+         <!---<th colspan="2" align="center">Action</th>-->
         
 
         </tr>
 
         <?php 
         // except the first admin who has the highest privileges
-            $query="SELECT  * FROM  admin WHERE adminID != 'admin1'" ;
+            $query="SELECT  * FROM  resorts;" ;
         $result=$conn->query($query);
         //display data from db
         if(mysqli_num_rows($result)>=1){
             while ($row=$result->fetch_assoc()) {
 
-                echo "<tr><td>".$row["adminID"]."</td>
-                <td>".$row["adminName"]."</td>
-                <td>".$row["adminPhoneNo"]."</td>
-                <td>".$row['adminEmail']."</td>
-                <td>".$row['adminPassword']."</td>
-                <td><a href = 'updateOwner.php?ownerID=$row[adminID] & ownerName = $row[adminName] & phone = $row[adminPhoneNo] & email = $row[adminEmail]& pass = $row[adminPassword]'><input type = 'submit' value = 'Update' id = 'button'></a></td>
-                <td><a href = 'deleteOwner.php?ownerID=$row[adminID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Delete' id = 'button'></td>
+                echo "<tr><td>".$row["resortID"]."</td>
+                <td>".$row["resortName"]."</td>
+                <td>".$row['address']."</td>
+                <td>".$row['resortPhoneNo']."</td>
+                <td>".$row['overallRatings']."</td>
+                <td>".$row['pricePerNight']."</td>
+                <td>".$row['keywords']."</td>
+                <td>".$row['ownerID']."</td>
+                <td><a href = 'updateResort.php?resortID=$row[resortID] & address = $row[address] & contact = $row[resortPhoneNo] & ratings = $row[overallRatings] & price = $row[pricePerNight] & keyword = $row[keywords] & ownerID = $row[ownerID]'><input type = 'submit' value = 'Edit' id = 'button'></a></td>
+                
 
                 </tr>";
                 //assign role
                 $_SESSION['role'] = "admin";
-              
+             
                
             }
 
@@ -89,22 +97,6 @@
         ?>
 
     </table>
-
-    <a href = 'addOwner.php'><input type = 'submit' value = 'Add' id = 'add_button'></a>
-
-
-   <script>
-       
-    function checkdelete(){
-
-
-        return confirm('Are you sure you want to delete this record?');
-
-    }
-
-
-
-   </script> 
 
 </body>
 </html>

@@ -37,11 +37,12 @@
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
     <title>Admin Main</title>
-    <!--<link rel="stylesheet" href="adminStyle.css">-->
+   <link rel="stylesheet" href="profileStyle.css">
 
 </head>
 
 <body>
+     <div class = "update-profile">
 
 <form action="updateProcess.php" method="POST" enctype="multipart/form-data" >
      
@@ -69,6 +70,7 @@
       <input type="submit" value="Update profile" name="update_profile" class="btn">
       <a href="adminMain.php" class="delete-btn">Back</a>
    </form>
+</div>
 
 
 </body>

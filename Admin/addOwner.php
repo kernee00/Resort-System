@@ -23,11 +23,12 @@
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
     <title>Add Owner</title>
-    <!--<link rel="stylesheet" href="adminStyle.css">-->
+  <link rel="stylesheet" href="profileStyle.css">
 
 </head>
 
 <body>
+     <div class = "update-profile">
 
 <form action="addOwnerProcess.php" method="POST"  >
      
@@ -56,6 +57,6 @@
       <a href="manageOwner.php" class="delete-btn">Back</a>
    </form>
 
-
+</div>
 </body>
 </html>

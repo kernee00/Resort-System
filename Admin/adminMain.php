@@ -1,25 +1,27 @@
+ <?php
+    session_start();
+    include_once '../connection.php';
+    include_once 'adminNavBar.php';
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
     <title>Admin Main</title>
-    <!--<link rel="stylesheet" href="adminStyle.css">-->
+  <link rel="stylesheet" href="userStyle.css">
 
 </head>
 
 <body>
-
+    <div class = "update-profile">
 
 <form action="updateProfile.php" method="POST" >
      
       <div class="flex">
          <div class="inputBox">
             <?php
-    session_start();
-    include_once '../connection.php';
-    include_once 'adminNavBar.php';
-
     if (isset($_SESSION['user_id'])){
     $user_id = $_SESSION['user_id'];
         $sql = "SELECT * FROM admin WHERE adminID = '$user_id'";
@@ -44,7 +46,7 @@
 
             else {
 
-                   echo '<img src="data:image;base64,'.base64_encode($row['profile_image']).'" alt="Image" style = "width: 100px; height: 100px;">';
+                   echo '<img src="data:image;base64,'.base64_encode($row['profile_image']).'" alt="Image" ;">';
             }
 
             }
@@ -58,23 +60,30 @@
     }
     ?>
             <span>Name:</span>
-                  <label><?php echo "$name"; ?></label>
+            <input type="text" id = "update_name" name="update_name" disabled placeholder="<?php echo $name; ?>" class="box">
+
             <span>Email Address:</span>
-                 <label><?php echo "$email"; ?></label>
+            <input type="text" id = "update_name" name="update_name" disabled placeholder="<?php echo $email; ?>" class="box">
+      
             <span>Phone Number:</span>
-                <label><?php echo "$phone"; ?></label>
+            <input type="text" id = "update_name" name="update_name" disabled placeholder="<?php echo $phone; ?>" class="box">
+         
+
+            <span>Current Password :</span>
+            <input type="text" id = "update_name" name="update_name" disabled placeholder="*********" class="box">
+          
        
          </div>
-         <div class="inputBox">
-            <input type="hidden" name="old_pass" value="<?php echo $password; ?>">
-            <span>Current Password :</span>
-             <label>********</label>
+         <!--<div class="inputBox">
+       
          
-         </div>
+         </div>-->
       </div>
       <input type="submit" value="update profile" name="update_profile" class="btn">
  
    </form>
+</div>
+
 
 
 </body>

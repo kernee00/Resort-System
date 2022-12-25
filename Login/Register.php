@@ -34,7 +34,7 @@
 		    <input type ='text' class = 'input-field' placeholder='Username' required id = "user" name = "user">
 							<input type ='text' class = 'input-field' placeholder='Name' required id = "name" name = "name">
 							<input type ='text' class = 'input-field' placeholder='Phone Number' required id = "phone" name = "phone">
-							<input type ='text' class = 'input-field' placeholder='Email' required id = "email" name = "email">
+							<input type ='email' class = 'input-field' placeholder='Email' required id = "email" name = "email">
 							<input type ='text' class = 'input-field' placeholder='Password' required id = "pass" name = "pass" minlength="8">
 							<input type ='text' class = 'input-field' placeholder='Confirm Password' required id = "cofirmPass" name = "confirmPass" minlength="8">
 						

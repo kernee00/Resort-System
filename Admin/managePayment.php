@@ -42,7 +42,7 @@
 
 <body>
 
-    <h1 style="margin-left:40% ;margin-top:80px"   class="">Admin Information</h1>
+    <h1 style="margin-left:40% ;margin-top:80px"   class="">Payment Information</h1>
 
     <table class="table" border="2" cellspacing="7">
         <tr>
@@ -59,7 +59,7 @@
 
         <?php 
         // except the first admin who has the highest privileges
-            $query="SELECT  * FROM  payments WHERE paymentStatus != 'Approved'" ;
+            $query="SELECT  * FROM  payments WHERE paymentStatus = 'Paid'" ;
         $result=$conn->query($query);
         //display data from db
         if(mysqli_num_rows($result)>=1){
@@ -69,12 +69,13 @@
                 <td>".$row["bookingID"]."</td>
                 <td>".$row['totalPayment']."</td>
                 <td>".$row['paymentStatus']."</td>
-                <td><a href = 'updateOwner.php?paymentID=$row[paymentID] & bookingID = $row[bookingID] & amount = $row[totalPayment] & payStatus = $row[paymentStatus]'><input type = 'submit' value = 'Approve' id = 'button'></a></td>
-                <td><a href = 'deleteOwner.php?ownerID=$row[paymentID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Refund' id = 'button'></td>
+                <td><a href = 'updatePayment.php?paymentID=$row[paymentID] & bookingID = $row[bookingID] & amount = $row[totalPayment] & payStatus = $row[paymentStatus]'><input type = 'submit' value = 'Approve' id = 'button'></a></td>
+                <td><a href = 'paymentProcess.php?paymentID=$row[paymentID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Refund' id = 'button'></td>
 
                 </tr>";
                 //assign role
                 $_SESSION['role'] = "admin";
+             
                
             }
 
@@ -89,7 +90,7 @@
 
     </table>
 
-    <a href = 'addOwner.php'><input type = 'submit' value = 'Add' id = 'add_button'></a>
+    <a href = 'addOwner.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
 
 
    <script>
@@ -97,7 +98,7 @@
     function checkdelete(){
 
 
-        return confirm('Are you sure you want to delete this record?');
+        return confirm('Are you sure you want to refund this payment?');
 
     }
 

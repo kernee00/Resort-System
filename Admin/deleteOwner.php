@@ -4,6 +4,9 @@
     include_once 'adminNavBar.php';
 	$user_id = $_SESSION['user_id'];
     $role = $_SESSION['role'];
+    $method = $_SESSION['method'];
+
+  
 
   if (isset($_GET['ownerID'])){
     $owner_id = $_GET['ownerID'];
@@ -29,5 +32,6 @@
 
         echo "Session timed-out. Login again.";
     }
+
 
 ?>
