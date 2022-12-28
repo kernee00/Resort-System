@@ -1,11 +1,11 @@
 <?php
     session_start();
     include_once '../connection.php';
-    include_once 'adminNavBar.php';
+    include_once 'ownerNavBar.php';
 
    if (isset($_SESSION['user_id'])){
     $user_id = $_SESSION['user_id'];
-        $sql = "SELECT * FROM admin WHERE adminID = '$user_id'";
+        $sql = "SELECT * FROM owner WHERE ownerID = '$user_id'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
@@ -13,10 +13,10 @@
 
             while ($row = mysqli_fetch_assoc($result)){
 
-                $name = $row['adminName'];
-                $phone = $row['adminPhoneNo'];
-                $email = $row['adminEmail'];
-                $password = $row['adminPassword'];
+                $name = $row['ownerName'];
+                $phone = $row['ownerPhoneNo'];
+                $email = $row['ownerEmail'];
+                $password = $row['accPassword'];
 
                
             }
@@ -36,8 +36,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-    <title>Admin Main</title>
-   <link rel="stylesheet" href="profileStyle.css">
+    <title>Owner Main</title>
+   <link rel="stylesheet" href="../Admin/profileStyle.css">
 
 </head>
 
@@ -68,7 +68,7 @@
          </div>
       </div>
       <input type="submit" value="Update profile" name="update_profile" class="btn">
-      <a href="adminMain.php" class="delete-btn">Back</a>
+      <a href="ownerMain.php" class="delete-btn">Back</a>
    </form>
 </div>
 

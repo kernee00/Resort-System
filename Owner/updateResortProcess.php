@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once '../connection.php';
-    include_once 'adminNavBar.php';
+    include_once 'ownerNavBar.php';
 
 
       $user_id = $_SESSION['user_id'];
@@ -46,33 +46,8 @@
         }
    
         
-        //to verify admin password before update
-        $sql1 = "SELECT adminPassword FROM admin WHERE adminID = '$user_id'";
-        $result1 = mysqli_query($conn, $sql1);
-        $resultCheck1 = mysqli_num_rows($result1);
-
-        if ($resultCheck1 > 0){
-
-            while ($row1 = mysqli_fetch_assoc($result1)){
-
-                $admin_password = $row1['adminPassword'];
-         
-
-               
-            }
-        }
-        
-        $admin_pass = $_POST['admin_pass'];
-        //echo"$admin_password";
-
-        if ($admin_pass != $admin_password) {
-
-            echo "<script>alert('The admin password is incorrect. Please retry.');</script>";
-            echo"<meta http-equiv='refresh' content='0; url=displayResort.php'/>";
-        
-        }
-
-        else {
+      
+      
                  if (empty($_POST['update_name'])) {
            $new_name = $name;
             }
@@ -147,12 +122,12 @@ if($run_profile){
 
 echo "<script> alert('Profile has been updated successfully. Redirecting to main page.') </script>";
 
-   echo"<meta http-equiv='refresh' content='0; url=displayResort.php'/>";
+   echo"<meta http-equiv='refresh' content='0; url=manageResort.php'/>";
 
 }
 
 
-}
+
 }
 
 

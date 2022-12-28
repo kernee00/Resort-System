@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once '../connection.php';
-    include_once 'adminNavBar.php';
+    include_once 'ownerNavBar.php';
 
 
       $user_id = $_SESSION['user_id'];
@@ -10,7 +10,7 @@
        if(isset($_POST['update_profile'])){
 
          $user_id = $_SESSION['user_id'];
-        $sql = "SELECT * FROM admin WHERE adminID = '$user_id'";
+        $sql = "SELECT * FROM owner WHERE ownerID = '$user_id'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
@@ -18,10 +18,10 @@
 
             while ($row = mysqli_fetch_assoc($result)){
 
-                $name = $row['adminName'];
-                $phone = $row['adminPhoneNo'];
-                $email = $row['adminEmail'];
-                $password = $row['adminPassword'];
+                $name = $row['ownerName'];
+                $phone = $row['ownerPhoneNo'];
+                $email = $row['ownerEmail'];
+                $password = $row['accPassword'];
                 //$image = $row['profile_image'];
 
                
@@ -102,7 +102,7 @@ else {
    
 
 
-$update_profile = "update admin set adminName = '$new_name', adminPhoneNo = '$new_phone', adminEmail = '$new_email', adminPassword = '$new_pass2', profile_image = '$new_image' WHERE adminID = '$user_id'";
+$update_profile = "update owner set ownerName = '$new_name', ownerPhoneNo = '$new_phone', ownerEmail = '$new_email', accPassword = '$new_pass2', profile_image = '$new_image' WHERE ownerID = '$user_id'";
 
 $run_profile = mysqli_query($conn,$update_profile);
 
@@ -110,7 +110,7 @@ if($run_profile){
 
 echo "<script> alert('Profile has been updated successfully. Redirecting to main page.') </script>";
 
-   echo"<meta http-equiv='refresh' content='0; url=adminMain.php'/>";
+   echo"<meta http-equiv='refresh' content='0; url=ownerMain.php'/>";
 
 }
 

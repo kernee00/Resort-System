@@ -17,16 +17,16 @@ body {
 }
 
 .logo {
-  color: var(--color-white);
+  color: #F3EFE0;
   font-size: 30px;
 }
 
 .logo span {
-  color: var(--color-primary);
+  color: #22A39F;
 }
 
 .navBar {
-  background-color: var(--color-black);
+  background-color: #434242;
   height: 80px;
   width: 100%;
   display: flex;
@@ -59,7 +59,7 @@ body {
 }
 
 .navBar ul li a:hover {
-  color: var(--color-primary);
+  color: #22A39F;
 }
 
 

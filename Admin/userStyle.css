@@ -47,7 +47,7 @@
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    text-align: center;
-   width: 700px;
+   width: 550px;
    text-align: center;
    border-radius: 5px;
 }
@@ -68,11 +68,11 @@
 }
 
 .update-profile form .flex .inputBox{
-   width: 49%;
+   width: 100%;
 }
 
 .update-profile form .flex .inputBox span{
-   text-align: left;
+   text-align: center;
    display: block;
    margin-top: 15px;
    font-size: 17px;
@@ -87,6 +87,7 @@
    font-size: 17px;
    color:var(--black);
    margin-top: 10px;
+    text-align: center;
 }
 
 @media (max-width:650px){
@@ -100,11 +101,11 @@
 }
 
 .btn{
-   background-color: var(--blue);
+   background-color: #434242;
 }
 
 .btn:hover{
-   background-color: var(--dark-blue);
+   background-color: #222222;
 }
 
 .btn,

@@ -1,7 +1,7 @@
  <?php
     session_start();
     include_once '../connection.php';
-    include_once 'adminNavBar.php';
+    include_once 'ownerNavBar.php';
     ?>
 
 <!DOCTYPE html>
@@ -9,22 +9,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-    <title>Admin Main</title>
-  <link rel="stylesheet" href="userStyle.css">
+    <title>Owner Main</title>
+  <link rel="stylesheet" href="../Admin/userStyle.css">
 
 </head>
 
 <body>
     <div class = "update-profile">
 
-<form action="updateProfile.php" method="POST" >
+<form action="profileUpdate.php" method="POST" >
      
       <div class="flex">
          <div class="inputBox">
             <?php
-    if (isset($_SESSION['user_id'])){
-    $user_id = $_SESSION['user_id'];
-        $sql = "SELECT * FROM admin WHERE adminID = '$user_id'";
+        if (isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT * FROM owner WHERE ownerID = '$user_id'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
@@ -32,10 +32,10 @@
 
             while ($row = mysqli_fetch_assoc($result)){
 
-                $name = $row['adminName'];
-                $phone = $row['adminPhoneNo'];
-                $email = $row['adminEmail'];
-                $password = $row['adminPassword'];
+                $name = $row['ownerName'];
+                $phone = $row['ownerPhoneNo'];
+                $email = $row['ownerEmail'];
+                $password = $row['accPassword'];
                 $images = $row['profile_image'];
                 
 

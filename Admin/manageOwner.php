@@ -40,12 +40,12 @@
     <link rel="stylesheet" href="manageStyle.css">
 
     <style type = "text/css">
-        table {
+         table {
 
             border-collapse:  collapse;
             width:  100%;
-            max-width: 1500px;  
-            color:  #337ab7;
+            max-width: 1800px;  
+            color:  #52616B;
             font-size: 25px;
             text-align: center;
             margin: 10rem auto;  
@@ -54,7 +54,7 @@
 
         th {
 
-            background-color: #337ab7;
+            background-color: #434242;
             color:  white;
         }
 

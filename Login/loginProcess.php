@@ -20,10 +20,12 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 			if ($row['ownerID'] == $username && $row['accPassword'] == $password) {
 
 				echo "Login success! Welcome ".$row['ownerName']."!";
-				$role = "owner";
-				$user_id = $row['ownerID'];
-				header("location:../Admin/adminMain.php");
-			} else {
+				$_SESSION['role'] = "owner";
+				$_SESSION['user_id'] = $username;
+				//$role = "owner";
+				//$user_id = $row['ownerID'];
+				header("location:../Owner/ownerMain.php");
+			} else  {
 
 				//echo "Failed to login!";
 				$custLogin = "select * from customers where custID = '$username' and custPassword = '$password'";
@@ -37,8 +39,10 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 			if ($row['custID'] == $username && $row['custPassword'] == $password) {
 
 				echo "Login success! Welcome ".$row['custName']."!";
-				$role = "customer";
-				$user_id = $row['custID'];
+				$_SESSION['role'] = "cust";
+				$_SESSION['user_id'] = $username;
+				//$role = "customer";
+				//$user_id = $row['custID'];
 				header("location:../Admin/adminMain.php");
 			}
 
@@ -65,6 +69,7 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 			else {
 
 				echo "Failed to login! Register before login!";
+				 echo"<meta http-equiv='refresh' content='0; url=loginV2.php'/>";
 			}
 
 			}

@@ -21,8 +21,8 @@
 
             border-collapse:  collapse;
             width:  100%;
-            max-width: 1500px;
-            color:  #337ab7;
+            max-width: 1800px;  
+            color:  #52616B;
             font-size: 25px;
             text-align: center;
             margin: 10rem auto;  
@@ -31,7 +31,7 @@
 
         th {
 
-            background-color: #337ab7;
+            background-color: #434242;
             color:  white;
         }
 
@@ -58,7 +58,7 @@
         </tr>
 
         <?php 
-        // except the first admin who has the highest privileges
+
             $query="SELECT  * FROM  payments WHERE paymentStatus = 'Paid'" ;
         $result=$conn->query($query);
         //display data from db
@@ -90,7 +90,7 @@
 
     </table>
 
-    <a href = 'addOwner.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
+    <a href = 'viewResortReport.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
 
 
    <script>

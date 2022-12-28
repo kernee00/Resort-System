@@ -14,15 +14,16 @@
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
     <title>Manage Resort</title>
-    <link rel="stylesheet" href="manageStyle.css">
+   <link rel="stylesheet" href="manageStyle.css">
+
 
     <style type = "text/css">
         table {
 
             border-collapse:  collapse;
             width:  100%;
-            max-width: 1500px;
-            color:  #337ab7;
+            max-width: 1800px;  
+            color:  #52616B;
             font-size: 25px;
             text-align: center;
             margin: 10rem auto;  
@@ -31,8 +32,8 @@
 
         th {
 
-            background-color: #337ab7;
-            color:  white;
+            background-color: #434242;
+            color:  #F0F5F9;
         }
 
         tr: nth-child(even) {background-color: #ededed;}
@@ -52,6 +53,7 @@
         <th>Contact No.</th>
         <th>Ratings</th>
         <th>Price Per Night (RM)</th>
+         <th>Capacity</th>
         <th>Keywords</th>
         <th>Owner ID</th>
         <th>Action</th>
@@ -75,9 +77,10 @@
                 <td>".$row['resortPhoneNo']."</td>
                 <td>".$row['overallRatings']."</td>
                 <td>".$row['pricePerNight']."</td>
+                <td>".$row['capacity']."</td>
                 <td>".$row['keywords']."</td>
                 <td>".$row['ownerID']."</td>
-                <td><a href = 'updateResort.php?resortID=$row[resortID] & address = $row[address] & contact = $row[resortPhoneNo] & ratings = $row[overallRatings] & price = $row[pricePerNight] & keyword = $row[keywords] & ownerID = $row[ownerID]'><input type = 'submit' value = 'Edit' id = 'button'></a></td>
+                <td><a href = 'updateResort.php?resortID=$row[resortID] & address = $row[address] & contact = $row[resortPhoneNo] & ratings = $row[overallRatings] & price = $row[pricePerNight] & capacity = $row[capacity] & keyword = $row[keywords] & ownerID = $row[ownerID]'><input type = 'submit' value = 'Edit' id = 'button'></a></td>
                 
 
                 </tr>";

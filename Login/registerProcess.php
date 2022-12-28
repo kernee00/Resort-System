@@ -34,10 +34,10 @@ $confirmPassword = stripcslashes($confirmPassword);
 if($password != $confirmPassword)
 	{
 		echo "<script>alert('The two passwords do not match');</script>";
-		//echo"<meta http-equiv='refresh' content='0; url=reg_cust.php'/>";
+		echo"<meta http-equiv='refresh' content='0; url=Register.php'/>";
 	} else {
 
-		if ($role == "admin"){
+		/*if ($role == "admin"){
 
 		$stmt = $conn->prepare("INSERT INTO $role (adminID, adminName, adminPhoneNo, adminEmail, adminPassword) VALUES (?,?,?,?,?)");
         $stmt->bind_param("ssiss", $username,$name,$phone, $email, $password);
@@ -54,9 +54,9 @@ if($password != $confirmPassword)
 			echo "<script>alert('Admin registration fail! Please try to register again.');</script>";
 			echo"<meta http-equiv='refresh' content='0; url=Register.php'/>";
 		}
-	}
+	}*/
 
-	else if ($role == "owner")
+	if ($role == "owner")
 	{
 		$stmt = $conn->prepare("INSERT INTO $role (ownerID, ownerName, ownerPhoneNo, ownerEmail, accPassword) VALUES (?,?,?,?,?)");
         $stmt->bind_param("ssiss", $username,$name,$phone, $email, $password);

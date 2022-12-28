@@ -19,7 +19,6 @@
                     <li><a href='#'>About Us</a></li>
                      <li><a href='loginV2.php'>Login</a></li>
             
-                    <!---<li><button class='loginbtn' >Login</button></li>-->
                 </ul>
             </nav>
         </div>
@@ -42,7 +41,7 @@
 					
 							<select class = "form-select mb-3" aria-label="Default select example" id = "role" name ="role">
 								<option selected>Role</option>
-								<option value = "admin">Admin</option>
+						
 								<option value = "owner">Owner</option>
 								<option value = "customers">Customer</option>
 							</select>

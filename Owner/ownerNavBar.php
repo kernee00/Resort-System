@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-    <title>Admin</title>
+    <title>Owner</title>
     <link rel="stylesheet" href="../Style/nav_bar.css">
-
 
 </head>
 
@@ -17,11 +16,10 @@
             	<h1 class ="logo">Resort<span>Booking</span></h1>
            
                 <ul>
-                    <li><a href='adminMain.php'>Profile</a></li>
-                    <li><a href='manageAdmin.php'>Manage Admin</a></li>
-                    <li><a href='manageOwner.php'>Manage Owner</a></li>
-                   <li><a href='displayResort.php'>Manage Resort</a></li>        
-                    <li><a href='managePayment.php'>Manage Payment</a></li>
+                    <li><a href='ownerMain.php'>Profile</a></li>
+                    <li><a href='manageResort.php'>Manage Resort</a></li>
+                    <li><a href='manageReserve.php'>Manage Reservation</a></li>
+                     <li><a href='managePayment.php'>View Payment</a></li>
                     <li><a href='../Login/logout.php'>Logout</a></li>
                    
           

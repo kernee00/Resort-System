@@ -68,7 +68,7 @@
 }
 
 .update-profile form .flex .inputBox{
-   width: 49%;
+   width: 100%;
 }
 
 .update-profile form .flex .inputBox span{
@@ -100,11 +100,11 @@
 }
 
 .btn{
-   background-color: var(--blue);
+   background-color: #434242;
 }
 
 .btn:hover{
-   background-color: var(--dark-blue);
+   background-color: #222222;
 }
 
 .btn,
