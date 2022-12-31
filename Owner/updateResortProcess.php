@@ -6,8 +6,6 @@
 
       $user_id = $_SESSION['user_id'];
      
-        
-
       if(isset($_POST['update_resort'])){
          $resort_id = $_POST['resort_id'];
            $new_name = $_POST['update_name'];
@@ -15,11 +13,8 @@
             $new_city = $_POST['update_city'];
             $new_state = $_POST['update_state'];
             $new_phone = $_POST['update_phone'];
-            //$rating = $_POST['ratings'];
-            $new_price = $_POST['update_price'];
-            $new_capacity = $_POST['update_capacity'];
             $new_keywords =$_POST['update_keyword'];
-            //$ownerID = $_POST['ownerID'];
+          
       
  
         $sql = "SELECT * FROM resorts WHERE resortID = '$resort_id'";
@@ -35,11 +30,8 @@
                 $city = $row['city'];
                 $state = $row['state'];
                 $phone = $row['resortPhoneNo'];
-                //$rating = $row['overallRatings'];
-                $price = $row['pricePerNight'];
-                $capacity = $row['capacity'];
                 $keywords = $row['keywords'];
-                //$ownerID = $row['ownerID'];
+           
 
                
             }
@@ -88,22 +80,6 @@
         }
 
 
-         if (empty($_POST['update_price'])) {
-           $new_price = $price;
-        }
-        else{
-
-             $new_price = $_POST['update_price'];
-        }
-
-        if (empty($_POST['update_capacity'])) {
-           $new_capacity = $capacity;
-        }
-        else{
-
-            $new_capacity = $_POST['update_capacity'];
-        }
-
          if (empty($_POST['update_keyword'])) {
            $new_keywords = $keywords;
         }
@@ -114,13 +90,13 @@
 
 
 
-$update_profile = "update resorts set resortName = '$new_name', resortPhoneNo = '$new_phone', address = '$new_address', city = '$new_city', state = '$new_state', pricePerNight = '$new_price', capacity = '$new_capacity', keywords = '$new_keywords' WHERE resortID = '$resort_id'";
+$update_profile = "update resorts set resortName = '$new_name', resortPhoneNo = '$new_phone', address = '$new_address', city = '$new_city', state = '$new_state', keywords = '$new_keywords' WHERE resortID = '$resort_id'";
 
 $run_profile = mysqli_query($conn,$update_profile);
 
 if($run_profile){
 
-echo "<script> alert('Profile has been updated successfully. Redirecting to main page.') </script>";
+echo "<script> alert('Resort has been updated successfully. Redirecting to main page.') </script>";
 
    echo"<meta http-equiv='refresh' content='0; url=manageResort.php'/>";
 
@@ -135,8 +111,6 @@ else {
 
    echo"Try again.";
 }
-
-
 
 
     ?>

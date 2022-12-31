@@ -17,7 +17,8 @@
            
                 <ul>
                     <li><a href='ownerMain.php'>Profile</a></li>
-                    <li><a href='manageResort.php'>Manage Resort</a></li>
+                     <li><a href='addResort.php'>Add Resort</a></li>   
+                   <li><a href='manageResort.php'>Manage Resort</a></li>     
                     <li><a href='manageReserve.php'>Manage Reservation</a></li>
                      <li><a href='managePayment.php'>View Payment</a></li>
                     <li><a href='../Login/logout.php'>Logout</a></li>

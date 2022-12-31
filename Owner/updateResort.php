@@ -20,8 +20,6 @@
                 $state = $row['state'];
                 $phone = $row['resortPhoneNo'];
                 $rating = $row['overallRatings'];
-                $price = $row['pricePerNight'];
-                $capacity = $row['capacity'];
                 $keywords = $row['keywords'];
                 $ownerID = $row['ownerID'];
                
@@ -65,28 +63,22 @@
             <input type="text" id = "update_city" name="update_city" placeholder="<?php echo $city; ?>" class="box">
             <span>State:</span>
             <input type="text" id = "update_state" name="update_state" placeholder="<?php echo $state; ?>" class="box">
-            <span>Phone Number:</span>
-            <input type="text" id = "update_phone" name="update_phone" placeholder="<?php echo $phone; ?>" class="box">
-              <span>Rating:</span>
-            <input type="text" id = "ratings" name="ratings" disabled placeholder="<?php echo $rating; ?>" class="box">
+          
              
          </div>
          <div class="inputBox">
-             <span>Price:</span>
-            <input type="text" id = "update_price" name="update_price" placeholder="<?php echo $price; ?>" class="box">
-            <span>Capacity:</span>
-            <input type="text" id = "update_capacity" name="update_capacity" placeholder="<?php echo $capacity; ?>" class="box">
+              <span>Phone Number:</span>
+            <input type="text" id = "update_phone" name="update_phone" placeholder="<?php echo $phone; ?>" class="box">
+              <span>Rating:</span>
+            <input type="text" id = "ratings" name="ratings" disabled placeholder="<?php echo $rating; ?>" class="box">
               <span>Keyword:</span>
             <input type="text" id = "update_keyword" name="update_keyword" placeholder="<?php echo $keywords; ?>" class="box">
-              <span>Owner ID:</span>
-            <input type="text" id = "ownerID" name="ownerID" disabled placeholder="<?php echo $ownerID; ?>" class="box">
-            <span>Upload Image:</span>
-            <input type="file" name="update_image" accept="image/jpg, image/jpeg, image/png" class="box" multiple>
-  
-            
+    
+     
          </div>
       </div>
       <input type="submit" value="Update Resort" name="update_resort" class="btn">
+      <a href="manageRoom.php?resortID = $resortID" class="delete-btn">Update Resort Rooms</a>
       <a href="manageResort.php" class="delete-btn">Back</a>
    </form>
 

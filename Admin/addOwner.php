@@ -30,7 +30,7 @@
 <body>
      <div class = "update-profile">
 
-<form action="addOwnerProcess.php" method="POST"  >
+<form action="addOwnerProcess.php" method="POST">
      
       <div class="flex">
          <div class="inputBox">

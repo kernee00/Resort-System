@@ -9,6 +9,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Cambria, cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
 }
 
 body {

@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
     <title>Resort Report</title>
-    <h2 align="center">Resort Report</h2>
+    <h2 align="center">Owner Report</h2>
 
   </head>
   <body>

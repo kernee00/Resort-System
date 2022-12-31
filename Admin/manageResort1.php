@@ -1,11 +1,11 @@
  <?php
     session_start();
     include_once '../connection.php';
-    include_once 'ownerNavBar.php';
+    include_once 'adminNavBar.php';
 
      if (isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
-        $sql = "SELECT resortID, resortName, state, overallRatings, coverPhoto FROM resorts WHERE ownerID = '$user_id';";
+        $sql = "SELECT resortID, resortName, state, overallRatings, coverPhoto, ownerID FROM resorts;";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
@@ -51,12 +51,12 @@
             <p class="resort_name"><?php echo $row['resortName']; ?></p>
             <p class="resort_name"><?php echo $row['state']; ?></p>
             <p class="resort_name"><?php echo $row['overallRatings'].'/5.0'; ?></p>
+              <p class="resort_name"><?php echo $row['ownerID']; ?></p>
     </div>
     <form action="updateResort.php" method="POST">
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
 <button class ="book">Update Details</button>
 
-<a href="uploadPhoto.php?resortID=<?php echo $row['resortID'];?>" class="update">Update Resort Photo</a>
 
 </form>
 

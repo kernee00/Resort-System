@@ -52,14 +52,14 @@
         <th>Amount (RM)</th>
         <th>Status</th>
 
-         <th colspan="2" align="center">Action</th>
+       
         
 
         </tr>
 
         <?php 
 
-            $query="SELECT  * FROM  payments WHERE paymentStatus = 'Paid'" ;
+            $query="SELECT  * FROM  payments WHERE paymentStatus != 'Request Refund' AND paymentStatus!= 'Paid';" ;
         $result=$conn->query($query);
         //display data from db
         if(mysqli_num_rows($result)>=1){
@@ -69,8 +69,7 @@
                 <td>".$row["bookingID"]."</td>
                 <td>".$row['totalPayment']."</td>
                 <td>".$row['paymentStatus']."</td>
-                <td><a href = 'updatePayment.php?paymentID=$row[paymentID] & bookingID = $row[bookingID] & amount = $row[totalPayment] & payStatus = $row[paymentStatus]'><input type = 'submit' value = 'Approve' id = 'button'></a></td>
-                <td><a href = 'paymentProcess.php?paymentID=$row[paymentID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Refund' id = 'button'></td>
+             
 
                 </tr>";
                 //assign role
@@ -89,22 +88,8 @@
         ?>
 
     </table>
-    <a href = 'viewPaymentHistory.php'><input type = 'submit' value = 'History' id = 'add_button'></a>
-    <a href = 'viewPaymentReport.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
-
-
-   <script>
-       
-    function checkdelete(){
-
-
-        return confirm('Are you sure you want to refund this payment?');
-
-    }
-
-
-
-   </script> 
+    <a href = 'managePayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
+   
 
 </body>
 </html>

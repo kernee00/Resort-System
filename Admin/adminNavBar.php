@@ -20,7 +20,8 @@
                     <li><a href='adminMain.php'>Profile</a></li>
                     <li><a href='manageAdmin.php'>Manage Admin</a></li>
                     <li><a href='manageOwner.php'>Manage Owner</a></li>
-                   <li><a href='displayResort.php'>Manage Resort</a></li>        
+                    <li><a href='manageResort1.php'>Manage Resorts</a></li>
+                   <li><a href='manageReservation.php'>Manage Bookings</a></li>      
                     <li><a href='managePayment.php'>Manage Payment</a></li>
                     <li><a href='../Login/logout.php'>Logout</a></li>
                    
