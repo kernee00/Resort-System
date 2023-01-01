@@ -70,11 +70,11 @@
                 <td>".$row['adminEmail']."</td>
                 <td>".$row['adminPassword']."</td>
                 <td><a href = 'updateOwner.php?ownerID=$row[adminID] & ownerName = $row[adminName] & phone = $row[adminPhoneNo] & email = $row[adminEmail]& pass = $row[adminPassword]'><input type = 'submit' value = 'Update' id = 'button'></a></td>
-                <td><a href = 'deleteOwner.php?ownerID=$row[adminID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Delete' id = 'button'></td>
+                <td><a href = 'deleteAdmin.php?adminID=$row[adminID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Delete' id = 'button'></td>
 
                 </tr>";
                 //assign role
-                $_SESSION['role'] = "admin";
+                $_SESSION['role'] = $role;
               
                
             }
@@ -90,7 +90,7 @@
 
     </table>
 
-    <a href = 'addOwner.php'><input type = 'submit' value = 'Add' id = 'add_button'></a>
+    <a href = 'addAdmin.php'><input type = 'submit' value = 'Add' id = 'add_button'></a>
 
 
    <script>

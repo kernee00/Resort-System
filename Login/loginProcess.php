@@ -43,7 +43,7 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 				$_SESSION['user_id'] = $username;
 				//$role = "customer";
 				//$user_id = $row['custID'];
-				header("location:../Admin/adminMain.php");
+				header("location:../Customer/customerMain.php");
 			}
 
 			else {

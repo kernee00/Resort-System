@@ -4,7 +4,8 @@
     include_once '../connection.php';
     include_once 'customerNavBar.php';
     $user_id = $_SESSION['user_id'];
-    //$resort = $_SESSION['resortID'];
+    $resortID = $_POST['resortID'];
+  
 ?>
 <html lang = "en">
 
@@ -35,7 +36,7 @@
 					</thead>
 					<tbody>
 					<?php
-						$query = $conn->query("SELECT * FROM rooms WHERE description = 'A'") or die(mysqli_error());
+						$query = $conn->query("SELECT * FROM rooms WHERE resortID = '$resortID'") or die(mysqli_error());
 						//$query = $conn->query("SELECT * FROM rooms WHERE resortID = '$resortID'") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	

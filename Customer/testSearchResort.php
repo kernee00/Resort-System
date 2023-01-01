@@ -79,12 +79,14 @@
 
                                     if(isset($_GET['search']))
                                     {
+
                                         $filtervalues = $_GET['search'];
                                         $query = "SELECT * FROM resorts WHERE CONCAT(resortName,address, state,city) LIKE '%$filtervalues%'";
                                         $query_run = mysqli_query($con, $query);
 
                                         if(mysqli_num_rows($query_run) > 0)
-                                        {
+                                        { header("location:searchResult.php?filtervalues=".$filtervalues);
+
                                             foreach($query_run as $items)
                                             {
                                                 ?>
@@ -99,10 +101,11 @@
                                         }
                                         else
                                         {
+                                            echo"<script>alert ('No Record.')</script>";
+                                            echo"<meta http-equiv='refresh' content='0; url=testSearchResort.php'/>";
                                             ?>
-                                                <tr>
-                                                    <td colspan="4">No Record Found</td>
-                                                </tr>
+                                              
+
                                             <?php
                                         }
                                     }
@@ -145,12 +148,12 @@
             </p>
             <p class="resort_name"><?php echo $row['resortName']; ?></p>
             <p class="resort_name"><?php echo $row['address']; ?></p>
-            <p class="resort_name"><?php echo $row['city']; ?>
-            <p class="resort_name"><?php echo $row['state']; ?></p>
+            <p class="resort_name"><?php echo $row['city'] .", ". $row['state']; ?>
             <p class="resort_name"><?php echo $row['overallRatings'].'/5.0'; ?></p>
             <p class="resort_name"><?php echo $row['resortPhoneNo']; ?></p>
     </div>
 <form action="displayRoom.php" method="POST">
+    <br><br><br>
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
 <button class ="book">Book</button>
 

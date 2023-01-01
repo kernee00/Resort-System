@@ -41,7 +41,7 @@
 
                 if (empty($images)){
              
-                    echo "<img src='Profile Image/default-avatar.png' >";
+                    echo "<img src='../default-avatar.png' >";
             }
 
             else {

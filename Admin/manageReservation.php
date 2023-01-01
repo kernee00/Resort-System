@@ -16,6 +16,36 @@
     <title>Manage Bookings</title>
     <link rel="stylesheet" href="manageStyle.css">
 
+         <h1 style="margin-left:40% ;margin-top:80px"   class="">Bookings Information</h1>
+
+          <form name="dateInput" action="" method="post" action="">
+
+
+            <label>From: </label>
+            <input type="date" name="fdate" class="form-control" id="fdate">
+             <label>To: </label>
+             <input type="date" name="tdate" class="form-control" id="tdate">
+
+             <button class="btn-primary btn" type="submit" name="submit">Submit</button>
+
+     </form>
+
+     </div>
+    </div>
+    <br>
+    <hr>
+      <div class="row">
+      <div class="col-xs-12">
+         <?php
+         if(isset($_POST['submit']))
+{ 
+$fdate=$_POST['fdate'];
+$tdate=$_POST['tdate'];
+
+ 
+?>
+ <h2 style="margin-left:35% ;margin-top:80px"   class="">Bookings Information From <?php echo $fdate?> To <?php echo $tdate?></h2>
+
     <style type = "text/css">
         table {
 
@@ -42,7 +72,7 @@
 
 <body>
 
-    <h1 style="margin-left:40% ;margin-top:80px"   class="">Bookings Information</h1>
+   
 
     <table class="table" border="2" cellspacing="7">
         <tr>
@@ -62,7 +92,7 @@
 
         <?php 
 
-            $query="SELECT  * FROM  bookings;" ;
+            $query="SELECT  * FROM  bookings WHERE checkInDate >= '$fdate' AND checkOutDate <= '$tdate';" ;
         $result=$conn->query($query);
         //display data from db
         if(mysqli_num_rows($result)>=1){
@@ -92,6 +122,11 @@
 
     </table>
     <a href = 'viewBookingReport.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
+
+       <?php
+  }
+
+    ?>
 
 </body>
 </html>

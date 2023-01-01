@@ -24,7 +24,7 @@
 
       if(isset($_POST['add_owner'])){
         
-        //to verify admin password before add new owner
+        //to verify admin password before add new admin
         $sql = "SELECT adminPassword FROM admin WHERE adminID = '$user_id'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
@@ -60,22 +60,22 @@
     else {
 
 
-
-$stmt = $conn->prepare("INSERT INTO owner (ownerID, ownerName, ownerPhoneNo, ownerEmail, accPassword) VALUES (?,?,?,?,?)");
+$stmt = $conn->prepare("INSERT INTO admin (adminID, adminName, adminPhoneNo, adminEmail, adminPassword) VALUES (?,?,?,?,?)");
         $stmt->bind_param("ssiss", $username,$name,$phone, $email, $password);
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();
         if($success>0)
         {
-            echo "<script>alert('Owner register succesful!');</script>";
-            echo"<meta http-equiv='refresh' content='0; url=manageOwner.php'/>";
+            echo "<script>alert('Admin register succesful!');</script>";
+            echo"<meta http-equiv='refresh' content='0; url=manageAdmin.php'/>";
         }
         else
         {
-            echo "<script>alert('Owner registration fail! Please try to register again.');</script>";
-            echo"<meta http-equiv='refresh' content='0; url=manageOwner.php'/>";
+            echo "<script>alert('Admin registration fail! Please try to register again.');</script>";
+            echo"<meta http-equiv='refresh' content='0; url=manageAdmin.php'/>";
         }
+
 
 }
 

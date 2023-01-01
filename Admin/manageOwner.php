@@ -5,22 +5,7 @@
 
    if (isset($_SESSION['user_id'])){
     $user_id = $_SESSION['user_id'];
-        $sql = "SELECT * FROM admin WHERE adminID = '$user_id'";
-        $result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result);
-
-        if ($resultCheck > 0){
-
-            while ($row = mysqli_fetch_assoc($result)){
-
-                $name = $row['adminName'];
-                $phone = $row['adminPhoneNo'];
-                $email = $row['adminEmail'];
-                $password = $row['adminPassword'];
-
-               
-            }
-        }
+      $role = "owner";
 
     }
 
@@ -95,8 +80,7 @@
                 <td><a href = 'deleteOwner.php?ownerID=$row[ownerID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Delete' id = 'button'></td>
 
                 </tr>";
-                 //assign role
-                $_SESSION['role'] = "owner";
+       
                
                
                

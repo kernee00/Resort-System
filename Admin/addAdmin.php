@@ -30,7 +30,7 @@
 <body>
      <div class = "update-profile">
 
-<form action="addOwnerProcess.php" method="POST">
+<form action="addAdminProcess.php" method="POST">
      
       <div class="flex">
          <div class="inputBox">
@@ -54,7 +54,7 @@
          </div>
       </div>
       <input type="submit" value="Add" name="add_owner" class="btn">
-      <a href="manageOwner.php" class="delete-btn">Back</a>
+      <a href="manageAdmin.php" class="delete-btn">Back</a>
    </form>
 
 </div>
