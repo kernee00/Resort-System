@@ -1,117 +1,84 @@
+<!DOCTYPE html>
 <?php
-    session_start();
+	session_start();
     include_once '../connection.php';
     include_once 'adminNavBar.php';
-
-   if (isset($_SESSION['user_id'])){
     $user_id = $_SESSION['user_id'];
-      $role = "owner";
 
-    }
-
-    else {
-
-        echo "Session timed-out. Login again.";
-    }
-
+  
 ?>
+<html lang = "en">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-    <title>Admin Main</title>
-    <link rel="stylesheet" href="manageStyle.css">
+<html lang = "en">
+	<head>
+		
+		<meta charset = "utf-8" />
+		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+		<link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
+		<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
 
-    <style type = "text/css">
-         table {
+	<br />
+	<div class = "container-fluid">
+		<div class = "panel panel-default">
+			<div class = "panel-body">
+				<div class = "alert alert-info">Manage Owner</div>
+				<br />
+				<br />
+				<table id = "table" class = "table table-bordered">
+					<thead>
+						<tr>
+							<th><center>Owner ID</th>
+							<th><center>Owner Name</th>
+							<th><center>Contact No</th>
+							<th><center>Email</th>
+							<th><center>Password</th>
+							<th><center>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+						$query = $conn->query("SELECT * FROM owner") or die(mysqli_error());
+						while($fetch = $query->fetch_array()){
+					?>	
+						<tr>
+						<td><center><?php echo $fetch['ownerID']?></td>
+							<td><center><?php echo $fetch['ownerName']?></td>
+							<td><center><?php echo $fetch['ownerPhoneNo']?></td>
+							<td><center><?php echo $fetch['ownerEmail']?></td>
+							<td><center><?php echo $fetch['accPassword']?></td>
 
-            border-collapse:  collapse;
-            width:  100%;
-            max-width: 1800px;  
-            color:  #52616B;
-            font-size: 25px;
-            text-align: center;
-            margin: 10rem auto;  
-            border-radius: 20px;
-        }
-
-        th {
-
-            background-color: #434242;
-            color:  white;
-        }
-
-        tr: nth-child(even) {background-color: #ededed;}
-    </style>
-
-</head>
-
-<body>
-
-    <h1 style="margin-left:40% ;margin-top:80px"   class="">Owners Information</h1>
-
-    <table class="table" border="2" cellspacing="7">
-        <tr>
-        <th>Owner ID</th>
-        <th>Owner Name</th>
-        <th>Contact Number</th>
-        <th>Email</th>
-        <th>Password</th>
-         <th colspan="2" align="center">Action</th>
-        
-
-        </tr>
-
-        <?php 
-            $query="SELECT  * FROM  owner" ;
-        $result=$conn->query($query);
-        //display data from db
-        if(mysqli_num_rows($result)>=1){
-            while ($row=$result->fetch_assoc()) {
-
-                echo "<tr><td>".$row["ownerID"]."</td>
-                <td>".$row["ownerName"]."</td>
-                <td>".$row["ownerPhoneNo"]."</td>
-                <td>".$row['ownerEmail']."</td>
-                <td>".$row['accPassword']."</td>
-                <td><a href = 'updateOwner.php?ownerID=$row[ownerID] & ownerName = $row[ownerName] & phone = $row[ownerPhoneNo] & email = $row[ownerEmail]& pass = $row[accPassword]'><input type = 'submit' value = 'Update' id = 'button'></a></td>
-                <td><a href = 'deleteOwner.php?ownerID=$row[ownerID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Delete' id = 'button'></td>
-
-                </tr>";
-       
-               
-               
-               
-            }
-
-        }
-
-          else
-        {
-            echo "<tr><td>No data found.";
-        }
-
-        ?>
-
-    </table>
-
-    <a href = 'addOwner.php'><input type = 'submit' value = 'Add' id = 'add_button'></a>
-
-
-   <script>
-       
-    function checkdelete(){
-
-
-        return confirm('Are you sure you want to delete this record?');
-
-    }
-
-
-
-   </script> 
-
+							<td><center><a class = "btn btn-warning" href = "updateOwner.php?ownerID=<?php echo $fetch['ownerID']?>"><i class = "glyphicon glyphicon-edit"></i> Edit</a> <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "deleteOwner.php?ownerID=<?php echo $fetch['ownerID']?>"><i class = "glyphicon glyphicon-remove"></i> Delete</a></center></td>
+						</tr>
+					<?php
+						}
+					?>	
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
+	<div style = "text-align:right; margin-right:10px;" class = "navbar navbar-default navbar-fixed-bottom">
+		<label>&copy; Workshop 2 </label>
+	</div>
 </body>
+<script src = "../js/jquery.js"></script>
+<script src = "../js/bootstrap.js"></script>
+<script src = "../js/jquery.dataTables.js"></script>
+<script src = "../js/dataTables.bootstrap.js"></script>	
+<script type = "text/javascript">
+	function confirmationDelete(anchor){
+		var conf = confirm("Are you sure you want to delete this record?");
+		if(conf){
+			window.location = anchor.attr("href");
+		}
+	} 
+</script>
+
+<script type = "text/javascript">
+	$(document).ready(function(){
+		$("#table").DataTable();
+	});
+</script>
 </html>

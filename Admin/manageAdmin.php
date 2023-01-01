@@ -1,110 +1,84 @@
+<!DOCTYPE html>
 <?php
-    session_start();
+	session_start();
     include_once '../connection.php';
     include_once 'adminNavBar.php';
+    $user_id = $_SESSION['user_id'];
 
-     $user_id = $_SESSION['user_id'];
-     $role = "admin";
-
+  
 ?>
+<html lang = "en">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-    <title>Admin Main</title>
-    <link rel="stylesheet" href="manageStyle.css">
+<html lang = "en">
+	<head>
+		
+		<meta charset = "utf-8" />
+		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+		<link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
+		<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
 
-    <style type = "text/css">
-        table {
+	<br />
+	<div class = "container-fluid">
+		<div class = "panel panel-default">
+			<div class = "panel-body">
+				<div class = "alert alert-info">Manage Admin</div>
+				<br />
+				<br />
+				<table id = "table" class = "table table-bordered">
+					<thead>
+						<tr>
+							<th><center>Admin ID</th>
+							<th><center>Admin Name</th>
+							<th><center>Contact No</th>
+							<th><center>Email</th>
+							<th><center>Password</th>
+							<th><center>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+						$query = $conn->query("SELECT * FROM admin WHERE adminID != 'admin1'") or die(mysqli_error());
+						while($fetch = $query->fetch_array()){
+					?>	
+						<tr>
+						<td><center><?php echo $fetch['adminID']?></td>
+							<td><center><?php echo $fetch['adminName']?></td>
+							<td><center><?php echo $fetch['adminPhoneNo']?></td>
+							<td><center><?php echo $fetch['adminEmail']?></td>
+							<td><center><?php echo $fetch['adminPassword']?></td>
 
-            border-collapse:  collapse;
-            width:  100%;
-            max-width: 1800px;  
-            color:  #52616B;
-            font-size: 25px;
-            text-align: center;
-            margin: 10rem auto;  
-            border-radius: 20px;
-        }
-
-        th {
-
-            background-color: #434242;
-            color:  white;
-        }
-
-        tr: nth-child(even) {background-color: #ededed;}
-    </style>
-
-</head>
-
-<body>
-
-    <h1 style="margin-left:40% ;margin-top:80px"   class="">Admin Information</h1>
-
-    <table class="table" border="2" cellspacing="7">
-        <tr>
-        <th>Admin ID</th>
-        <th>Admin Name</th>
-        <th>Contact Number</th>
-        <th>Email</th>
-        <th>Password</th>
-         <th colspan="2" align="center">Action</th>
-        
-
-        </tr>
-
-        <?php 
-        // except the first admin who has the highest privileges
-            $query="SELECT  * FROM  admin WHERE adminID != 'admin1'" ;
-        $result=$conn->query($query);
-        //display data from db
-        if(mysqli_num_rows($result)>=1){
-            while ($row=$result->fetch_assoc()) {
-
-                echo "<tr><td>".$row["adminID"]."</td>
-                <td>".$row["adminName"]."</td>
-                <td>".$row["adminPhoneNo"]."</td>
-                <td>".$row['adminEmail']."</td>
-                <td>".$row['adminPassword']."</td>
-                <td><a href = 'updateOwner.php?ownerID=$row[adminID] & ownerName = $row[adminName] & phone = $row[adminPhoneNo] & email = $row[adminEmail]& pass = $row[adminPassword]'><input type = 'submit' value = 'Update' id = 'button'></a></td>
-                <td><a href = 'deleteAdmin.php?adminID=$row[adminID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Delete' id = 'button'></td>
-
-                </tr>";
-                //assign role
-                $_SESSION['role'] = $role;
-              
-               
-            }
-
-        }
-
-        else
-        {
-            echo "<tr><td>No data found.";
-        }
-
-        ?>
-
-    </table>
-
-    <a href = 'addAdmin.php'><input type = 'submit' value = 'Add' id = 'add_button'></a>
-
-
-   <script>
-       
-    function checkdelete(){
-
-
-        return confirm('Are you sure you want to delete this record?');
-
-    }
-
-
-
-   </script> 
-
+							<td><center><a class = "btn btn-warning" href = "updateAdmin.php?adminID=<?php echo $fetch['adminID']?>"><i class = "glyphicon glyphicon-edit"></i> Edit</a> <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "deleteAdmin.php?adminID=<?php echo $fetch['adminID']?>"><i class = "glyphicon glyphicon-remove"></i> Delete</a></center></td>
+						</tr>
+					<?php
+						}
+					?>	
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
+	<div style = "text-align:right; margin-right:10px;" class = "navbar navbar-default navbar-fixed-bottom">
+		<label>&copy; Workshop 2 </label>
+	</div>
 </body>
+<script src = "../js/jquery.js"></script>
+<script src = "../js/bootstrap.js"></script>
+<script src = "../js/jquery.dataTables.js"></script>
+<script src = "../js/dataTables.bootstrap.js"></script>	
+<script type = "text/javascript">
+	function confirmationDelete(anchor){
+		var conf = confirm("Are you sure you want to delete this record?");
+		if(conf){
+			window.location = anchor.attr("href");
+		}
+	} 
+</script>
+
+<script type = "text/javascript">
+	$(document).ready(function(){
+		$("#table").DataTable();
+	});
+</script>
 </html>

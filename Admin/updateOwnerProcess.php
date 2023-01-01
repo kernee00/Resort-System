@@ -113,7 +113,14 @@ $run_profile = mysqli_query($conn,$update_profile);
 
 if($run_profile){
 
-echo "<script> alert('Profile has been updated successfully. Redirecting to main page.') </script>";
+echo "<script> alert('Owner has been updated successfully. Redirecting to main page.') </script>";
+
+   echo"<meta http-equiv='refresh' content='0; url=manageOwner.php'/>";
+
+}
+
+else {
+    echo "<script> alert('Failed to update owner!') </script>";
 
    echo"<meta http-equiv='refresh' content='0; url=manageOwner.php'/>";
 

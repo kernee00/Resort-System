@@ -29,6 +29,7 @@
              <button class="btn-primary btn" type="submit" name="submit">Submit</button>
 
      </form>
+       <a href = 'viewResortReport.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
 
      </div>
     </div>
@@ -121,7 +122,7 @@ $tdate=$_POST['tdate'];
         ?>
 
     </table>
-    <a href = 'viewBookingReport.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
+  
 
        <?php
   }
