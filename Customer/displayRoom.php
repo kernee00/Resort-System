@@ -7,7 +7,6 @@
     $resortID = $_POST['resortID'];
   
 ?>
-<html lang = "en">
 
 <html lang = "en">
 	<head>
@@ -37,7 +36,7 @@
 					<tbody>
 					<?php
 						$query = $conn->query("SELECT * FROM rooms WHERE resortID = '$resortID'") or die(mysqli_error());
-						//$query = $conn->query("SELECT * FROM rooms WHERE resortID = '$resortID'") or die(mysqli_error());
+
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>
@@ -55,6 +54,7 @@
 					<?php
 						}
 					?>	
+
 					</tbody>
 				</table>
 			</div>
@@ -62,7 +62,9 @@
 	</div>
 	<br />
 	<br />
+
 	<div style = "text-align:right; margin-right:10px;" class = "navbar navbar-default navbar-fixed-bottom">
+		<button onclick="history.back()">Back To Resort</button>
 		<label>&copy; Workshop 2 </label>
 	</div>
 </body>

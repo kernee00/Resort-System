@@ -24,7 +24,6 @@
       
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +32,26 @@
     <title>Main Page</title>
   <link rel="stylesheet" href="../Style/displayStyle.css">
 
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Funda Of Web IT</title>
 </head>
+<body>
+
+    <br />
+    <div class = "container-fluid">
+        <div class = "panel panel-default">
+            <div class = "panel-body">
+                <div class = "alert alert-info">Search result : </div>
+                <button onclick="history.back()"> Back</button>
+                <br />
+
 
 <body>
 
@@ -56,14 +74,18 @@
             <p class = "rate">
             
             </p>
+
             <p class="resort_name"><?php echo $row['resortName']; ?></p>
-            <p class="resort_name"><?php echo $row['state']; ?></p>
+            <p class="resort_name"><?php echo $row['address']; ?></p>
+            <p class="resort_name"><?php echo $row['city'] .", ". $row['state']; ?>
             <p class="resort_name"><?php echo $row['overallRatings'].'/5.0'; ?></p>
-              <p class="resort_name"><?php echo $row['ownerID']; ?></p>
+            <p class="resort_name"><?php echo $row['resortPhoneNo']; ?></p>
+            
     </div>
-    <form action="updateResort.php" method="POST">
+    <form action="displayRoom.php" method="POST">
+        <br><br><br>
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
-<button class ="book">Update Details</button>
+<button class ="book">Book</button>
 
 
 </form>

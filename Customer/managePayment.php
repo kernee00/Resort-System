@@ -1,111 +1,89 @@
+<!DOCTYPE html>
 <?php
     session_start();
     include_once '../connection.php';
     include_once 'customerNavBar.php';
+    $user_id = $_SESSION['user_id'];
 
-     $user_id = $_SESSION['user_id'];
-     $role = "customers";
-
+  
 ?>
+<html lang = "en">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-    <title>Payment</title>
-    <link rel="stylesheet" href="manageStyle.css">
-
-    <style type = "text/css">
-        table {
-
-            border-collapse:  collapse;
-            width:  100%;
-            max-width: 1800px;  
-            color:  #52616B;
-            font-size: 25px;
-            text-align: center;
-            margin: 10rem auto;  
-            border-radius: 20px;
-        }
-
-        th {
-
-            background-color: #434242;
-            color:  white;
-        }
-
-        tr: nth-child(even) {background-color: #ededed;}
-    </style>
-
-</head>
-
-<body>
-
-    <h1 style="margin-left:40% ;margin-top:80px"   class="">Payment Information</h1>
-
-    <table class="table" border="2" cellspacing="7">
-        <tr>
-        <th>Payment ID</th>
-        <th>Total Payment</th>
-        <th>Payment Date </th>
-        <th>Payment Type </th>
-        <th>Payment Status </th>
-
-         <th colspan="2" align="center">Action</th>
+<html lang = "en">
+    <head>
         
+        <meta charset = "utf-8" />
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+        <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
+        <link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
 
-        </tr>
+    <br />
+    <div class = "container-fluid">
+        <div class = "panel panel-default">
+            <div class = "panel-body">
+                <div class = "alert alert-info">Payment</div>
+                <br />
+                <br />
+                <table id = "table" class = "table table-bordered">
+                    <thead>
+                        <tr>
+                            <th><center>Payment ID</th>
+                            <th><center>Booking ID</th>
+                            <th><center>Amount (RM)</th>
+                            <th><center>Status</th>
+                        
+                            <th><center>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE bookings.custID = '$user_id';") or die(mysqli_error());
 
-        <?php 
+                        while($fetch = $query->fetch_array()){
+                    ?>  
+                        <tr>
+                        <td><center><?php echo $fetch['paymentID']?></td>
+                            <td><center><?php echo $fetch['bookingID']?></td>
+                            <td><center><?php echo $fetch['totalPayment']?></td>
+                            <td><center><?php echo $fetch['paymentStatus']?></td>
+                    
 
-        $query="SELECT  * FROM  payments";
-        $result=$conn->query($query);
-        //display data from db
-        if(mysqli_num_rows($result)>=1){
-            while ($row=$result->fetch_assoc()) {
+                            <td><center><a class = "btn btn-warning" 
 
-                echo "<tr><td>".$row["paymentID"]."</td>
-                <td>".$row['totalPayment']."</td>
-                 <td>".$row["paymentDate"]."</td>
-                  <td>".$row["paymentType"]."</td>
-                <td>".$row['paymentStatus']."</td>
-                <td><a href = 'updatePayment.php?paymentID=$row[paymentID] & bookingID = $row[bookingID] & amount = $row[totalPayment] & payStatus = $row[paymentStatus]'><input type = 'submit' value = 'Approve' id = 'button'></a></td>
-                <td><a href = 'paymentProcess.php?paymentID=$row[paymentID]' onclick = 'return checkdelete()'><input type = 'submit' value = 'Refund' id = 'button'></td>
+                            href = "updatePayment.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Pay</a> <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" 
 
-                </tr>";
-                //assign role
-                $_SESSION['role'] = "customers";
-             
-               
-            }
-
-        }
-
-        else
-        {
-            echo "<tr><td>No data found.";
-        }
-
-        ?>
-
-    </table>
-
-    <a href = 'viewResortReport.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
-
-
-   <script>
-       
-    function checkdelete(){
-
-
-        return confirm('Are you sure you want to refund this payment?');
-
-    }
-
-
-
-   </script> 
-
+                            href = "paymentProcess.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-remove"></i> Refund</a></center></td>
+                        </tr>
+                    <?php
+                        }
+                    ?>  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div style = "text-align:right; margin-right:10px;" class = "navbar navbar-default navbar-fixed-bottom">
+        <label>&copy; Workshop 2 </label>
+    </div>
 </body>
+<script src = "../js/jquery.js"></script>
+<script src = "../js/bootstrap.js"></script>
+<script src = "../js/jquery.dataTables.js"></script>
+<script src = "../js/dataTables.bootstrap.js"></script> 
+<script type = "text/javascript">
+    function confirmationDelete(anchor){
+        var conf = confirm("Are you sure you want to refund this payment?");
+        if(conf){
+            window.location = anchor.attr("href");
+        }
+    } 
+</script>
+
+<script type = "text/javascript">
+    $(document).ready(function(){
+        $("#table").DataTable();
+    });
+</script>
 </html>

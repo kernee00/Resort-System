@@ -1,132 +1,92 @@
+<!DOCTYPE html>
 <?php
     session_start();
     include_once '../connection.php';
     include_once 'customerNavBar.php';
-
-   if (isset($_SESSION['user_id'])){
     $user_id = $_SESSION['user_id'];
-        $sql = "SELECT * FROM customers WHERE custID = '$user_id'";
-        $result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result);
 
-        if ($resultCheck > 0){
-
-            while ($row = mysqli_fetch_assoc($result)){
-
-                $name = $row['custName'];
-                $phone = $row['phoneNo'];
-                $email = $row['custEmail'];
-                $password = $row['custPassword'];
-            }
-        }
-
-    }
-
-    else {
-
-        echo "Session timed-out. Login again.";
-    }
-
+  
 ?>
+<html lang = "en">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-    <title>Customer Main</title>
-    <link rel="stylesheet" href="manageStyle.css">
-
-    <style type = "text/css">
-         table {
-
-            border-collapse:  collapse;
-            width:  100%;
-            max-width: 1800px;  
-            color:  #52616B;
-            font-size: 25px;
-            text-align: center;
-            margin: 10rem auto;  
-            border-radius: 20px;
-        }
-
-        th {
-
-            background-color: #434242;
-            color:  white;
-        }
-
-        tr: nth-child(even) {background-color: #ededed;}
-    </style>
-
-</head>
-
-<body>
-
-    <h1 style="margin-left:40% ;margin-top:80px"   class="">Booking History</h1>
-
-    <table class="table" border="2" cellspacing="7">
-        <tr>
-        <th>Booking ID</th>
-        <th>Booking Date</th>
-        <th>Check In Date</th>
-        <th>Check Out Date</th>
-        <th>Total Paid (RM)</th>
-         <th colspan="2" align="center">Action</th>
+<html lang = "en">
+    <head>
         
+        <meta charset = "utf-8" />
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+        <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
+        <link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
 
-        </tr>
+    <br />
+    <div class = "container-fluid">
+        <div class = "panel panel-default">
+            <div class = "panel-body">
+                <div class = "alert alert-info">Booking History</div>
+                <br />
+                <br />
+                <table id = "table" class = "table table-bordered">
+                    <thead>
+                        <tr>
+                            <th><center>Booking ID</th>
+                            <th><center>Booking Date</th>
+                            <th><center>Check In Date</th>
+                            <th><center>Check Out Date</th>
+                            <th><center>Total Paid (RM)</th>
+                        
+                            <th><center>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
 
-        <?php 
-        $query="SELECT  * FROM  bookings" ;
-        $result=$conn->query($query);
-        //display data from db
-        if(mysqli_num_rows($result)>=1){
-            while ($row=$result->fetch_assoc()) {
+                    $query = $conn->query("SELECT  * FROM  bookings where custID = '$user_id';") or die(mysqli_error());
 
-                echo "<tr><td>".$row["bookingID"]."</td>
-                <td>".$row["bookingDate"]."</td>
-                <td>".$row["checkInDate"]."</td>
-                <td>".$row['checkOutDate']."</td>
-                <td>".$row['totalPrice']."</td>
+                        while($fetch = $query->fetch_array()){
+                    ?>  
+                        <tr>
+                        <td><center><?php echo $fetch['bookingID']?></td>
+                            <td><center><?php echo $fetch['bookingDate']?></td>
+                            <td><center><?php echo $fetch['checkInDate']?></td>
+                            <td><center><?php echo $fetch['checkOutDate']?></td>
+                            <td><center><?php echo $fetch['totalPrice']?></td>
 
-                
-                <td><a href = 'downloadBookingDetails.php?bookingID=$row[bookingID]' onclick = 'return checkdownload()'><input type = 'submit' value = 'Download' id = 'button'></td>
+                            <td><center><a class = "btn btn-warning" 
 
-                </tr>";
-                 //assign role
-                $_SESSION['role'] = "customers";
-               
-               
-               
-            }
+                            href = "bookingReport.php?bookingID=<?php echo $fetch['bookingID']?>"><i class = "glyphicon glyphicon-download"></i> Download</a> <a class = "btn btn-danger"  
 
-        }
+                            href = "manageRating.php?bookingID=<?php echo $fetch['bookingID']?>"><i class = "glyphicon glyphicon-star"></i> Feedback & Rate</a></center></td>
 
-          else
-        {
-            echo "<tr><td>No data found.";
-        }
-
-        ?>
-
-    </table>
-
-    <a href = 'allReportBooking.php'><input type = 'submit' value = 'download' id = 'download_button'></a>
-
-
-   <script>
-       
-    function checkdownload(){
-
-
-        return confirm('Are you sure you want to download this booking details?');
-
-    }
-
-
-
-   </script> 
-
+                        </tr>
+                    <?php
+                        }
+                    ?>  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div style = "text-align:right; margin-right:10px;" class = "navbar navbar-default navbar-fixed-bottom">
+        <label>&copy; Workshop 2 </label>
+    </div>
 </body>
+<script src = "../js/jquery.js"></script>
+<script src = "../js/bootstrap.js"></script>
+<script src = "../js/jquery.dataTables.js"></script>
+<script src = "../js/dataTables.bootstrap.js"></script> 
+<script type = "text/javascript">
+    function confirmationDownload(anchor){
+        var conf = confirm("Are you sure you want to download?");
+        if(conf){
+            window.location = anchor.attr("href");
+        }
+    } 
+</script>
+
+<script type = "text/javascript">
+    $(document).ready(function(){
+        $("#table").DataTable();
+    });
+</script>
 </html>
