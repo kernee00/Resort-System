@@ -21,7 +21,7 @@
 	<div class = "container-fluid">
 		<div class = "panel panel-default">
 			<div class = "panel-body">
-				<div class = "alert alert-info">Manage Payment</div>
+				<!--<div class = "alert alert-info">Manage Payment</div>-->
 				<br />
 				<br />
 				<table id = "table" class = "table table-bordered">
@@ -29,7 +29,9 @@
 						<tr>
 							<th><center>Payment ID</th>
 							<th><center>Booking ID</th>
+							<th><center>Date</th>
 							<th><center>Amount (RM)</th>
+							<th><center>Charges (RM)</th>
 							<th><center>Status</th>
 						
 							<th><center>Action</th>
@@ -37,31 +39,33 @@
 					</thead>
 					<tbody>
 					<?php
-						$query = $conn->query("SELECT * FROM  payments WHERE paymentStatus = 'Paid' OR paymentStatus = 'Request Refund';") or die(mysqli_error());
+						$query = $conn->query("SELECT p.bookingID, p.paymentID, paymentDate, paymentStatus, totalPayment, p.totalPayment-b.totalPrice AS charges FROM payments p,bookings b WHERE b.bookingID = p.bookingID AND paymentStatus != 'Approved' AND paymentStatus!= 'Refund' GROUP BY p.bookingID, p.paymentID ORDER BY p.bookingID, p.paymentID;") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>
 						<td><center><?php echo $fetch['paymentID']?></td>
 							<td><center><?php echo $fetch['bookingID']?></td>
+							<td><center><?php echo $fetch['paymentDate']?></td>
 							<td><center><?php echo $fetch['totalPayment']?></td>
+							<td><center><?php echo $fetch['charges']?></td>
 							<td><center><?php echo $fetch['paymentStatus']?></td>
 					
 
-							<td><center><a class = "btn btn-warning" href = "updatePayment.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Edit</a> <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "paymentProcess.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-remove"></i> Delete</a></center></td>
+							<td><center><a class = "btn btn-warning" href = "updatePayment.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Approve</a> <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "paymentProcess.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-remove"></i> Refund</a></center></td>
 						</tr>
 					<?php
 						}
 					?>	
 					</tbody>
 				</table>
+				    <a href = 'viewPaymentHistory.php'><input type = 'submit' value = 'History' id = 'add_button'></a>
+    				<a href = 'viewPaymentReport.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
 			</div>
 		</div>
 	</div>
 	<br />
 	<br />
-	<div style = "text-align:right; margin-right:10px;" class = "navbar navbar-default navbar-fixed-bottom">
-		<label>&copy; Workshop 2 </label>
-	</div>
+
 </body>
 <script src = "../js/jquery.js"></script>
 <script src = "../js/bootstrap.js"></script>

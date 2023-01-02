@@ -21,7 +21,7 @@
 	<div class = "container-fluid">
 		<div class = "panel panel-default">
 			<div class = "panel-body">
-				<div class = "alert alert-info">Manage Owner</div>
+				<!--<div class = "alert alert-info">Manage Owner</div>-->
 				<br />
 				<br />
 				<table id = "table" class = "table table-bordered">
@@ -59,9 +59,7 @@
 	</div>
 	<br />
 	<br />
-	<div style = "text-align:right; margin-right:10px;" class = "navbar navbar-default navbar-fixed-bottom">
-		<label>&copy; Workshop 2 </label>
-	</div>
+
 </body>
 <script src = "../js/jquery.js"></script>
 <script src = "../js/bootstrap.js"></script>

@@ -1,95 +1,82 @@
+<!DOCTYPE html>
 <?php
-    session_start();
+	session_start();
     include_once '../connection.php';
     include_once 'adminNavBar.php';
+    $user_id = $_SESSION['user_id'];
 
-     $user_id = $_SESSION['user_id'];
-     $role = "admin";
-
+  
 ?>
+<html lang = "en">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-    <title>Manage Payment</title>
-    <link rel="stylesheet" href="manageStyle.css">
+<html lang = "en">
+	<head>
+		
+		<meta charset = "utf-8" />
+		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+		<link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
+		<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
 
-    <style type = "text/css">
-        table {
-
-            border-collapse:  collapse;
-            width:  100%;
-            max-width: 1800px;  
-            color:  #52616B;
-            font-size: 25px;
-            text-align: center;
-            margin: 10rem auto;  
-            border-radius: 20px;
-        }
-
-        th {
-
-            background-color: #434242;
-            color:  white;
-        }
-
-        tr: nth-child(even) {background-color: #ededed;}
-    </style>
-
-</head>
-
-<body>
-
-    <h1 style="margin-left:40% ;margin-top:80px"   class="">Payment Information</h1>
-
-    <table class="table" border="2" cellspacing="7">
-        <tr>
-        <th>Payment ID</th>
-        <th>Booking ID</th>
-        <!--<th>Owner ID</th>-->
-        <th>Amount (RM)</th>
-        <th>Status</th>
-
-       
-        
-
-        </tr>
-
-        <?php 
-
-            $query="SELECT  * FROM  payments WHERE paymentStatus != 'Request Refund' AND paymentStatus!= 'Paid';" ;
-        $result=$conn->query($query);
-        //display data from db
-        if(mysqli_num_rows($result)>=1){
-            while ($row=$result->fetch_assoc()) {
-
-                echo "<tr><td>".$row["paymentID"]."</td>
-                <td>".$row["bookingID"]."</td>
-                <td>".$row['totalPayment']."</td>
-                <td>".$row['paymentStatus']."</td>
-             
-
-                </tr>";
-                //assign role
-                $_SESSION['role'] = "admin";
-             
-               
-            }
-
-        }
-
-        else
-        {
-            echo "<tr><td>No data found.";
-        }
-
-        ?>
-
-    </table>
-    <a href = 'managePayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
-   
-
+	<br />
+	<div class = "container-fluid">
+		<div class = "panel panel-default">
+			<div class = "panel-body">
+				<!--<div class = "alert alert-info">Manage Admin</div>-->
+				<br />
+				<br />
+				<table id = "table" class = "table table-bordered">
+					<thead>
+						<tr>
+							 <th><center>Payment ID</th>
+        					<th><center>Booking ID</th>
+        					<th><center>Date</th>
+       						<!--<th>Owner ID</th>-->
+        					<th><center>Amount (RM)</th>
+        					<th><center>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+						$query = $conn->query("SELECT  * FROM  payments WHERE paymentStatus = 'Refund' OR paymentStatus= 'Approved';") or die(mysqli_error());
+						while($fetch = $query->fetch_array()){
+					?>	
+						<tr>
+						<td><center><?php echo $fetch['paymentID']?></td>
+							<td><center><?php echo $fetch['bookingID']?></td>
+								<td><center><?php echo $fetch['paymentDate']?></td>
+							<td><center><?php echo $fetch['totalPayment']?></td>
+							<td><center><?php echo $fetch['paymentStatus']?></td>
+						
+						</tr>
+					<?php
+						}
+					?>	
+					</tbody>
+				</table>
+					<a href = 'managePayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
+	
 </body>
+<script src = "../js/jquery.js"></script>
+<script src = "../js/bootstrap.js"></script>
+<script src = "../js/jquery.dataTables.js"></script>
+<script src = "../js/dataTables.bootstrap.js"></script>	
+<script type = "text/javascript">
+	function confirmationDelete(anchor){
+		var conf = confirm("Are you sure you want to delete this record?");
+		if(conf){
+			window.location = anchor.attr("href");
+		}
+	} 
+</script>
+
+<script type = "text/javascript">
+	$(document).ready(function(){
+		$("#table").DataTable();
+	});
+</script>
 </html>

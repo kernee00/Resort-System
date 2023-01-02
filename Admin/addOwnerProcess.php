@@ -62,7 +62,7 @@
 
 
 $stmt = $conn->prepare("INSERT INTO owner (ownerID, ownerName, ownerPhoneNo, ownerEmail, accPassword) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("ssiss", $username,$name,$phone, $email, $password);
+        $stmt->bind_param("sssss", $username,$name,$phone, $email, $password);
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();

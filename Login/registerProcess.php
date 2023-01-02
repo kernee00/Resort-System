@@ -37,29 +37,11 @@ if($password != $confirmPassword)
 		echo"<meta http-equiv='refresh' content='0; url=Register.php'/>";
 	} else {
 
-		/*if ($role == "admin"){
-
-		$stmt = $conn->prepare("INSERT INTO $role (adminID, adminName, adminPhoneNo, adminEmail, adminPassword) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("ssiss", $username,$name,$phone, $email, $password);
-        $stmt->execute();
-        $success = $stmt->affected_rows;
-        $stmt->close();
-		if($success>0)
-		{
-			echo "<script>alert('Admin register succesful! Please try to login.');</script>";
-			echo"<meta http-equiv='refresh' content='0; url=loginV2.php'/>";
-		}
-		else
-		{
-			echo "<script>alert('Admin registration fail! Please try to register again.');</script>";
-			echo"<meta http-equiv='refresh' content='0; url=Register.php'/>";
-		}
-	}*/
 
 	if ($role == "owner")
 	{
 		$stmt = $conn->prepare("INSERT INTO $role (ownerID, ownerName, ownerPhoneNo, ownerEmail, accPassword) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("ssiss", $username,$name,$phone, $email, $password);
+        $stmt->bind_param("sssss", $username,$name,$phone, $email, $password);
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();
@@ -79,7 +61,7 @@ if($password != $confirmPassword)
 
 	else if ($role == "customers"){
 		$stmt = $conn->prepare("INSERT INTO $role (custID, custName, phoneNo, custEmail, custPassword) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("ssiss", $username,$name,$phone, $email, $password);
+        $stmt->bind_param("sssss", $username,$name,$phone, $email, $password);
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();

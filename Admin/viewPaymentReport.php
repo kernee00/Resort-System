@@ -44,9 +44,11 @@
     <th width="27%" height="63" scope="row"></th>
     <td width="73%">
     <button class="btn-primary btn" type="submit" name="submit">Submit</button>
+
   </tr>
 </table>
      </form>
+       <a href = 'managePayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
 
      </div>
     </div>

@@ -1,34 +1,39 @@
+<!DOCTYPE html>
 <?php
-    session_start();
+	session_start();
     include_once '../connection.php';
     include_once 'adminNavBar.php';
+    $user_id = $_SESSION['user_id'];
 
-     $user_id = $_SESSION['user_id'];
-     //$role = "admin";
-
+  
 ?>
+<html lang = "en">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-    <title>Manage Bookings</title>
+<html lang = "en">
+	<head>
+		
+		<meta charset = "utf-8" />
+		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+		<link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
+		<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
+
+	<br />
+ <title>Manage Bookings</title>
     <link rel="stylesheet" href="manageStyle.css">
 
          <h1 style="margin-left:40% ;margin-top:80px"   class="">Bookings Information</h1>
 
           <form name="dateInput" action="" method="post" action="">
 
-
             <label>From: </label>
-            <input type="date" name="fdate" class="form-control" id="fdate">
+            <input type="date" name="fdate" class="form-control" id="fdate" >
              <label>To: </label>
              <input type="date" name="tdate" class="form-control" id="tdate">
-
+             	   <br>
              <button class="btn-primary btn" type="submit" name="submit">Submit</button>
 
      </form>
+
        <a href = 'viewResortReport.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
 
      </div>
@@ -45,89 +50,76 @@ $tdate=$_POST['tdate'];
 
  
 ?>
+
  <h2 style="margin-left:35% ;margin-top:80px"   class="">Bookings Information From <?php echo $fdate?> To <?php echo $tdate?></h2>
 
-    <style type = "text/css">
-        table {
+	<div class = "container-fluid">
+		<div class = "panel panel-default">
+			<div class = "panel-body">
+				<!--<div class = "alert alert-info">Manage Bookings</div>-->
+				<br />
+				<br />
+				<table id = "table" class = "table table-bordered">
+					<thead>
+						<tr>
+							<th><center>Booking ID</th>
+							<th><center>Booking Date</th>
+							<th><center>Check In Date</th>
+							<th><center>Check Out Date</th>
+							<th><center>Total Price</th>
+							<th><center>Customer ID</th>
+							<th><center>Resort ID</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+						$query = $conn->query("SELECT  * FROM  bookings WHERE checkInDate >= '$fdate' AND checkOutDate <= '$tdate';") or die(mysqli_error());
+						while($fetch = $query->fetch_array()){
+					?>	
+						<tr>
+						<td><center><?php echo $fetch['bookingID']?></td>
+							<td><center><?php echo $fetch['bookingDate']?></td>
+							<td><center><?php echo $fetch['checkInDate']?></td>
+							<td><center><?php echo $fetch['checkOutDate']?></td>
+							<td><center><?php echo $fetch['totalPrice']?></td>
+							<td><center><?php echo $fetch['custID']?></td>
+							<td><center><?php echo $fetch['resortID']?></td>
 
-            border-collapse:  collapse;
-            width:  100%;
-            max-width: 1800px;  
-            color:  #52616B;
-            font-size: 25px;
-            text-align: center;
-            margin: 10rem auto;  
-            border-radius: 20px;
-        }
+						
+						</tr>
+					<?php
+						}
+					?>	
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<br />
+	<br />
 
-        th {
+</body>
+<script src = "../js/jquery.js"></script>
+<script src = "../js/bootstrap.js"></script>
+<script src = "../js/jquery.dataTables.js"></script>
+<script src = "../js/dataTables.bootstrap.js"></script>	
+<script type = "text/javascript">
+	function confirmationDelete(anchor){
+		var conf = confirm("Are you sure you want to delete this record?");
+		if(conf){
+			window.location = anchor.attr("href");
+		}
+	} 
+</script>
 
-            background-color: #434242;
-            color:  white;
-        }
-
-        tr: nth-child(even) {background-color: #ededed;}
-    </style>
-
-</head>
-
-<body>
-
-   
-
-    <table class="table" border="2" cellspacing="7">
-        <tr>
-   
-        <th>Booking ID</th>
-       <th>Booking Date</th>
-        <th>Check In Date</th>
-        <th>Check Out Date</th>
-         <th>Total Price</th>
-          <th>Customer ID</th>
-           <th>Resort ID</th>
-
-         <!--<th colspan="2" align="center">Action</th>-->
-        
-
-        </tr>
-
-        <?php 
-
-            $query="SELECT  * FROM  bookings WHERE checkInDate >= '$fdate' AND checkOutDate <= '$tdate';" ;
-        $result=$conn->query($query);
-        //display data from db
-        if(mysqli_num_rows($result)>=1){
-            while ($row=$result->fetch_assoc()) {
-
-                echo "<tr><td>".$row["bookingID"]."</td>
-                <td>".$row["bookingDate"]."</td>
-                <td>".$row['checkInDate']."</td>
-                <td>".$row['checkOutDate']."</td>
-                <td>".$row['totalPrice']."</td>
-                <td>".$row['custID']."</td>
-                <td>".$row['resortID']."</td>
-              
-
-                </tr>";
-       
-            }
-
-        }
-
-        else
-        {
-            echo "<tr><td>No data found.";
-        }
-
-        ?>
-
-    </table>
-  
-
+<script type = "text/javascript">
+	$(document).ready(function(){
+		$("#table").DataTable();
+	});
+</script>
        <?php
   }
 
     ?>
-
-</body>
 </html>

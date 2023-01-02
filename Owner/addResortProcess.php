@@ -41,7 +41,7 @@
 
 
 $stmt = $conn->prepare("INSERT INTO resorts (resortName, address, city, state, resortPhoneNo, keywords, coverPhoto, ownerID) VALUES (?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("ssssisbs", $name, $address, $city, $state, $phone, $keywords, $new_image, $user_id);
+        $stmt->bind_param("ssssssbs", $name, $address, $city, $state, $phone, $keywords, $new_image, $user_id);
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();

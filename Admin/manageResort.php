@@ -1,105 +1,75 @@
-<?php
+ <?php
     session_start();
     include_once '../connection.php';
     include_once 'adminNavBar.php';
 
-     $user_id = $_SESSION['user_id'];
-     $role = "admin";
+     if (isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT resortID, resortName, state, overallRatings, coverPhoto, ownerID FROM resorts;";
+        $result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
 
-?>
+    }
+
+    else {
+
+        echo "Session timed-out. Login again.";
+    }
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-    <title>Manage Resort</title>
-   <link rel="stylesheet" href="manageStyle.css">
-
-
-    <style type = "text/css">
-        table {
-
-            border-collapse:  collapse;
-            width:  100%;
-            max-width: 1800px;  
-            color:  #52616B;
-            font-size: 25px;
-            text-align: center;
-            margin: 10rem auto;  
-            border-radius: 20px;
-        }
-
-        th {
-
-            background-color: #434242;
-            color:  #F0F5F9;
-        }
-
-        tr: nth-child(even) {background-color: #ededed;}
-    </style>
+    <title>Main Page</title>
+  <link rel="stylesheet" href="../Style/displayStyle.css">
 
 </head>
 
 <body>
 
-    <h1 style="margin-left:40% ;margin-top:80px"   class="">Resorts Information</h1>
+<main>
 
-    <table class="table" border="2" cellspacing="7">
-        <tr>
-        <th>Resort ID</th>
-        <th>Resort Name</th>
-        <th>Address</th>
-        <th>Contact No.</th>
-        <th>Ratings</th>
-        <th>Price Per Night (RM)</th>
-         <th>Capacity</th>
-        <th>Keywords</th>
-        <th>Owner ID</th>
-        <th>Action</th>
+           <?php
 
-         <!---<th colspan="2" align="center">Action</th>-->
-        
+            while ($row = mysqli_fetch_assoc($result)){
 
-        </tr>
+    ?>
 
-        <?php 
-        // except the first admin who has the highest privileges
-            $query="SELECT  * FROM  resorts;" ;
-        $result=$conn->query($query);
-        //display data from db
-        if(mysqli_num_rows($result)>=1){
-            while ($row=$result->fetch_assoc()) {
+    <div class = "card">
+        <div class = "image">
+             <?php
+              echo '<img src="data:image;base64,'.base64_encode($row['coverPhoto']).'" alt="Image" ;">';
+              ?>
+        </div>
 
-                echo "<tr><td>".$row["resortID"]."</td>
-                <td>".$row["resortName"]."</td>
-                <td>".$row['address']."</td>
-                <td>".$row['resortPhoneNo']."</td>
-                <td>".$row['overallRatings']."</td>
-                <td>".$row['pricePerNight']."</td>
-                <td>".$row['capacity']."</td>
-                <td>".$row['keywords']."</td>
-                <td>".$row['ownerID']."</td>
-                <td><a href = 'updateResort.php?resortID=$row[resortID] & address = $row[address] & contact = $row[resortPhoneNo] & ratings = $row[overallRatings] & price = $row[pricePerNight] & capacity = $row[capacity] & keyword = $row[keywords] & ownerID = $row[ownerID]'><input type = 'submit' value = 'Edit' id = 'button'></a></td>
-                
+        <div class = "caption">
+            <p class = "rate">
+            
+            </p>
+            <p class="resort_name"><?php echo $row['resortName']; ?></p>
+            <p class="resort_name"><?php echo $row['state']; ?></p>
+            <p class="resort_name"><?php echo $row['overallRatings'].'/5.0'; ?></p>
+              <p class="resort_name"><?php echo $row['ownerID']; ?></p>
+    </div>
+    <form action="updateResort.php" method="POST">
+<input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
+<button class ="book">Update Details</button>
 
-                </tr>";
-                //assign role
-                $_SESSION['role'] = "admin";
-             
-               
-            }
 
-        }
+</form>
 
-        else
-        {
-            echo "<tr><td>No data found.";
-        }
 
-        ?>
+</div>
+<?php
 
-    </table>
+}
+?>
+
+
+</main>
+
 
 </body>
 </html>

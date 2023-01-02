@@ -34,12 +34,6 @@
       <input type="date" name="tdate" class="form-control" id="tdate"></td>
       </tr>
       <tr>
-      <!--<th width="27%" height="63" scope="row">Request Type :</th>
-      <td width="73%">
-      <input type="radio" name="requesttype" value="mtwise" checked="true">Monthly
-      <input type="radio" name="requesttype" value="yrwise">Yearly</td>
-      </tr>
-      <tr>-->
 
     <th width="27%" height="63" scope="row"></th>
     <td width="73%">
@@ -47,7 +41,7 @@
   </tr>
 </table>
      </form>
-
+<a href = 'manageReservation.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
      </div>
     </div>
     <hr>
@@ -58,8 +52,6 @@
 { 
 $fdate=$_POST['fdate'];
 $tdate=$_POST['tdate'];
-//$rtype=$_POST['requesttype'];
-
  
 ?>
 

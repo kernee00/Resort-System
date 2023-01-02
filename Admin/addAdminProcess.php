@@ -61,7 +61,7 @@
 
 
 $stmt = $conn->prepare("INSERT INTO admin (adminID, adminName, adminPhoneNo, adminEmail, adminPassword) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("ssiss", $username,$name,$phone, $email, $password);
+        $stmt->bind_param("sssss", $username,$name,$phone, $email, $password);
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();

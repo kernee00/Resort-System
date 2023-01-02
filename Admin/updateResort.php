@@ -78,8 +78,8 @@
          </div>
       </div>
       <input type="submit" value="Update Resort" name="update_resort" class="btn">
-      <a href="manageRoom.php?resortID = $resortID" class="delete-btn">Update Resort Rooms</a>
-      <a href="manageResort1.php" class="delete-btn">Back</a>
+
+      <a href="manageResort.php" class="delete-btn">Back</a>
    </form>
 
 </div>
