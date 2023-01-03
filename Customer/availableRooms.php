@@ -77,7 +77,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 					?>	
 					</tbody>
 				</table>
-				<a href = 'displayRoom1.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
+				<a href = 'bookingMain.php'><input type = 'submit' value = 'Back to Main' id = 'add_button'></a>
 			</div>
 		</div>
 	</div>
