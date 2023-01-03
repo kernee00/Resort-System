@@ -23,11 +23,6 @@ $all_booking = $conn->query($sql_booking);
 
         }
 
-
-
-
-
-
 else {
 
 	echo "Passing error!";
@@ -44,6 +39,7 @@ else {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="font/css/all.min.css">
     <link rel="stylesheet" href="cart.css">
+    <!--<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />-->
     <title>In cart products</title>
 </head>
 <body>
@@ -51,10 +47,11 @@ else {
     <main>
         <h1><?php echo mysqli_num_rows($all_booking); ?> Room(s)</h1>
         <hr>
+        <br>
+        <h2>Check In: <?php echo $fdate?></h2>
+        <h2>Check Out: <?php echo $tdate?></h2>
         <?php
-          while($row_booking = mysqli_fetch_assoc($all_booking)){
-              $sql = "SELECT * FROM rooms WHERE roomID=".$row_booking["roomID"];
-              $sql = "SELECT r.roomID, capacity, location,description, m.prices FROM rooms r, resorts e, room_booking m WHERE r.resortID = e.resortID AND r.roomID = m.roomID AND r.resortID = '$resortID' AND m.bookingID = '$bookingID';";
+              $sql = "SELECT r.roomID, capacity, location, description, prices FROM rooms r, room_booking b WHERE r.roomID = b.roomID AND bookingID = '$bookingID';";
               $all_rooms = $conn->query($sql);
               while($row = mysqli_fetch_assoc($all_rooms)){
         ?>
@@ -62,50 +59,45 @@ else {
           
 
             <div class="caption">
-                <p class="rate">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </p>
-                <p class="product_name"><?php echo $row["roomID"]; ?></p>
-                <p class="price"><b><?php echo $row["prices"]; ?></b></p>
-                <p class="capacity"><?php echo $row["capacity"]; ?></p>
-                <p class="location"><?php echo $row["location"]; ?></p>
-                <p class="description"><?php echo $row["description"]; ?></p>
-                <button class="remove" data-id="<?php echo $row["roomID"]; ?>">Remove from Selection</button>
+               
+                <p class="product_name">Room ID: <?php echo $row["roomID"]; ?></p>
+                <p class="price"><b>Prices: RM <?php echo $row["prices"]; ?></b></p>
+                <p class="capacity">Capacity: <?php echo $row["capacity"]; ?></p>
+                <p class="location">Location: <?php echo $row["location"]; ?></p>
+                <p class="description">Description: <?php echo $row["description"]; ?></p>
+             
+                <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "removeRoom.php?roomID=<?php echo $row['roomID']?>&bookingID=<?php echo $bookingID?>"><i class = "glyphicon glyphicon-remove"></i> Remove from Booking</a>
             </div>
 
         </div>
-            <a href = 'moreRooms.php'><input type = 'submit' value = 'Book More Rooms' id = 'add_button'></a>
-            <br>
-    		<a href = 'confirmBooking.php'><input type = 'submit' value = 'Confirm Booking' id = 'add_button'></a>
+            
         <?php
 
           }
-        }
+     
        ?>
+       <a href = 'moreRooms.php?bookingID=<?php echo $bookingID?>'><input type = 'submit' value = 'Book More Rooms' id = 'add_button'></a>
+            <br>
+    		<a onclick = "confirmationBooking(this); return false;" href = 'confirmBooking.php?bookingID=<?php echo $bookingID?>&resortID=<?php echo $resortID?>'><input type = 'submit' value = 'Confirm Booking' id = 'add_button'></a>
     </main>
 
-    <script>
-        var remove = document.getElementsByClassName("remove");
-        for(var i = 0; i<remove.length; i++){
-            remove[i].addEventListener("click",function(event){
-                var target = event.target;
-                var cart_id = target.getAttribute("data-id");
-                var xml = new XMLHttpRequest();
-                xml.onreadystatechange = function(){
-                    if(this.readyState == 4 && this.status == 200){
-                       target.innerHTML = this.responseText;
-                       target.style.opacity = .3;
-                    }
-                }
+       <script type = "text/javascript">
+	function confirmationBooking(anchor){
+		var conf = confirm("Are you sure you want to place the booking?");
+		if(conf){
+			window.location = anchor.attr("href");
+		}
+	} 
+</script>
 
-                xml.open("GET","insertBooking.php?roomID="+roomID,true);
-                xml.send();
-            })
-        }
-    </script>
+   <script type = "text/javascript">
+	function confirmationDelete(anchor){
+		var conf = confirm("Are you sure you want to remove the room from booking?");
+		if(conf){
+			window.location = anchor.attr("href");
+		}
+	} 
+</script>
+
 </body>
 </html>

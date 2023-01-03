@@ -61,7 +61,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 					</thead>
 					<tbody>
 					<?php
-						$query = $conn->query("SELECT r.roomID, b.resortID, pricePerNight, capacity, location, description FROM rooms r, room_booking m, bookings b WHERE b.bookingID = m.bookingID AND m.roomID = r.roomID AND b.resortID = '$resortID' AND m.bookingID NOT IN (SELECT bookingID FROM bookings WHERE (checkInDate BETWEEN '$fdate' AND '$tdate' OR checkOutDate BETWEEN '$fdate' AND '$tdate')) GROUP BY r.roomID ORDER BY r.roomID ;") or die(mysqli_error());
+						$query = $conn->query("SELECT * FROM rooms WHERE resortID = '$resortID' AND roomID NOT IN (SELECT roomID FROM room_booking WHERE bookingID IN (SELECT bookingID FROM bookings WHERE (checkInDate BETWEEN '$fdate' AND '$tdate' OR checkOutDate BETWEEN '$fdate' AND '$tdate')));") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>

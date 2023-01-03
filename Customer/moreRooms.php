@@ -5,28 +5,28 @@
     include_once 'customerNavBar.php';
     $user_id = $_SESSION['user_id'];
 
-         if(isset($_POST['submit']))
-{ 
-$fdate=$_POST['fdate'];
-$tdate=$_POST['tdate'];
-$resortID = $_POST['resortID'];
-$sysdate = date('y-m-d');
 
-$stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOutDate,  custID, resortID) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("ssssi", $sysdate,$fdate,$tdate, $user_id, $resortID);
-        $stmt->execute();
-        $success = $stmt->affected_rows;
-        $stmt->close();
-        if($success>0)
-        {
+         if(isset($_GET['bookingID']))
+{ 		$bookingID = $_GET['bookingID'];
 
-            $bookingID = $conn->insert_id;
-            }
+	  $query = $conn->query("SELECT * FROM bookings WHERE bookingID = $bookingID;") or die(mysqli_error());
+                        while($row = $query->fetch_array()){
 
-            else {
+                        	$fdate=$row['checkInDate'];
+							$tdate=$row['checkOutDate'];
+							$resortID = $row['resortID'];
+               
 
-            	echo "Failed to book!";
-            }
+        }
+    
+           /*$sql_booking = "SELECT * FROM room_booking WHERE bookingID = $bookingID";
+$all_booking = $conn->query($sql_booking);*/
+
+        }
+else {
+
+	echo "Passing error!";
+}
   
 ?>
 <html lang = "en">
@@ -61,7 +61,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 					</thead>
 					<tbody>
 					<?php
-						$query = $conn->query("SELECT r.roomID, b.resortID, pricePerNight, capacity, location, description FROM rooms r, room_booking m, bookings b WHERE b.bookingID = m.bookingID AND m.roomID = r.roomID AND b.resortID = '$resortID' AND m.bookingID NOT IN (SELECT bookingID FROM bookings WHERE (checkInDate BETWEEN '$fdate' AND '$tdate' OR checkOutDate BETWEEN '$fdate' AND '$tdate')) GROUP BY r.roomID ORDER BY r.roomID ;") or die(mysqli_error());
+						$query = $conn->query("SELECT * FROM rooms WHERE resortID = '$resortID' AND roomID NOT IN (SELECT roomID FROM room_booking WHERE bookingID IN (SELECT bookingID FROM bookings WHERE (checkInDate BETWEEN '$fdate' AND '$tdate' OR checkOutDate BETWEEN '$fdate' AND '$tdate')));") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>
@@ -76,7 +76,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 					?>	
 					</tbody>
 				</table>
-				<a href = 'displayRoom1.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
+				<a href = 'cart.php?bookingID=<?php echo $bookingID?>'><input type = 'submit' value = 'Back' id = 'add_button'></a>
 			</div>
 		</div>
 	</div>
@@ -95,7 +95,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 	});
 </script>
        <?php
-  }
+  
 
     ?>
 </html>
