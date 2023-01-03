@@ -2,10 +2,17 @@
     session_start();
     include_once '../connection.php';
     include_once 'customerNavBar.php';
+     $user_id = $_SESSION['user_id'];
 
-    if (isset($_SESSION['user_id'])){
-        $user_id = $_SESSION['user_id'];
-        $sql = "SELECT resortID, resortName, address, city, state, overallRatings, coverPhoto, resortPhoneNo FROM resorts;";
+    if (isset($_POST['submit'])){
+       
+        $state = $_POST['state'];
+        $capacity = $_POST['capacity'];
+        $fdate = $_POST['fdate'];
+        $tdate = $_POST['tdate'];
+    
+
+        $sql = "SELECT resortID, resortName, address, city, state, overallRatings, coverPhoto, resortPhoneNo FROM resorts WHERE state = '$state';";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
@@ -71,7 +78,7 @@
                                     {
 
                                         $filtervalues = $_GET['search'];
-                                        $query = "SELECT * FROM resorts WHERE CONCAT(resortName,address, state,city) LIKE '%$filtervalues%'";
+                                        $query = "SELECT * FROM resorts WHERE CONCAT(resortName,address,city,keywords) LIKE '%$filtervalues%' ;";
                                         $query_run = mysqli_query($con, $query);
 
                                         if(mysqli_num_rows($query_run) > 0)
@@ -142,10 +149,12 @@
             <p class="resort_name"><?php echo $row['overallRatings'].'/5.0'; ?></p>
             <p class="resort_name"><?php echo $row['resortPhoneNo']; ?></p>
     </div>
-<form action="displayRoom.php" method="POST">
+<form action="availableRooms.php" method="POST">
     <br><br><br>
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
-<button class ="book">Book</button>
+<input type="hidden" id = "fdate" name="fdate" value="<?php echo $fdate ?>" class="box">
+<input type="hidden" id = "tdate" name="tdate" value="<?php echo $tdate ?>" class="box">
+<button class ="book" name = "submit">Book</button>
 
 
 </form>

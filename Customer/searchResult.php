@@ -82,10 +82,13 @@
             <p class="resort_name"><?php echo $row['resortPhoneNo']; ?></p>
             
     </div>
-    <form action="displayRoom.php" method="POST">
+    <form action="availableRooms.php" method="POST">
         <br><br><br>
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
-<button class ="book">Book</button>
+<input type="hidden" id = "fdate" name="fdate" value="<?php echo $fdate ?>" class="box">
+<input type="hidden" id = "tdate" name="tdate" value="<?php echo $tdate ?>" class="box">
+
+<button class ="book" name = "submit">Book</button>
 
 
 </form>

@@ -17,7 +17,8 @@
            
                 <ul>
                     <li><a href='customerMain.php'>Profile</a></li>
-                    <li><a href='testSearchResort.php'>Booking</a></li>
+                    <li><a href='bookingMain.php'>Booking</a></li>
+
                     <li><a href='managePayment.php'> Payment</a></li>
                     <li><a href='customerHistory.php'>History</a></li>
                     <li><a href='../Login/logout.php'>Logout</a></li>
