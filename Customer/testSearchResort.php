@@ -57,6 +57,8 @@
 
                                 <form action="" method="GET">
                                     <div class="input-group mb-3">
+                                        <input type="hidden" id = "fdate" name="fdate" value="<?php echo $fdate ?>" class="box">
+                                        <input type="hidden" id = "tdate" name="tdate" value="<?php echo $tdate ?>" class="box">
                                         <input type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search data">
                                         <button type="submit" class="btn btn-primary">Search</button>
                                     </div>
@@ -78,11 +80,13 @@
                                     {
 
                                         $filtervalues = $_GET['search'];
+                                        $fdate = $_GET['fdate'];
+                                        $tdate = $_GET['tdate'];
                                         $query = "SELECT * FROM resorts WHERE CONCAT(resortName,address,city,keywords) LIKE '%$filtervalues%' ;";
                                         $query_run = mysqli_query($con, $query);
 
                                         if(mysqli_num_rows($query_run) > 0)
-                                        { header("location:searchResult.php?filtervalues=".$filtervalues);
+                                        { header("location:searchResult.php?filtervalues=".$filtervalues."&fdate=".$fdate."&tdate=".$tdate);
 
                                             foreach($query_run as $items)
                                             {

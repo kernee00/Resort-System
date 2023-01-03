@@ -7,6 +7,7 @@
 
          if(isset($_POST['submit']))
 { 
+
 $fdate=$_POST['fdate'];
 $tdate=$_POST['tdate'];
 $resortID = $_POST['resortID'];

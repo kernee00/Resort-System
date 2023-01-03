@@ -9,7 +9,9 @@
     {
 
         $filtervalues = $_GET['filtervalues'];
-
+         $fdate = $_GET['fdate'];
+        $tdate = $_GET['tdate'];
+    
         $sql = "SELECT * FROM resorts WHERE CONCAT(resortName,address, state,city) LIKE '%$filtervalues%'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
@@ -82,12 +84,11 @@
             <p class="resort_name"><?php echo $row['resortPhoneNo']; ?></p>
             
     </div>
-    <form action="availableRooms.php" method="POST">
-        <br><br><br>
+<form action="availableRooms.php" method="POST">
+    <br><br><br>
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
 <input type="hidden" id = "fdate" name="fdate" value="<?php echo $fdate ?>" class="box">
 <input type="hidden" id = "tdate" name="tdate" value="<?php echo $tdate ?>" class="box">
-
 <button class ="book" name = "submit">Book</button>
 
 
