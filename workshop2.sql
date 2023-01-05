@@ -160,8 +160,8 @@ INSERT INTO `payments` (`paymentID`, `totalPayment`, `paymentDate`, `paymentType
 --
 
 CREATE TABLE `ratings` (
-  `ratingID` int(11) NOT NULL,
-  `ratingDateTime` datetime NOT NULL,
+  `ratingID` int(11) NOT NULL AUTO_INCREMENT,
+  `ratingDateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `marksRated` double(4,2) DEFAULT NULL,
   `comments` varchar(50) DEFAULT NULL,
   `bookingID` int(11) NOT NULL
