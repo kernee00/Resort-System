@@ -78,7 +78,7 @@ else {
        ?>
        <a href = 'moreRooms.php?bookingID=<?php echo $bookingID?>'><input type = 'submit' value = 'Book More Rooms' id = 'add_button'></a>
             <br>
-            <a onclick = "confirmationBooking(this); return false;" href = 'confirmBooking.php?bookingID=<?php echo $bookingID?>&resortID=<?php echo $resortID?>'><input type = 'submit' value = 'Confirm Booking & Pay' id = 'add_button'></a>
+            <a onclick = "confirmationBooking(this); return false;" href = 'testPayment.php?bookingID=<?php echo $bookingID?>&resortID=<?php echo $resortID?>'><input type = 'submit' value = 'Confirm Booking & Pay' id = 'add_button'></a>
     </main>
 
        <script type = "text/javascript">
