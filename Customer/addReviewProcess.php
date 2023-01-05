@@ -9,11 +9,13 @@
 
       if(isset($_POST['add_rating'])){
 
+    $user_id = $_SESSION['user_id'];
     $ratingID = $_POST['Rating ID'];
     $ratingDateTime = $_POST['Date'];
     $marksRated = $_POST['Rating'];
     $comments = $_POST['Comments'];
-    $bookingID = $_POST['Booking ID']
+    $bookingID = $_POST['Booking ID'];
+    $role = $_SESSION['role'];
 
 
     //to prevent mysql injection
