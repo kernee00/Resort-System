@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 12:35 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 7.4.30
+-- Generation Time: Jan 10, 2023 at 03:31 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `admin` (
   `adminEmail` varchar(30) NOT NULL,
   `adminPassword` varchar(12) NOT NULL,
   `profile_image` blob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
@@ -54,7 +54,7 @@ CREATE TABLE `adminpayment` (
   `totalAdminPayment` double(6,2) NOT NULL,
   `adminPaymentDate` date NOT NULL,
   `bookingID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `adminpayment`
@@ -77,7 +77,7 @@ CREATE TABLE `bookings` (
   `totalPrice` double(6,2) DEFAULT NULL,
   `custID` varchar(20) NOT NULL,
   `resortID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bookings`
@@ -85,7 +85,9 @@ CREATE TABLE `bookings` (
 
 INSERT INTO `bookings` (`bookingID`, `bookingDate`, `checkInDate`, `checkOutDate`, `totalPrice`, `custID`, `resortID`) VALUES
 (100000, '2022-12-01', '2022-12-03', '2022-12-05', 500.00, 'syirah', 20001),
-(100001, '2023-01-01', '2023-01-09', '2023-01-10', 240.00, 'syirah', 20001);
+(100001, '2023-01-01', '2023-01-09', '2023-01-10', 240.00, 'syirah', 20001),
+(100002, '2023-01-10', '2023-01-12', '2023-01-13', NULL, 'syirah', 20005),
+(100003, '2023-01-10', '2023-01-12', '2023-01-14', NULL, 'sicario', 20001);
 
 -- --------------------------------------------------------
 
@@ -100,13 +102,14 @@ CREATE TABLE `customers` (
   `custEmail` varchar(30) NOT NULL,
   `custPassword` varchar(12) NOT NULL,
   `profile_image` blob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customers`
 --
 
 INSERT INTO `customers` (`custID`, `custName`, `phoneNo`, `custEmail`, `custPassword`, `profile_image`) VALUES
+('sicario', 'krishna', '0177581926', 'krishnarram2010@gmail.com', 'mangkuk123', NULL),
 ('syirah', 'Rabiatul Adawiyah', '133828644', 'syirah02@gmail.com', 'syirah1234', NULL);
 
 -- --------------------------------------------------------
@@ -122,7 +125,7 @@ CREATE TABLE `owner` (
   `ownerEmail` varchar(30) NOT NULL,
   `accPassword` varchar(12) NOT NULL,
   `profile_image` blob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `owner`
@@ -144,14 +147,17 @@ CREATE TABLE `payments` (
   `paymentType` varchar(30) NOT NULL,
   `paymentStatus` varchar(20) NOT NULL,
   `bookingID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payments`
 --
 
 INSERT INTO `payments` (`paymentID`, `totalPayment`, `paymentDate`, `paymentType`, `paymentStatus`, `bookingID`) VALUES
-(1000, 500.00, '2023-01-02', 'online banking', 'Paid', 100000);
+(1000, 500.00, '2023-01-02', 'online banking', 'Paid', 100000),
+(1001, 0.00, '2023-01-10', 'online banking', 'Paid', 100002),
+(1002, 0.00, '2023-01-10', 'online banking', 'Paid', 100002),
+(1003, 0.00, '2023-01-10', 'online banking', 'Paid', 100003);
 
 -- --------------------------------------------------------
 
@@ -160,12 +166,20 @@ INSERT INTO `payments` (`paymentID`, `totalPayment`, `paymentDate`, `paymentType
 --
 
 CREATE TABLE `ratings` (
-  `ratingID` int(11) NOT NULL AUTO_INCREMENT,
+  `ratingID` int(11) NOT NULL,
   `ratingDateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `marksRated` double(4,2) DEFAULT NULL,
-  `comments` varchar(50) DEFAULT NULL,
+  `marksRated` double NOT NULL,
+  `comments` varchar(50) NOT NULL,
   `bookingID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ratings`
+--
+
+INSERT INTO `ratings` (`ratingID`, `ratingDateTime`, `marksRated`, `comments`, `bookingID`) VALUES
+(1, '2023-01-10 00:00:00', 1, 'gg', 100000),
+(2, '2023-01-10 00:00:00', 3, 'krishna', 100003);
 
 -- --------------------------------------------------------
 
@@ -184,7 +198,7 @@ CREATE TABLE `resorts` (
   `keywords` varchar(50) DEFAULT NULL,
   `ownerID` varchar(20) NOT NULL,
   `coverPhoto` longblob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `resorts`
@@ -206,7 +220,7 @@ CREATE TABLE `resort_image` (
   `imageID` int(11) NOT NULL,
   `resortID` int(11) NOT NULL,
   `images` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -221,7 +235,7 @@ CREATE TABLE `rooms` (
   `location` varchar(50) NOT NULL,
   `description` varchar(100) DEFAULT NULL,
   `resortID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rooms`
@@ -272,14 +286,16 @@ CREATE TABLE `room_booking` (
   `bookingID` int(11) NOT NULL,
   `roomID` int(11) NOT NULL,
   `prices` double(6,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `room_booking`
 --
 
 INSERT INTO `room_booking` (`bookingID`, `roomID`, `prices`) VALUES
-(100000, 2021, 500.00);
+(100000, 2021, 500.00),
+(100002, 2045, 200.00),
+(100003, 2027, 440.00);
 
 --
 -- Indexes for dumped tables
@@ -330,7 +346,7 @@ ALTER TABLE `payments`
 --
 ALTER TABLE `ratings`
   ADD PRIMARY KEY (`ratingID`),
-  ADD KEY `rating_fk` (`bookingID`);
+  ADD UNIQUE KEY `bookingID` (`bookingID`);
 
 --
 -- Indexes for table `resorts`
@@ -374,19 +390,19 @@ ALTER TABLE `adminpayment`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100002;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100004;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `paymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `paymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1004;
 
 --
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `ratingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `ratingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `resorts`
@@ -433,7 +449,7 @@ ALTER TABLE `payments`
 -- Constraints for table `ratings`
 --
 ALTER TABLE `ratings`
-  ADD CONSTRAINT `rating_fk` FOREIGN KEY (`bookingID`) REFERENCES `bookings` (`bookingID`);
+  ADD CONSTRAINT `test` FOREIGN KEY (`bookingID`) REFERENCES `bookings` (`bookingID`);
 
 --
 -- Constraints for table `resorts`
@@ -446,21 +462,9 @@ ALTER TABLE `resorts`
 --
 ALTER TABLE `resort_image`
   ADD CONSTRAINT `resort_image_fk` FOREIGN KEY (`resortID`) REFERENCES `resorts` (`resortID`);
-
---
--- Constraints for table `rooms`
---
-ALTER TABLE `rooms`
-  ADD CONSTRAINT `resort_rooms_fk` FOREIGN KEY (`resortID`) REFERENCES `resorts` (`resortID`);
-
---
--- Constraints for table `room_booking`
---
-ALTER TABLE `room_booking`
-  ADD CONSTRAINT `resort_rooms_fk2` FOREIGN KEY (`bookingID`) REFERENCES `bookings` (`bookingID`),
-  ADD CONSTRAINT `room_book_fk` FOREIGN KEY (`roomID`) REFERENCES `rooms` (`roomID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
