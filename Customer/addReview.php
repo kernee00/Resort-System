@@ -36,9 +36,9 @@
          <div class="inputBox">
          
             <span>Rating Marks:</span>
-            <input rating="rating" type="number" min="1" max="5" placeholder="Rating (1-5)" required>
+            <input name="rating" type="number" min="1" max="5" placeholder="Rating (1-5)" required>
             <span>Comment:</span>
-            <input comment="comment" type="text" placeholder="Comments:" required>
+            <input name="comment" type="text" placeholder="Comments:" required>
 
          </div>
 
