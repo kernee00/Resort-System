@@ -33,7 +33,9 @@
      
       <div class="flex">
          <div class="inputBox">
-         
+
+         <span>Room Name:</span>
+            <input type="text" id = "roomname" name="roomname" placeholder="Room Name" class="box" required>
             <span>Price per Night:</span>
             <input type="text" id = "price" name="price" placeholder="Price per Night" class="box" required>
             <span>Capacity:</span>
@@ -42,6 +44,7 @@
             <input type="text" id = "location" name="location" placeholder="Location" class="box" required>
                        <span>Description:</span>
             <input type="text" id = "desc" name="desc" placeholder="Description" class="box" required>
+
         
          </div>
          <div class="inputBox">
