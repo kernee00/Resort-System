@@ -7,60 +7,48 @@
     $user_id = $_SESSION['user_id'];
  
 
-      if(isset($_POST['add_resort'])){
+    if($_POST){
 
-    $name = $_POST['name'];
-    $address = $_POST['address'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $phone = $_POST['phone'];
-    $keywords = $_POST['keywords'];
+    $price = $_POST['price'];
+    $capacity = $_POST['capacity'];
+    $location = $_POST['location'];
+    $desc = $_POST['desc'];
+    $resortID = $_GET['resortID'];
+    $roomname = $_POST['roomname'];
     //$update_image = $_POST['resort_image'];
- 
 
     //to prevent mysql injection
-
-    $name = stripcslashes($name);
-    $address = stripcslashes($address);
-    $city = stripcslashes($city);
-    $state = stripcslashes($state);
-    $phone = stripcslashes($phone);
-    $keywords = stripcslashes($keywords);
-
-        if($_FILES['resort_image']["error"] == 4){
-        //use the current img
-        //$new_image = $image;
-        echo "Error.";
-
-    }
-
-    else{
-
-    $new_image = addslashes(file_get_contents($_FILES['resort_image']['tmp_name']));
+/*$price = stripcslashes($price);
+    $capacity = stripcslashes($capacity);
+    $location = stripcslashes($location);
+    $desc = stripcslashes($desc);
+    $resortID = stripcslashes($resortID);*/
+    
         
 
+    // $query = "INSERT INTO rooms (pricePerNight, capacity, location, description, resortID) VALUES ('$price', '$capacity', '$location', '$desc', '$resortID')";
+    // $result = mysqli_connect($conn, $query);
 
-$stmt = $conn->prepare("INSERT INTO resorts (resortName, address, city, state, resortPhoneNo, keywords, coverPhoto, ownerID) VALUES (?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("ssssssbs", $name, $address, $city, $state, $phone, $keywords, $new_image, $user_id);
+    $stmt = $conn->prepare("INSERT INTO rooms (pricePerNight, capacity, location, description, resortID, roomName) VALUES ('$price', '$capacity', '$location', '$desc', '$resortID', '$roomname')");
+
+        // $stmt->bind_param('$price', '$capacity', '$location', '$desc', '$resortID');
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();
-        if($success>0)
+        if($success == true)
         {
-            echo "<script>alert('Resort is added succesfully!');</script>";
-           echo"<meta http-equiv='refresh' content='0; url=manageResort.php'/>";
+            echo "<script>alert('Room is added succesfully!');</script>";
+            echo"<meta http-equiv='refresh' content='0; url=manageRoom.php?resortID=".$resortID."'/>";
         }
         else
         {
-            echo "<script>alert('Failed to add resort.');</script>";
-            echo"<meta http-equiv='refresh' content='0; url=manageResort.php'/>";
+            die(mysqli_error($conn));
+            // echo "<script>alert('Failed to add room.');</script>";
+            // echo"<meta http-equiv='refresh' content='0; url=manageResort.php'/>";
         }
 
 
 }
-}
-
-
 
 else {
 
