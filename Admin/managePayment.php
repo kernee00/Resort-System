@@ -60,6 +60,7 @@
 				</table>
 				    <a href = 'viewPaymentHistory.php'><input type = 'submit' value = 'History' id = 'add_button'></a>
     				<a href = 'viewPaymentReport.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
+    				<a href = 'manageOwnerPayment1.php'><input type = 'submit' value = 'Owner Payment' id = 'add_button'></a>
 			</div>
 		</div>
 	</div>

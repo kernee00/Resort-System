@@ -98,9 +98,6 @@ $rtype=$_POST['requesttype'];
         }
       
 
-     
-
-
         ?>
         ]);
 

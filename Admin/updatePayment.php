@@ -46,8 +46,26 @@
      
 
        if ($result2) {
+
+          $sql3 = "UPDATE adminPayment SET payOwnerStatus = 'Unpaid' WHERE paymentID = '$payment_id'";
+            $result3 = mysqli_query($conn, $sql3);
+
+            if ($result3){
+
             echo"<script>alert ('Payment is approved.')</script>";
+
             echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
+        }
+
+        else {
+
+            echo "Payment failed!";
+            
+            echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
+        }
+
+
+
 
        }
 

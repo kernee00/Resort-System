@@ -35,7 +35,6 @@
 
                 $admin_password = $row['adminPassword'];
          
-
                
             }
         }

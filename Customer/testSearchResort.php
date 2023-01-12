@@ -10,13 +10,23 @@
         $capacity = $_POST['capacity'];
         $fdate = $_POST['fdate'];
         $tdate = $_POST['tdate'];
-    
+
+        $dateTimestamp1 = strtotime($fdate);
+        $dateTimestamp2 = strtotime($tdate);
+        if ($dateTimestamp1 > $dateTimestamp2){
+
+            echo "<script>alert('Unavailable date selected!');</script>";
+            echo"<meta http-equiv='refresh' content='0; url=bookingMain.php'/>";
+
+        }
+    else {
 
         $sql = "SELECT resortID, resortName, address, city, state, overallRatings, coverPhoto, resortPhoneNo FROM resorts WHERE state = '$state';";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
     }
+}
 
     else {
 
@@ -153,12 +163,12 @@
             <p class="resort_name"><?php echo $row['overallRatings'].'/5.0'; ?></p>
             <p class="resort_name"><?php echo $row['resortPhoneNo']; ?></p>
     </div>
-<form action="availableRooms.php" method="POST">
+<form action="viewResortDetails.php" method="POST">
     <br><br><br>
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
 <input type="hidden" id = "fdate" name="fdate" value="<?php echo $fdate ?>" class="box">
 <input type="hidden" id = "tdate" name="tdate" value="<?php echo $tdate ?>" class="box">
-<button class ="book" name = "submit">Book</button>
+<button class ="book" name = "submit">View</button>
 
 
 </form>

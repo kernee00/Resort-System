@@ -2,7 +2,6 @@
     session_start();
     include_once '../connection.php';
     include_once 'customerNavBar.php';
-    //$con = mysqli_connect("localhost","root","","workshop2");
     $user_id = $_SESSION['user_id'];
 
     if(isset($_GET['filtervalues']))
@@ -84,12 +83,12 @@
             <p class="resort_name"><?php echo $row['resortPhoneNo']; ?></p>
             
     </div>
-<form action="availableRooms.php" method="POST">
+<form action="viewResortDetails.php" method="POST">
     <br><br><br>
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
 <input type="hidden" id = "fdate" name="fdate" value="<?php echo $fdate ?>" class="box">
 <input type="hidden" id = "tdate" name="tdate" value="<?php echo $tdate ?>" class="box">
-<button class ="book" name = "submit">Book</button>
+<button class ="book" name = "submit">View</button>
 
 
 </form>
