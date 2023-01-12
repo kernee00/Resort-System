@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <?php
-	session_start();
+    session_start();
     include_once '../connection.php';
     include_once 'customerNavBar.php';
     $user_id = $_SESSION['user_id'];
 
          if(isset($_GET['bookingID']))
-{ 		$bookingID = $_GET['bookingID'];
+{       $bookingID = $_GET['bookingID'];
 
-	  $query = $conn->query("SELECT * FROM bookings WHERE bookingID = $bookingID;") or die(mysqli_error());
+      $query = $conn->query("SELECT * FROM bookings WHERE bookingID = $bookingID;") or die(mysqli_error());
                         while($row = $query->fetch_array()){
 
-                        	$fdate=$row['checkInDate'];
-							$tdate=$row['checkOutDate'];
-							$resortID = $row['resortID'];
+                            $fdate=$row['checkInDate'];
+                            $tdate=$row['checkOutDate'];
+                            $resortID = $row['resortID'];
                
 
         }
@@ -25,7 +25,7 @@ $all_booking = $conn->query($sql_booking);
 
 else {
 
-	echo "Passing error!";
+    echo "Passing error!";
 }
   
 ?>
@@ -78,25 +78,25 @@ else {
        ?>
        <a href = 'moreRooms.php?bookingID=<?php echo $bookingID?>'><input type = 'submit' value = 'Book More Rooms' id = 'add_button'></a>
             <br>
-    		<a onclick = "confirmationBooking(this); return false;" href = 'confirmBooking.php?bookingID=<?php echo $bookingID?>&resortID=<?php echo $resortID?>'><input type = 'submit' value = 'Confirm Booking' id = 'add_button'></a>
+            <a onclick = "confirmationBooking(this); return false;" href = 'testPayment.php?bookingID=<?php echo $bookingID?>&resortID=<?php echo $resortID?>'><input type = 'submit' value = 'Confirm Booking & Pay' id = 'add_button'></a>
     </main>
 
        <script type = "text/javascript">
-	function confirmationBooking(anchor){
-		var conf = confirm("Are you sure you want to place the booking?");
-		if(conf){
-			window.location = anchor.attr("href");
-		}
-	} 
+    function confirmationBooking(anchor){
+        var conf = confirm("Are you sure you want to place the booking?");
+        if(conf){
+            window.location = anchor.attr("href");
+        }
+    } 
 </script>
 
    <script type = "text/javascript">
-	function confirmationDelete(anchor){
-		var conf = confirm("Are you sure you want to remove the room from booking?");
-		if(conf){
-			window.location = anchor.attr("href");
-		}
-	} 
+    function confirmationDelete(anchor){
+        var conf = confirm("Are you sure you want to remove the room from booking?");
+        if(conf){
+            window.location = anchor.attr("href");
+        }
+    } 
 </script>
 
 </body>

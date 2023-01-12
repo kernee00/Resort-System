@@ -39,16 +39,17 @@
                     <tbody>
                     <?php
 
-                    $query = $conn->query("SELECT  * FROM  bookings where custID = '$user_id';") or die(mysqli_error());
+                    $query = $conn->query("SELECT payments.bookingID, bookings.bookingDate, bookings.checkInDate, bookings.checkOutDate, payments.totalPayment FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus = 'Approved' AND bookings.checkOutDate < SYSDATE() AND bookings.custID = '$user_id';") or die(mysqli_error());
+
 
                         while($fetch = $query->fetch_array()){
                     ?>  
                         <tr>
-                        <td><center><?php echo $fetch['bookingID']?></td>
+                            <td><center><?php echo $fetch['bookingID']?></td>
                             <td><center><?php echo $fetch['bookingDate']?></td>
                             <td><center><?php echo $fetch['checkInDate']?></td>
                             <td><center><?php echo $fetch['checkOutDate']?></td>
-                            <td><center><?php echo $fetch['totalPrice']?></td>
+                            <td><center><?php echo $fetch['totalPayment']?></td>
 
                             <td><center><a class = "btn btn-warning" 
 

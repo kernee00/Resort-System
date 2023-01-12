@@ -20,7 +20,7 @@
      
 
        if ($result) {
-            echo"<script>alert ('Booking successful! Proceed to payment.')</script>";
+            echo"<script>alert ('Booking and Payment is successful!')</script>";
             echo"<meta http-equiv='refresh' content='0; url=payment.php?bookingID=$bookingID&resortID=$resortID'/>";
 
        }

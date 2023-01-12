@@ -12,6 +12,7 @@
 <html lang = "en">
     <head>
         
+        
         <meta charset = "utf-8" />
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
         <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
@@ -37,7 +38,7 @@
                     </thead>
                     <tbody>
                     <?php
-                    $query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE bookings.custID = '$user_id';") or die(mysqli_error());
+                    $query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus != 'Refund' AND  payments.paymentStatus !='Approved' AND bookings.checkOutDate > SYSDATE() AND bookings.custID = '$user_id';") or die(mysqli_error());
 
                         while($fetch = $query->fetch_array()){
                     ?>  
@@ -49,16 +50,19 @@
                     
 
                             <td><center><a class = "btn btn-warning" 
+                                onclick = "confirmationRefund(this); return false;" 
 
-                            href = "updatePayment.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Pay</a> <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" 
+                            href = "updatePayment.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Request Refund</a> 
 
-                            href = "paymentProcess.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-remove"></i> Refund</a></center></td>
+                            <!-- <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" 
+                            href = "paymentProcess.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-remove"></i> Refund</a></center></td> -->
                         </tr>
                     <?php
                         }
                     ?>  
                     </tbody>
                 </table>
+                <a href = 'viewPaymentHistory.php'><input type = 'submit' value = 'History' id = 'add_button'></a>
             </div>
         </div>
     </div>
@@ -73,7 +77,7 @@
 <script src = "../js/jquery.dataTables.js"></script>
 <script src = "../js/dataTables.bootstrap.js"></script> 
 <script type = "text/javascript">
-    function confirmationDelete(anchor){
+    function confirmationRefund(anchor){
         var conf = confirm("Are you sure you want to refund this payment?");
         if(conf){
             window.location = anchor.attr("href");

@@ -33,20 +33,15 @@
                 $bookingPrice = $row1['totalPrice'];
                
             }
-        
-        //insert into admin payment table
-        //$sql1 = "INSERT INTO adminPayment (totalAdminPayment, adminPaymentDate,bookingID) VALUES ($amount - $bookingPrice, current_date(), '$booking_id'); ";
-        //$result1 = mysqli_query($conn, $sql1);
-     
-
+ 
        if ($result_b) {
         //update payment status to approved
-        $sql2 = "UPDATE payments SET paymentStatus = 'Paid' WHERE paymentID = '$payment_id'";
+        $sql2 = "UPDATE payments SET paymentStatus = 'Pending Refund' WHERE paymentID = '$payment_id'";
         $result2 = mysqli_query($conn, $sql2);
      
 
        if ($result2) {
-            echo"<script>alert ('Payment is successful.')</script>";
+            echo"<script>alert ('Please wait for admin to approve your refund ...')</script>";
             echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
 
        }
