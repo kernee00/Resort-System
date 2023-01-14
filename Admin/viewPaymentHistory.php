@@ -21,7 +21,7 @@
 	<div class = "container-fluid">
 		<div class = "panel panel-default">
 			<div class = "panel-body">
-				<!--<div class = "alert alert-info">Manage Admin</div>-->
+				<div class = "alert alert-info">Manage Payment / View Payment History</div>
 				<br />
 				<br />
 				<table id = "table" class = "table table-bordered">

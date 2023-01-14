@@ -21,17 +21,16 @@
 	<div class = "container-fluid">
 		<div class = "panel panel-default">
 			<div class = "panel-body">
-				<!--<div class = "alert alert-info">Manage Payment</div>-->
+				<div class = "alert alert-info">Manage Payment / Owner Payment</div>
 				<br />
 				<br />
 				<table id = "table" class = "table table-bordered">
 					<thead>
 						<tr>
-							<th><center>Owner ID</th>
-							<th><center>Amount to be Paid</th>
-						
-						
-							<th><center>Action</th>
+							 <th><center>Owner ID</th>
+        					<th><center>Amount (RM)</th>
+        					<th><center>Status</th>
+        						<th><center>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -42,25 +41,26 @@
 						<tr>
 						<td><center><?php echo $fetch['ownerID']?></td>
 							<td><center><?php echo $fetch['amount']?></td>
-							<td><center><?php echo $fetch['payOwnerStatus']?></td>
-						
-					
+								<td><center><?php echo $fetch['payOwnerStatus']?></td>
+							
+							
 
-							<td><center><a class = "btn btn-warning" href = "updateOwnerPayment.php?paymentID=<?php echo $fetch['ownerID']?>"><i class = "glyphicon glyphicon-edit"></i>Pay</a> </td>
+									<td><center><a class = "btn btn-warning" href = "updateOwnerPayment.php?ownerID=<?php echo $fetch['ownerID']?>"><i class = "glyphicon glyphicon-edit"></i>Pay</a> </td>
+						
 						</tr>
 					<?php
 						}
 					?>	
 					</tbody>
 				</table>
-				    <a href = 'ownerPaymentHistory.php'><input type = 'submit' value = 'History' id = 'add_button'></a>
+					  <a href = 'ownerHistoryDate.php'><input type = 'submit' value = 'History' id = 'add_button'></a>
     				<a href = 'managePayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
 			</div>
 		</div>
 	</div>
 	<br />
 	<br />
-
+	
 </body>
 <script src = "../js/jquery.js"></script>
 <script src = "../js/bootstrap.js"></script>
@@ -68,7 +68,7 @@
 <script src = "../js/dataTables.bootstrap.js"></script>	
 <script type = "text/javascript">
 	function confirmationDelete(anchor){
-		var conf = confirm("Are you sure you want to refund this payment?");
+		var conf = confirm("Are you sure you want to delete this record?");
 		if(conf){
 			window.location = anchor.attr("href");
 		}

@@ -23,33 +23,7 @@
     $confirmPassword = stripcslashes($confirmPassword);
 
       if(isset($_POST['add_owner'])){
-        
-        //to verify admin password before add new owner
-        $sql = "SELECT adminPassword FROM admin WHERE adminID = '$user_id'";
-        $result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result);
 
-        if ($resultCheck > 0){
-
-            while ($row = mysqli_fetch_assoc($result)){
-
-                $admin_password = $row['adminPassword'];
-         
-
-               
-            }
-        }
-        
-        $admin_pass = $_POST['admin_pass'];
-
-        if ($admin_pass != $admin_password) {
-
-            echo "<script>alert('The admin password is incorrect. Please retry.');</script>";
-            echo"<meta http-equiv='refresh' content='0; url=manageOwner.php'/>";
-        
-        }
-
-        else {
                  
       if($password != $confirmPassword)
     {
@@ -79,7 +53,7 @@ $stmt = $conn->prepare("INSERT INTO owner (ownerID, ownerName, ownerPhoneNo, own
 
 }
 
-}
+
 }
 
 

@@ -22,7 +22,6 @@
                 $phone = $row['adminPhoneNo'];
                 $email = $row['adminEmail'];
                 $password = $row['adminPassword'];
-                //$image = $row['profile_image'];
 
                
             }
@@ -31,14 +30,6 @@
         $current_pass = $_POST['update_pass'];
         
 
-        /*if ($current_pass != $password) {
-
-            echo "<script>alert('The current password is incorrect. Please retry.');</script>";
-            echo"<meta http-equiv='refresh' content='0; url=updateProfile.php'/>";
-        
-        }
-
-        else {*/
                  if (empty($_POST['update_name'])) {
            $new_name = $name;
         }
@@ -87,22 +78,30 @@
     }
 else {
 
-     if($_FILES["update_image"]["error"] == 4){
-        //use the current img
-        $new_image = $image;
-        echo "Error.";
-
-    }
-
-    else{
-
-    $new_image = addslashes(file_get_contents($_FILES['update_image']['tmp_name']));
-    }
-
-   
 
 
-$update_profile = "update admin set adminName = '$new_name', adminPhoneNo = '$new_phone', adminEmail = '$new_email', adminPassword = '$new_pass2', profile_image = '$new_image' WHERE adminID = '$user_id'";
+    $update_image = $_FILES['update_image']['name'];
+   $update_image_size = $_FILES['update_image']['size'];
+   $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
+
+       if(!empty($update_image)){
+      if($update_image_size > 60000){
+         echo "<script> alert('Image size too large!') </script>";
+          echo"<meta http-equiv='refresh' content='0; url=updateProfile.php'/>";
+      }
+
+      else{
+         $img_ex = pathinfo($update_image, PATHINFO_EXTENSION);
+         $img_ex_lc = strtolower($img_ex);
+
+         $allowed_exs = array("jpg", "jpeg", "png");
+
+         if(in_array($img_ex_lc,$allowed_exs)){
+
+            $new_image = addslashes(file_get_contents($update_image_tmp_name));
+
+
+            $update_profile = "update admin set adminName = '$new_name', adminPhoneNo = '$new_phone', adminEmail = '$new_email', adminPassword = '$new_pass2', profile_image = '$new_image' WHERE adminID = '$user_id'";
 
 $run_profile = mysqli_query($conn,$update_profile);
 
@@ -110,12 +109,32 @@ if($run_profile){
 
 echo "<script> alert('Profile has been updated successfully. Redirecting to main page.') </script>";
 
-   echo"<meta http-equiv='refresh' content='0; url=adminMain.php'/>";
+ echo"<meta http-equiv='refresh' content='0; url=adminMain.php'/>";
+
+}
+         }else{
+            echo "<script> alert('Failed to update image!') </script>";
+            echo"<meta http-equiv='refresh' content='0; url=updateProfile.php'/>";
+         }
+      }
+
 
 }
 
+else {
 
-//}
+            $update_profile = "update admin set adminName = '$new_name', adminPhoneNo = '$new_phone', adminEmail = '$new_email', adminPassword = '$new_pass2' WHERE adminID = '$user_id'";
+
+$run_profile = mysqli_query($conn,$update_profile);
+
+if($run_profile){
+
+echo "<script> alert('Profile has been updated successfully. Redirecting to main page.') </script>";
+
+ echo"<meta http-equiv='refresh' content='0; url=adminMain.php'/>";
+
+}
+}
 }
 }
 

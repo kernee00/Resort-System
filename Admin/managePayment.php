@@ -21,7 +21,7 @@
 	<div class = "container-fluid">
 		<div class = "panel panel-default">
 			<div class = "panel-body">
-				<!--<div class = "alert alert-info">Manage Payment</div>-->
+				<div class = "alert alert-info">Manage Payment</div>
 				<br />
 				<br />
 				<table id = "table" class = "table table-bordered">
@@ -60,7 +60,7 @@
 				</table>
 				    <a href = 'viewPaymentHistory.php'><input type = 'submit' value = 'History' id = 'add_button'></a>
     				<a href = 'viewPaymentReport.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
-    				<a href = 'manageOwnerPayment1.php'><input type = 'submit' value = 'Owner Payment' id = 'add_button'></a>
+    				<a href = 'manageOwnerPayment.php'><input type = 'submit' value = 'Owner Payment' id = 'add_button'></a>
 			</div>
 		</div>
 	</div>

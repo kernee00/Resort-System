@@ -8,7 +8,7 @@
          if (isset($_GET['ownerID'])){
         $ownerID = $_GET['ownerID'];
 
-        $sql = "UPDATE adminPayment SET payOwnerStatus = 'Paid' WHERE adminPaymentID = '$payment_id'";
+        $sql = "UPDATE adminPayment SET payOwnerStatus = 'Paid' WHERE bookingID IN (SELECT b.bookingID FROM owner o, resorts r, bookings b, adminPayment a WHERE o.ownerID = r.ownerID AND r.resortID = b.resortID AND b.bookingID = a.bookingID AND o.ownerID = 'owner1' AND payOwnerStatus = 'Unpaid');";
         $result = mysqli_query($conn, $sql);
 
         if ($result){

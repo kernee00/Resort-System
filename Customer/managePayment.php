@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                     <?php
-                    $query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus != 'Refund' AND  payments.paymentStatus !='Approved' AND bookings.checkOutDate > SYSDATE() AND bookings.custID = '$user_id';") or die(mysqli_error());
+                    $query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus != 'Refund' AND  payments.paymentStatus !='Approved' AND bookings.custID = '$user_id';") or die(mysqli_error());
 
                         while($fetch = $query->fetch_array()){
                     ?>  
@@ -53,9 +53,6 @@
                                 onclick = "confirmationRefund(this); return false;" 
 
                             href = "updatePayment.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Request Refund</a> 
-
-                            <!-- <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" 
-                            href = "paymentProcess.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-remove"></i> Refund</a></center></td> -->
                         </tr>
                     <?php
                         }

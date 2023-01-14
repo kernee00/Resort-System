@@ -30,7 +30,6 @@
 							 <th><center>Payment ID</th>
         					<th><center>Booking ID</th>
         					<th><center>Date</th>
-       						<!--<th>Owner ID</th>-->
         					<th><center>Amount (RM)</th>
         					<th><center>Status</th>
 						</tr>
@@ -38,10 +37,8 @@
 					<tbody>
 					<?php
 
-					//SELECT payments.paymentID, bookings.bookingID, payments.paymentDate, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus = 'Refund' OR payments.paymentStatus = 'Approved' AND bookings.checkOutDate > SYSDATE() AND bookings.custID = 'syirah';
 
-
-						$query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.paymentDate, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus = 'Refund' OR payments.paymentStatus = 'Approved' AND bookings.checkOutDate > SYSDATE() AND bookings.custID = '$user_id';") or die(mysqli_error());
+						$query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.paymentDate, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus = 'Refund' OR payments.paymentStatus = 'Approved' AND bookings.custID = '$user_id';") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>

@@ -13,25 +13,27 @@
   <head>
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
+   
     <title>Resort Report</title>
-    <h2 align="center">Payment Report</h2>
+    <h2 align="center" style=" margin-top:50px">Payment Report</h2>
 
   </head>
   <body>
 
     <!---select date and method-->
+    <div class ="insert-date" style="margin-left: 30%; margin-top:20px">
       <form name="bwdatesdata" action="" method="post" action="">
-      <table width="100%" height="117"  border="0">
+      <table width="100%" height="117"  border="0" >
       <tr>
       <th width="27%" height="63" scope="row">From:</th>
       <td width="73%">
-      <input type="date" name="fdate" class="form-control" id="fdate">
+      <input type="date" name="fdate" class="form-control" id="fdate" required>
       </td>
       </tr>
       <tr>
       <th width="27%" height="63" scope="row">To:</th>
       <td width="73%">
-      <input type="date" name="tdate" class="form-control" id="tdate"></td>
+      <input type="date" name="tdate" class="form-control" id="tdate" required></td>
       </tr>
       <tr>
       <th width="27%" height="63" scope="row">Request Type :</th>
@@ -44,14 +46,13 @@
     <th width="27%" height="63" scope="row"></th>
     <td width="73%">
     <button class="btn-primary btn" type="submit" name="submit">Submit</button>
+      <a href = 'managePayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
 
   </tr>
 </table>
      </form>
-       <a href = 'managePayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
-
      </div>
-    </div>
+  
     <hr>
       <div class="row">
       <div class="col-xs-12">

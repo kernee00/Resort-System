@@ -49,8 +49,7 @@
             <input type="password" id = "pass" name="pass" placeholder="Enter new password" class="box" required>
             <span>Confirm password :</span>
             <input type="password" id = "confirmPass" name="confirmPass" placeholder="Confirm new password" class="box" required>
-                <span>Admin password :</span>
-            <input type="password" id = "admin_pass" name="admin_pass" placeholder="Enter Admin Password" class="box" required> 
+             
          </div>
       </div>
       <input type="submit" value="Add" name="add_owner" class="btn">

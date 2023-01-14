@@ -21,7 +21,7 @@
 	<div class = "container-fluid">
 		<div class = "panel panel-default">
 			<div class = "panel-body">
-				<!--<div class = "alert alert-info">Manage Owner</div>-->
+				<div class = "alert alert-info">Manage Owner</div>
 				<br />
 				<br />
 				<table id = "table" class = "table table-bordered">
@@ -54,6 +54,7 @@
 					?>	
 					</tbody>
 				</table>
+					<a href = 'addOwner.php'><input type = 'submit' value = 'Add' id = 'add_button'></a>
 			</div>
 		</div>
 	</div>

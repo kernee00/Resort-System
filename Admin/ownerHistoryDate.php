@@ -18,13 +18,13 @@
 		<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
 
 	<br />
- <title>Manage Bookings</title>
+ <title>Owner Payment History</title>
     <link rel="stylesheet" href="manageStyle.css">
 
-         <h1 style="margin-left:40% ;margin-top:50px"   class="">Bookings Information</h1>
+         <h1 style="margin-left:40% ;margin-top:50px"   class="">Owner Payment History</h1>
          <br><br>
      <div class ="insert-date" style="margin-left: 30%;">
-          <form name="dateInput" action="bookingsInfo.php" method="post" action="">
+          <form name="dateInput" action="ownerPaymentHistory.php" method="post" action="">
           	
 
              <table width="100%" height="117"  border="0">

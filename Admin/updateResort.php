@@ -58,7 +58,7 @@
             <span>Name:</span>
             <input type="text" id = "update_name" name="update_name" placeholder="<?php echo $name; ?>" class="box">
             <span>Address:</span>
-            <input type="email" id = "update_address" name="update_address" placeholder="<?php echo $address; ?>" class="box">
+            <input type="text" id = "update_address" name="update_address" placeholder="<?php echo $address; ?>" class="box">
             <span>City:</span>
             <input type="text" id = "update_city" name="update_city" placeholder="<?php echo $city; ?>" class="box">
             <span>State:</span>

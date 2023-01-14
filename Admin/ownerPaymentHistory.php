@@ -5,6 +5,12 @@
     include_once 'adminNavBar.php';
     $user_id = $_SESSION['user_id'];
 
+ if(isset($_POST['submit']))
+{ 
+$fdate=$_POST['fdate'];
+$tdate=$_POST['tdate'];
+}
+
   
 ?>
 <html lang = "en">
@@ -21,29 +27,30 @@
 	<div class = "container-fluid">
 		<div class = "panel panel-default">
 			<div class = "panel-body">
-				<!--<div class = "alert alert-info">Manage Admin</div>-->
+				<div class = "alert alert-info">Manage Payment / Owner Payment / History</div>
 				<br />
 				<br />
 				<table id = "table" class = "table table-bordered">
 					<thead>
 						<tr>
-							 <th><center>Owner ID</th>
+							<th><center>Owner ID</th>
         					<th><center>Booking ID</th>
         					<th><center>Resort ID</th>
-       						<!--<th>Owner ID</th>-->
+       						<th><center>Payment Date</th>
         					<th><center>Amount (RM)</th>
         					<th><center>Status</th>
 						</tr>
 					</thead>
 					<tbody>
 					<?php
-						$query = $conn->query("SELECT * FROM bookings b, payments p, adminPayment a, resorts r WHERE p.bookingID = b.bookingID AND a.bookingID = p.bookingID AND b.resortID = r.resortID AND payOwnerStatus = 'Paid';") or die(mysqli_error());
+						$query = $conn->query("SELECT * FROM bookings b, payments p, adminPayment a, resorts r WHERE p.bookingID = b.bookingID AND a.bookingID = p.bookingID AND b.resortID = r.resortID AND payOwnerStatus = 'Paid'AND adminPaymentDate BETWEEN '$fdate' AND '$tdate';") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>
 						<td><center><?php echo $fetch['ownerID']?></td>
 							<td><center><?php echo $fetch['bookingID']?></td>
 								<td><center><?php echo $fetch['resortID']?></td>
+									<td><center><?php echo $fetch['adminPaymentDate']?></td>
 							<td><center><?php echo $fetch['totalPrice']?></td>
 							<td><center><?php echo $fetch['payOwnerStatus']?></td>
 						
@@ -53,8 +60,12 @@
 					?>	
 					</tbody>
 				</table>
-					<a href = 'manageOwnerPayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
+			
+					<a href = 'ownerHistoryDate.php?fdate=<?php echo $fdate?>&tdate=<?php echo $tdate?>'><input type = 'submit' value = 'Back' id = 'add_button'></a>
+					<a href = 'export.php?fdate=<?php echo $fdate?>&tdate=<?php echo $tdate?>'><input type = 'submit' value = 'Export' id = 'add_button'></a>
+				
 			</div>
+
 		</div>
 	</div>
 	<br />
