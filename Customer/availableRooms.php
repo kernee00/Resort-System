@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <?php
 	session_start();
@@ -55,6 +56,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 							<th><center>Price Per Night (RM)</th>
 							<th><center>Capacity</th>
 							<th><center>Room Description</th>
+							<th><center>Room Name</th>
 									<th><center>Action</th>
 				
 							
@@ -69,6 +71,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 						<td><center><?php echo $fetch['pricePerNight']?></td>
 							<td><center><?php echo $fetch['capacity']?></td>
 							<td><center><?php echo $fetch['location']?></td>
+								<td><center><?php echo $fetch['roomName']?></td>
 								<td><center><a class = "btn btn-warning" href = 'insertBooking.php?roomID=<?php echo $fetch['roomID']?>&resortID=<?php echo $resortID?>&fdate=<?php echo $fdate?>&tdate=<?php echo $tdate?>&bookingID=<?php echo $bookingID?>'></i> Book Now</a></td>
 						
 						</tr>

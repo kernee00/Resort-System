@@ -29,7 +29,7 @@
         position: relative;
     }
 
-    @media screen and (max-width: 575px ) {
+    @media screen and (max-width: 275px ) {
     .availability-form{
         margin-top: 0px;
         padding: 0 35px;
@@ -73,11 +73,11 @@
                 <div class="row align-items-end">
                     <div class="col-lg-3 mb-3">
                         <label class="form-label" style="font-weight: 500;">Check-in</label>
-                        <input type="date" class="form-control shadow-none" name = "fdate" min="<?php echo date("Y-m-d"); ?>" required>
+                        <input type="date" class="form-control shadow-none" name = "fdate">
                     </div>
                     <div class="col-lg-3 mb-3">
                         <label class="form-label" style="font-weight: 500;">Check-Out</label>
-                        <input type="date" class="form-control shadow-none" name="tdate" min="<?php echo date("Y-m-d"); ?>" required>
+                        <input type="date" class="form-control shadow-none" name="tdate">
                     </div>
                     <div class="col-lg-3 mb-3">
                         <label class="form-label" style="font-weight: 500;">Capacity</label>
@@ -108,9 +108,8 @@
                         <option value="Sarawak">Sarawak</option>
                         <option value="Selangor">Selangor</option>
                         <option value="Terengganu">Terengganu</option>
-                        <option value="Kuala Kumpur">Kuala Kumpur</option>
-                        <option value="Labuan">Labuan</option>
-                        <option value="Putrajaya">Putrajaya</option>
+
+
                         </select>
                     </div>
 
@@ -131,24 +130,24 @@
  <div class="container">
     <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
         <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-            <img src="images/Facilities/wifi.svg" width="80px">
+            <img src="images/Facilities/wifi.png" width="80px">
             <h5 class="mt-3">Wifi</h5>
         </div>
         <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-            <img src="images/Facilities/wifi.svg" width="80px">
-            <h5 class="mt-3">Wifi</h5>
+            <img src="images/Facilities/entertainment.png" width="80px">
+            <h5 class="mt-3">Entertainment</h5>
         </div>
         <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-            <img src="images/Facilities/wifi.svg" width="80px">
-            <h5 class="mt-3">Wifi</h5>
+            <img src="images/Facilities/transport.png" width="80px">
+            <h5 class="mt-3">Transport Services</h5>
         </div>
         <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-            <img src="images/Facilities/wifi.svg" width="80px">
-            <h5 class="mt-3">Wifi</h5>
+            <img src="images/Facilities/health.png" width="80px">
+            <h5 class="mt-3">Health Club</h5>
         </div>
         <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-            <img src="images/Facilities/wifi.svg" width="80px">
-            <h5 class="mt-3">Wifi</h5>
+            <img src="images/Facilities/food.png" width="80px">
+            <h5 class="mt-3">Food & Beverages</h5>
         </div>
      
     </div>

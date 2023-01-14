@@ -17,6 +17,7 @@
         <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
         <link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
 
+
     <br />
     <div class = "container-fluid">
         <div class = "panel panel-default">
@@ -53,9 +54,9 @@
 
                             <td><center><a class = "btn btn-warning" 
 
-                            href = "bookingReport.php?bookingID=<?php echo $fetch['bookingID']?>"><i class = "glyphicon glyphicon-download"></i> Download</a> <a class = "btn btn-danger"  
+                            href = "receiptPayment.php?bookingID=<?php echo $fetch['bookingID']?>"><i class = "glyphicon glyphicon-download"></i> View</a> <a class = "btn btn-danger"  
 
-                            href = "manageRating.php?bookingID=<?php echo $fetch['bookingID']?>"><i class = "glyphicon glyphicon-star"></i> Feedback & Rate</a></center></td>
+                            href = "addReviewProcess.php?bookingID=<?php echo $fetch['bookingID']?>"><i class = "glyphicon glyphicon-star"></i> Feedback & Rate</a></center></td>
 
                         </tr>
                     <?php
@@ -91,3 +92,5 @@
     });
 </script>
 </html>
+
+<a href = '../Customer/reportPart/reportCustomer.php'><input style = 'margin:10px' type = 'submit' value = 'Report ' id = 'add_button'></a>
