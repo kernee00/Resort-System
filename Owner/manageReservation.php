@@ -17,9 +17,32 @@
     <link rel = "stylesheet" type = "text/css" href = "../Style/bootstrap.css " />
     <link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
 
+    <style> 
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #54C0EC;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+  button[type=button], button[type=submit], button[type=reset] {
+  background-color: #54C0EC;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+
   <br />
  <title>Manage Bookings</title>
     <link rel="stylesheet" href="manageStyle.css">
+
+    <div class = "container">
 
          <h1 style="margin-left:40% ;margin-top:80px"   class="">Bookings Information</h1>
 
@@ -30,12 +53,14 @@
              <label>To: </label>
              <input type="date" name="tdate" class="form-control" id="tdate">
                  <br>
-             <button class="btn-primary btn" type="submit" name="submit">Submit</button>
+                 <center>
+             <button  type="submit" name="submit">Submit</button>
 
      </form>
 
-       <a href = 'viewResortReport.php'><input type = 'submit' value = 'REPORT' id = 'add_button'></a>
+    <a href = 'viewResortReport.php'><input type="button"  value = 'REPORT' id = 'add_button'></a></center>
 
+</div>
      </div>
     </div>
     <br>
@@ -51,7 +76,7 @@ $tdate=$_POST['tdate'];
  
 ?>
 
- <h2 style="margin-left:35% ;margin-top:80px"   class="">Bookings Information From <?php echo $fdate?> To <?php echo $tdate?></h2>
+ <h2 style="margin-left:40% ;margin-top:80px"   class="">Bookings Information From <?php echo $fdate?> To <?php echo $tdate?></h2>
 
   <div class = "container-fluid">
     <div class = "panel panel-default">
@@ -85,6 +110,8 @@ $tdate=$_POST['tdate'];
               <td><center><?php echo $fetch['totalPrice']?></td>
               <td><center><?php echo $fetch['custID']?></td>
               <td><center><?php echo $fetch['resortID']?></td>
+
+                <td><center><a class = "btn btn-warning" href = "customerMain.php?custID=<?php echo $fetch['custID']?>"><i class = "glyphicon glyphicon-edit"></i> <?php echo $fetch['custID']?></a> </td>
 
             
             </tr>

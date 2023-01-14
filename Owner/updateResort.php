@@ -22,6 +22,8 @@
                 $rating = $row['overallRatings'];
                 $keywords = $row['keywords'];
                 $ownerID = $row['ownerID'];
+                //$resortId = $row['resortID'];
+                $onClick = "document.forms.myform.resortID.value='$resortID ';document.forms.myform.submit();";
                
             }
         }
@@ -78,8 +80,8 @@
          </div>
       </div>
       <input type="submit" value="Update Resort" name="update_resort" class="btn">
-      <a href="manageRoom.php?resortID = $resortID" class="delete-btn">Update Resort Rooms</a>
-      <a href="manageResort.php" class="delete-btn">Back</a>
+      <a href="manageRoom.php?resortID=<?php echo $resortID; ?>" class="btn">Update Resort Rooms</a>
+      <a href="manageResort.php" class="delete-btn" style="background-color: skyblue;">Back</a>
    </form>
 
 </div>

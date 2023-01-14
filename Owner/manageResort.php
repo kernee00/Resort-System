@@ -1,4 +1,4 @@
- <?php
+  <?php
     session_start();
     include_once '../connection.php';
     include_once 'ownerNavBar.php';
@@ -56,7 +56,11 @@
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
 <button class ="book">Update Details</button>
 
-<a href="uploadPhoto.php?resortID=<?php echo $row['resortID'];?>" class="update">Update Resort Photo</a>
+<br><br>
+<button class ="book"><a href="uploadPhoto.php?resortID=<?php echo $row['resortID'];?>" class="button">
+Update Photo Resort</a></button>
+
+
 
 </form>
 
