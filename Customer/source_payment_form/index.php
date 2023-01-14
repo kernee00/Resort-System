@@ -9,7 +9,6 @@
 
   if (isset($_GET['bookingID'])){
     $bookingID = $_GET['bookingID'];
-    //$resortID = $_GET['resortID'];
 
     $query = $conn->query("SELECT b.bookingDate, b.bookingID, o.roomID, b.checkInDate, b.checkOutDate, b.totalPrice FROM bookings b JOIN room_booking o on b.bookingID=o.bookingID WHERE b.bookingID = '$bookingID';") or die(mysqli_error());
 
@@ -24,7 +23,7 @@
                             $totalPrice = $row['totalPrice'];
                             $totalPayment = (0.1*$totalPrice)+$totalPrice;
                             
-                        }
+                        }                                                                   
 }
     else {
 
@@ -50,22 +49,22 @@
         <div class="first-row">
             <div class="owner">
                 <h3>Owner</h3>
-                <div class="input-field" required>
+                <div class="input-field">
                     <input type="text" required>
                 </div>
             </div>
             <div class="cvv">
                 <h3>CVV</h3>
-                <div class="input-field" required>
-                    <input type="password">
+                <div class="input-field" >
+                    <input type="password" required>
                 </div>
             </div>
         </div>
         <div class="second-row">
             <div class="card-number">
                 <h3>Card Number</h3>
-                <div class="input-field" required>
-                    <input type="text">
+                <div class="input-field" >
+                    <input type="text" required>
                 </div>
             </div>
         </div>
@@ -105,7 +104,7 @@
         </div>
         &nbsp;&nbsp;&nbsp;
 
-        <a href="../paymentConfirm.php?bookingID=<?php echo $bookingID?>">Confirm Pay (RM <?php echo $totalPayment?>)</a>
+        <a href="../paymentConfirmIndex.php?bookingID=<?php echo $bookingID?>">Confirm Pay (RM <?php echo $totalPayment?>)</a>
 
     </div>
 </body>
