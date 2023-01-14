@@ -7,17 +7,17 @@
     $pStatus = 'Paid';
     $sysdate = date('y-m-d');
 
-  if (isset($_GET['bookingID'])){
-    $bookingID = $_GET['bookingID'];
+  if (isset($_GET['paymentID'])){
+    $paymentID = $_GET['paymentID'];
 
-    $query = $conn->query("SELECT b.bookingDate, b.bookingID, o.roomID, b.checkInDate, b.checkOutDate, b.totalPrice FROM bookings b JOIN room_booking o on b.bookingID=o.bookingID WHERE b.bookingID = '$bookingID';") or die(mysqli_error());
+    $query = $conn->query("SELECT * FROM bookings b, resorts r, payments p WHERE b.resortID = r.resortID AND p.bookingID = b.bookingID AND paymentID = '$paymentID';") or die(mysqli_error());
 
                         while($row = $query->fetch_array())
 
                         {
                             $bookingDate = $row['bookingDate'];
                             $bookingID = $row['bookingID'];
-                            $roomID = $row['roomID'];
+                            //$roomID = $row['roomID'];
                             $checkInDate = $row['checkInDate'];
                             $checkOutDate = $row['checkOutDate'];
                             $totalPrice = $row['totalPrice'];
@@ -104,7 +104,7 @@
         </div>
         &nbsp;&nbsp;&nbsp;
 
-        <a href="../paymentConfirm.php?bookingID=<?php echo $bookingID?>">Confirm Pay (RM <?php echo $totalPayment?>)</a>
+        <a href="../paymentConfirm.php?paymentID=<?php echo $paymentID?>">Confirm Pay (RM <?php echo $totalPayment?>)</a>
 
     </div>
 </body>

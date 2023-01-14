@@ -15,9 +15,10 @@ $ownerLogin = "select * from owner where ownerID = '$username' and accPassword =
 $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 
 			$row = mysqli_fetch_array($result);
-
+			error_reporting(0);
 			//if owner table matched
 			if ($row['ownerID'] == $username && $row['accPassword'] == $password) {
+				
 
 				echo "Login success! Welcome ".$row['ownerName']."!";
 				$_SESSION['role'] = "owner";
@@ -33,10 +34,11 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 
 
 			$row = mysqli_fetch_array($result);
-
+				error_reporting(0);
 			//if owner not match, select from customer table
 
 			if ($row['custID'] == $username && $row['custPassword'] == $password) {
+				
 
 				echo "Login success! Welcome ".$row['custName']."!";
 				$_SESSION['role'] = "cust";
@@ -53,6 +55,7 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 
 
 			$row = mysqli_fetch_array($result);
+			error_reporting(0);
 
 			//if all not matched then select from admin table
 
@@ -68,8 +71,10 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 
 			else {
 
-				echo "Failed to login! Register before login!";
+				 echo "<script> alert('Failed to login! Try again or register before login!') </script>";
+				
 				 echo"<meta http-equiv='refresh' content='0; url=loginV2.php'/>";
+
 			}
 
 			}

@@ -23,8 +23,19 @@
                             $checkOutDate = $row['checkOutDate'];
                             $totalPrice = $row['totalPrice'];
                             $totalPayment = (0.1*$totalPrice)+$totalPrice;
+                            $status = $row['paymentStatus'];
                             
                         }
+
+                        if ($status == 'Paid'){
+
+                        echo"<script>alert ('Booking already paid!')</script>";
+                         echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
+
+
+                        }
+
+
 }
     else {
 
@@ -98,7 +109,7 @@
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                       <center><a href="source_payment_form/payHistoryConfirm.php?bookingID=<?php echo $bookingID?>">Pay Now</a>
+                                       <center><a href="source_payment_form/payHistoryConfirm.php?paymentID=<?php echo $paymentID?>">Pay Now</a>
                                         <!-- <center><a href="confirmPaymentProcess.php?bookingID=<?php echo $bookingID?>">Pay Now</a> -->
                                     </td>
                                 </tr>

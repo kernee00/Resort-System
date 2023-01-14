@@ -1,13 +1,15 @@
 <?php
-
+   include_once '../connection.php';
+   session_start();
     $user_id = $_SESSION['user_id'];
+    $sysdate = date('y-m-d');
 
 
-  if (isset($_GET['bookingID'])){
-    $bookingID = $_GET['bookingID'];
+  if (isset($_GET['paymentID'])){
+    $paymentID = $_GET['paymentID'];
 
 
-    $query = $conn->query("SELECT p.totalPayment, p.paymentID, p.paymentDate, b.bookingID, o.roomID, r.resortName, b.checkInDate, b.checkOutDate FROM bookings b JOIN resorts r on b.resortID=r.resortID JOIN room_booking o on b.bookingID=o.bookingID JOIN payments p on p.bookingID=b.bookingID WHERE b.bookingID = '$bookingID';") or die(mysqli_error());
+    $query = $conn->query("SELECT * FROM bookings b, payments p, resorts r WHERE b.bookingID = p.bookingID AND b.resortID = r.resortID AND paymentID = '$paymentID';") or die(mysqli_error());
 
                         while($row = $query->fetch_array())
 
@@ -15,7 +17,7 @@
                             $paymentID = $row['paymentID'];
                             $paymentDate = $row['paymentDate'];
                             $bookingID = $row['bookingID'];
-                            $roomID = $row['roomID'];
+                            //$roomID = $row['roomID'];
                             $resortName = $row['resortName'];
                             $checkInDate = $row['checkInDate'];
                             $checkOutDate = $row['checkOutDate'];
@@ -73,10 +75,7 @@
                                                             <td>Resort Name</td>
                                                             <td class="alignright"><?php echo $resortName?></td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Room ID </td>
-                                                            <td class="alignright"> <?php echo $roomID?></td>
-                                                        </tr>
+                                                   
 
                                                         <td>Check In Date </td>
                                                             <td class="alignright"> <?php echo $checkInDate?></td>
@@ -97,7 +96,7 @@
                                 </tr>
                                 <tr>
 
-                                        <center><a href="managePayment.php">Back To Main</a> 
+                                        <!--<center><a href="managePayment.php">Back To Main</a> -->
                                     </td>
                                 </tr>
                                 <tr>
@@ -106,7 +105,7 @@
                                     </td>
                                 </tr>
                                                                     <td class="content-block">
-                                       <center><a href="bookingMain.php?bookingID=<?php echo $bookingID?>">Home</a>
+                                       <center><a href="managePayment.php">Home</a>
                             </tbody></table>
                         </td>
                     </tr>
