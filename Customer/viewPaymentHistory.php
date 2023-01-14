@@ -30,6 +30,7 @@
 							 <th><center>Payment ID</th>
         					<th><center>Booking ID</th>
         					<th><center>Date</th>
+       						<!--<th>Owner ID</th>-->
         					<th><center>Amount (RM)</th>
         					<th><center>Status</th>
 						</tr>

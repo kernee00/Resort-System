@@ -15,13 +15,13 @@
                
 
         }
-           $sql = "UPDATE bookings SET totalPrice = '$totalPrice' WHERE bookingID = '$bookingID'";
+        $sql = "UPDATE bookings SET totalPrice = '$totalPrice' WHERE bookingID = '$bookingID'";
         $result = mysqli_query($conn, $sql);
      
 
        if ($result) {
-            echo"<script>alert ('Booking and Payment is successful!')</script>";
-            echo"<meta http-equiv='refresh' content='0; url=payment.php?bookingID=$bookingID&resortID=$resortID'/>";
+            echo"<script>alert ('Booking successful! Proceed to payment.')</script>";
+            echo"<meta http-equiv='refresh' content='0; url=confirmBookingStatement.php?bookingID=$bookingID&resortID=$resortID'/>";
 
        }
 

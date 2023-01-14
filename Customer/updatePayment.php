@@ -7,10 +7,8 @@
 
          if (isset($_GET['paymentID'])){
         $payment_id = $_GET['paymentID'];
-        $sysdate = date('y-m-d');
 
-
-        $sql = "SELECT * FROM payments p, bookings b WHERE p.bookingID = b.bookingID AND paymentID = '$payment_id';";
+        $sql = "SELECT * FROM payments WHERE paymentID = '$payment_id'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
@@ -20,19 +18,9 @@
 
                 $booking_id = $row['bookingID'];
                 $amount = $row['totalPayment'];
-                $checkIn = $row['checkInDate'];
                
             }
-            $cancelDays = (strtotime($sysdate) - strtotime($checkIn)) / (60 * 60 * 24);
 
-            if ($checkIn < $sysdate || $cancelDays <= 3 ){ 
-
-            echo"<script>alert ('Refund request is not allowed!')</script>";
-            echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
-            }
-
-            else {
-                
         $booking_sql = "SELECT * FROM bookings WHERE bookingID = '$booking_id'";
         $result_b = mysqli_query($conn, $booking_sql);
         $resultCheck_b = mysqli_num_rows($result_b);
@@ -73,7 +61,6 @@
        }
    }
 
-}
     }
 }
 
