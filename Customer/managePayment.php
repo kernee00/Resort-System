@@ -49,13 +49,14 @@
                             <td><center><?php echo $fetch['paymentStatus']?></td>
                     
 
-                            <td><center><a class = "btn btn-warning" 
+                            <td><center>
+
+                                 <a class = "btn btn-warning" href = "payHistory.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Pay</a> <a class = "btn btn-warning" 
                                 onclick = "confirmationRefund(this); return false;" 
 
                             href = "updatePayment.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Request Refund</a> 
 
-                            <!-- <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" 
-                            href = "paymentProcess.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-remove"></i> Refund</a></center></td> -->
+
                         </tr>
                     <?php
                         }

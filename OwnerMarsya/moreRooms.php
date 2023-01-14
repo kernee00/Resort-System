@@ -1,34 +1,32 @@
-
 <!DOCTYPE html>
 <?php
 	session_start();
     include_once '../connection.php';
-    include_once 'customerNavBar.php';
+    include_once 'ownerNavBar.php';
     $user_id = $_SESSION['user_id'];
 
-         if(isset($_POST['submit']))
-{ 
 
-$fdate=$_POST['fdate'];
-$tdate=$_POST['tdate'];
-$resortID = $_POST['resortID'];
-$sysdate = date('y-m-d');
+         if(isset($_GET['bookingID']))
+{ 		$bookingID = $_GET['bookingID'];
 
-$stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOutDate,  custID, resortID) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("ssssi", $sysdate,$fdate,$tdate, $user_id, $resortID);
-        $stmt->execute();
-        $success = $stmt->affected_rows;
-        $stmt->close();
-        if($success>0)
-        {
+	  $query = $conn->query("SELECT * FROM bookings WHERE bookingID = $bookingID;") or die(mysqli_error());
+                        while($row = $query->fetch_array()){
 
-            $bookingID = $conn->insert_id;
-            }
+                        	$fdate=$row['checkInDate'];
+							$tdate=$row['checkOutDate'];
+							$resortID = $row['resortID'];
+               
 
-            else {
+        }
+    
+           /*$sql_booking = "SELECT * FROM room_booking WHERE bookingID = $bookingID";
+$all_booking = $conn->query($sql_booking);*/
 
-            	echo "Failed to book!";
-            }
+        }
+else {
+
+	echo "Passing error!";
+}
   
 ?>
 <html lang = "en">
@@ -55,8 +53,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 						<tr>
 							<th><center>Price Per Night (RM)</th>
 							<th><center>Capacity</th>
-							<th><center>Room Description</th>
-							<th><center>Room Name</th>
+							<th><center>Description</th>
 									<th><center>Action</th>
 				
 							
@@ -70,8 +67,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 						<tr>
 						<td><center><?php echo $fetch['pricePerNight']?></td>
 							<td><center><?php echo $fetch['capacity']?></td>
-							<td><center><?php echo $fetch['location']?></td>
-								<td><center><?php echo $fetch['roomName']?></td>
+							<td><center><?php echo $fetch['description']?></td>
 								<td><center><a class = "btn btn-warning" href = 'insertBooking.php?roomID=<?php echo $fetch['roomID']?>&resortID=<?php echo $resortID?>&fdate=<?php echo $fdate?>&tdate=<?php echo $tdate?>&bookingID=<?php echo $bookingID?>'></i> Book Now</a></td>
 						
 						</tr>
@@ -80,8 +76,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 					?>	
 					</tbody>
 				</table>
-				
-				<a href = "javascript:history.back()"><input type = 'submit' value = 'Back' id = 'add_button'></a>
+				<a href = 'cart.php?bookingID=<?php echo $bookingID?>'><input type = 'submit' value = 'Back' id = 'add_button'></a>
 			</div>
 		</div>
 	</div>
@@ -100,7 +95,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 	});
 </script>
        <?php
-  }
+  
 
     ?>
 </html>

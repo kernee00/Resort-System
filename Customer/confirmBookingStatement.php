@@ -12,9 +12,6 @@
     $resortID = $_GET['resortID'];
 
 
-
-    //$query = $conn->query("SELECT * FROM bookings b, resorts r WHERE bookingID = '$bookingID' AND r.resortID = '$resortID';") or die(mysqli_error());
-
     $query = $conn->query("SELECT b.bookingDate, b.bookingID, o.roomID, r.resortName, b.checkInDate, b.checkOutDate, b.totalPrice FROM bookings b JOIN resorts r on b.resortID=r.resortID JOIN room_booking o on b.bookingID=o.bookingID WHERE b.bookingID = '$bookingID' AND r.resortID = '$resortID';") or die(mysqli_error());
 
                         while($row = $query->fetch_array())

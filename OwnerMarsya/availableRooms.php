@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <?php
 	session_start();
     include_once '../connection.php';
-    include_once 'customerNavBar.php';
+    include_once 'ownerNavBar.php';
     $user_id = $_SESSION['user_id'];
 
          if(isset($_POST['submit']))
@@ -12,10 +11,11 @@
 $fdate=$_POST['fdate'];
 $tdate=$_POST['tdate'];
 $resortID = $_POST['resortID'];
+$custID = $_POST['custID'];
 $sysdate = date('y-m-d');
 
 $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOutDate,  custID, resortID) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("ssssi", $sysdate,$fdate,$tdate, $user_id, $resortID);
+        $stmt->bind_param("ssssi", $sysdate,$fdate,$tdate, $custID, $resortID);
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();
@@ -56,7 +56,6 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 							<th><center>Price Per Night (RM)</th>
 							<th><center>Capacity</th>
 							<th><center>Room Description</th>
-							<th><center>Room Name</th>
 									<th><center>Action</th>
 				
 							
@@ -71,7 +70,6 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 						<td><center><?php echo $fetch['pricePerNight']?></td>
 							<td><center><?php echo $fetch['capacity']?></td>
 							<td><center><?php echo $fetch['location']?></td>
-								<td><center><?php echo $fetch['roomName']?></td>
 								<td><center><a class = "btn btn-warning" href = 'insertBooking.php?roomID=<?php echo $fetch['roomID']?>&resortID=<?php echo $resortID?>&fdate=<?php echo $fdate?>&tdate=<?php echo $tdate?>&bookingID=<?php echo $bookingID?>'></i> Book Now</a></td>
 						
 						</tr>

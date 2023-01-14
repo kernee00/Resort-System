@@ -32,24 +32,26 @@
 				<table id = "table" class = "table table-bordered">
 					<thead>
 						<tr>
-							
+							<th><center>bookingID</th>
         					<th><center>Amount (RM)</th>
         					<th><center>Status</th>
         					<th><center>Date</th>
-        						<th><center>Action</th>
+        						
 						</tr>
 					</thead>
 					<tbody>
 					<?php
-						/*$query = $conn->query("SELECT adminID, SUM(b.totalPrice) AS amount, payOwnerStatus FROM bookings b, payments p, adminPayment a, resorts r WHERE p.bookingID = b.bookingID AND a.bookingID = p.bookingID AND b.resortID = r.resortID AND payOwnerStatus = 'Unpaid' GROUP BY adminID ORDER BY adminID;") or die(mysqli_error());*/
+				
 
-						$query = $conn->query("SELECT b.totalPrice AS amount, a.payOwnerStatus FROM  bookings b, payments p, adminPayment a, resorts r WHERE p.bookingID = b.bookingID AND a.bookingID = p.bookingID AND b.resortID = r.resortID AND a.payOwnerStatus = 'Unpaid';") or die(mysqli_error());
+						$query = $conn->query("SELECT b.bookingID, b.totalPrice AS amount, a.payOwnerStatus, adminPaymentDate FROM  bookings b, payments p, adminPayment a, resorts r WHERE p.bookingID = b.bookingID AND a.bookingID = p.bookingID AND b.resortID = r.resortID AND a.payOwnerStatus = 'Unpaid' OR a.payOwnerStatus = 'Paid'GROUP BY b.bookingID, a.payOwnerStatus;") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>
 						
-							<td><center><?php echo $fetch['amount']?></td>
-								<td><center><?php echo $fetch['payOwnerStatus']?></td>
+							<td><center><?php echo $fetch['bookingID']?></td>
+								<td><center><?php echo $fetch['amount']?></td>
+									<td><center><?php echo $fetch['payOwnerStatus']?></td>
+										<td><center><?php echo $fetch['adminPaymentDate']?></td>
 							
 							
 

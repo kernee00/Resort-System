@@ -73,11 +73,11 @@
                 <div class="row align-items-end">
                     <div class="col-lg-3 mb-3">
                         <label class="form-label" style="font-weight: 500;">Check-in</label>
-                        <input type="date" class="form-control shadow-none" name = "fdate">
+                        <input type="date" class="form-control shadow-none" name = "fdate" min="<?php echo date("Y-m-d"); ?>" required>
                     </div>
                     <div class="col-lg-3 mb-3">
                         <label class="form-label" style="font-weight: 500;">Check-Out</label>
-                        <input type="date" class="form-control shadow-none" name="tdate">
+                        <input type="date" class="form-control shadow-none" name="tdate" min="<?php echo date("Y-m-d"); ?>" required>
                     </div>
                     <div class="col-lg-3 mb-3">
                         <label class="form-label" style="font-weight: 500;">Capacity</label>

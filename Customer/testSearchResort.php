@@ -10,13 +10,23 @@
         $capacity = $_POST['capacity'];
         $fdate = $_POST['fdate'];
         $tdate = $_POST['tdate'];
-    
 
-        $sql = "SELECT resortID, resortName, address, city, state, overallRatings, resortPhoneNo, coverPhoto FROM resorts WHERE state = '$state';";
+        $dateTimestamp1 = strtotime($fdate);
+        $dateTimestamp2 = strtotime($tdate);
+        if ($dateTimestamp1 > $dateTimestamp2){
+
+            echo "<script>alert('Unavailable date selected!');</script>";
+            echo"<meta http-equiv='refresh' content='0; url=bookingMain.php'/>";
+
+        }
+    else {
+
+        $sql = "SELECT resortID, resortName, address, city, state, overallRatings, coverPhoto, resortPhoneNo FROM resorts WHERE state = '$state';";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
     }
+}
 
     else {
 

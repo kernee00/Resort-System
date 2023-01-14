@@ -25,12 +25,6 @@
                             $resortName = $row['resortName'];
                         }
 
-/*           echo "$resortName";
-           echo "$bookingDate";
-           echo "$checkInDate";
-           echo "$checkOutDate";
-           echo "$totalPrice";*/
-
   
 }
     else {

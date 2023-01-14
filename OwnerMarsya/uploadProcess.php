@@ -21,6 +21,12 @@
         if ($result) {
             header('location:uploadPhoto.php?resortID='.$resortID);
         }
+
+        else {
+
+               echo"<script>alert ('Please select an image.')</script>";
+            echo"<meta http-equiv='refresh' content='0; url=uploadPhoto.php?resortID=$resortID'/>";
+        }
       
     }
 

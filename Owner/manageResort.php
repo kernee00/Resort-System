@@ -55,10 +55,7 @@
     <form action="updateResort.php" method="POST">
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
 <button class ="book">Update Details</button>
-
-<br><br>
-<button class ="book"><a href="uploadPhoto.php?resortID=<?php echo $row['resortID'];?>" class="button">
-Update Photo Resort</a></button>
+<a href="uploadPhoto.php?resortID=<?php echo $row['resortID'];?>" class="button">Update Photo Resort</a></button>
 
 
 

@@ -77,8 +77,8 @@
          </div>
    
       </div>
-      <a href="manageReservation.php?custID=<?php echo $custID; ?>" class="delete-btn" style="background-color: skyblue;">Back</a>
-        <!---<a href="updatePPic.php" class="delete-btn">Change Profile Picture</a>-->
+      <a href="javascript:history.back()" class="delete-btn" style="background-color: skyblue;">Back</a>
+
  
    </form>
 </div>
