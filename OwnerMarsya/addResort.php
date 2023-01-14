@@ -39,23 +39,24 @@
             <input type="text" id = "address" name="address" placeholder="Address" class="box" required>
             <span>City:</span>
             <input type="text" id = "city" name="city" placeholder="City" class="box" required>
-                       <span>State:</span>
-                <input type="text" id = "state" name="state" placeholder="State" class="box" required>
+            <span>State:</span>
+            <input type="text" id = "state" name="state" placeholder="State" class="box" required>
         
          </div>
          <div class="inputBox">
     
             <span>Contact No:</span>
             <input type="text" id = "phone" name="phone" placeholder="Contact Number" class="box" required>
-            <span>keywords:</span>
+            <span>Keywords:</span>
             <input type="text" id = "keywords" name="keywords" placeholder="Keywords for Resort" class="box" required>
+            <span>Description:</span>
+            <input type="text" id = "desc" name="desc" placeholder="Keywords for Resort" class="box" required>
             <span>Resort Cover Photo:</span>
             <input type="file" name="resort_image" accept="image/jpg, image/jpeg, image/png" class="box">
          </div>
       </div>
       <input type="submit" value="Add" name="add_resort" class="btn">
-      
-     
+   </form>
 
 </div>
 </body>
