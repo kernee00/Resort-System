@@ -28,10 +28,7 @@
                 $keywords = $row['keywords'];
                 $description = $row['description'];
                 $coverPhoto = $row['coverPhoto'];
-                $images = $row['images'];    
-
-              
-         
+                $images = $row['images'];         
 ?>
 
 
@@ -44,14 +41,12 @@
      <link rel="stylesheet" href="../css/details.css">
   </head>
   <body>
+
     
-      
-          <?php echo '<img src="../OwnerMarsya/upload/' . $row['images'] . '" width="250" height = "250" />'?>
-
-      
 
 
-
+        
+          <?php echo '<img src="../Owner/upload/' . $row['images'] . '"width="250" height = "250" />'?>
 
 
       <?php
@@ -67,29 +62,35 @@
       <div class="flex">
          <div class="inputBox">
 
-            <span>Name:</span>
-            <label ><?php echo $name; ?></label>
 
-            <span>Address:</span>
-            <label ><?php echo $address; ?></label>
 
-            <span>City:</span>
-              <label ><?php echo $city; ?></label>
+            <br> <br>
 
-            <span>State:</span>
-              <label ><?php echo $state; ?></label>
+            <!-- <center><span>Name:</span> -->
+            <strong><center><label ><?php echo $name; ?></label></strong><p>
+
+                <br> <br>
+
+            <center><span>Address:</span>
+            <label ><?php echo $address; ?></label><p>
+
+            <center><span>City:</span>
+            <label ><?php echo $city; ?></label><p>
+
+            <center><span>State:</span>
+            <label ><?php echo $state; ?></label><p>
       
-            <span>Phone Number:</span>
-              <label ><?php echo $phone; ?></label>
+            <center><span>Phone Number:</span>
+            <label ><?php echo $phone; ?></label><p>
 
-              <span>Ratings:</span>
-              <label ><?php echo $ratings; ?></label>
+              <center><span>Ratings:</span>
+            <label ><?php echo $ratings; ?></label><p>
          
-         <span>Keywords:</span>
-              <label ><?php echo $keywords; ?></label>
+             <center><span>Keywords:</span>
+               <label ><?php echo $keywords; ?></label><p>
 
-              <span>Description:</span>
-              <label ><?php echo $description; ?></label>
+               <center><span>Description:</span>
+              <label ><?php echo $description; ?></label><p>
 
               <!--pass value-->
                 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $resortID; ?>" class="box">
@@ -101,7 +102,8 @@
          </div>
    
       </div>
-      <input type="submit" value="Book Now" name="submit" class="btn">
+      <br> <br>
+      <center><input type="submit" value="Book Now" name="submit" class="btn">
        <!--<a href="updatePPic.php" class="delete-btn">Back</a>-->
        <input type="button" value="Back" onclick="history.back()">
  
