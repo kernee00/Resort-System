@@ -64,6 +64,7 @@
                     ?>  
                     </tbody>
                 </table>
+                 <a href = 'reportPart/reportCustomer.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
             </div>
         </div>
     </div>
