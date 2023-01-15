@@ -1,8 +1,8 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 session_start();
-include_once '../connection.php';
-include_once 'customerNavBar.php';
+include_once '../../connection.php';
+//include_once '../customerNavBar.php';
 $user_id = $_SESSION['user_id'];
 
 ?>
@@ -98,34 +98,41 @@ $y2=date("Y",$month2);
                             <table class="table table-bordered" width="100%"  border="0" style="padding-left:40px">
                                 <thead>
                                    <tr>
-<th>No.</th>
-<th>Month / Year </th>
-<th>Expense</th>
+<th><center>No.</th>
+<th><center>Month / Year </th>
+<th><center>Expenses (RM)</th>
 </tr>
                                 </thead>
+                                 <tbody>
                                 <?php
-$ret=mysqli_query($con,"SELECT totalPayment, month(paymentDate) as lmonth, year(paymentDate) as lyear from payments where paymentDate between '$fdate' and '$tdate' group by lmonth,lyear and totalPayment = 'Approved';");
 
 
-$num=mysqli_num_rows($ret);
+
+$query = $conn->query("SELECT totalPayment, month(paymentDate) as lmonth, year(paymentDate) as lyear from payments where paymentDate between '$fdate' and '$tdate' group by totalPayment,lmonth,lyear and totalPayment = 'Approved';") or die(mysqli_error());
+
+
+$num=mysqli_num_rows($query);
 if($num>0){
 $cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
+$total = 0;
+
+while ($row=$query->fetch_array()) {
 
 ?>
-                                <tbody>
-                                    <tr>
-                    <td><?php echo $cnt;?></td>
-                  <td><?php  echo $row['lmonth']."/".$row['lyear'];?></td>
-              <td><?php  echo $total=$row['totalPayment'];?></td>
+                               
+                <tr>
+                <td><center><?php echo $cnt ?></td>
+                <td><center><?php echo $row['lmonth']."/".$row['lyear'] ?></td>
+              <td><center><?php echo $row['totalPayment'] ?></td>
              
                     </tr>
                 <?php
 $cnt++;
+$total = $row['totalPayment'] + $total;
 }?>
 <tr>
                   <td colspan="2" align="center">Total </td>
-              <td><?php  echo $total;?></td>
+              <td><center><?php  echo $total;?></td>
                  
                 </tr>             
                                 </tbody>
@@ -136,42 +143,44 @@ $year2=strtotime($tdate);
 $y1=date("Y",$year1);
 $y2=date("Y",$year2);
 ?>
-                       <h4 class="header-title m-t-0 m-b-30">Sales Report Year Wise</h4>
+                       <h4 class="header-title m-t-0 m-b-30">Expenses Report Year Wise</h4>
 <h4 align="center" style="color:blue">Sales Report  from <?php echo $y1;?> to <?php echo $y2;?></h4>
         <hr >
         <div class="row">
                             <table class="table table-bordered" width="100%"  border="0" style="padding-left:40px">
                                 <thead>
                                    <tr>
-<th>No.</th>
-<th>Year </th>
-<th>Sales</th>
+<th><center>No.</th>
+<th><center>Year </th>
+<th><center>Expenses (RM)</th>
 </tr>
 </thead>
 
 <?php
-$ret=mysqli_query($con,"SELECT totalPayment, month(paymentDate) as lmonth, year(paymentDate) as lyear from payments where paymentDate between '$fdate' and '$tdate' group by lmonth,lyear and totalPayment = 'Approved';");
+$ret=mysqli_query($conn,"SELECT totalPayment, month(paymentDate) as lmonth, year(paymentDate) as lyear from payments where paymentDate between '$fdate' and '$tdate' group by totalPayment, lmonth,lyear and totalPayment = 'Approved';");
 
 $num=mysqli_num_rows($ret);
 if($num>0){
 $cnt=1;
+$total = 0;
 while ($row=mysqli_fetch_array($ret)) {
 
 ?>
                                 <tbody>
                                     <tr>
-                    <td><?php echo $cnt;?></td>
-                  <td><?php  echo $row['lyear'];?></td>
-              <td><?php  echo $total=$row['totalPayment'];?></td>
+                    <td><center><?php echo $cnt;?></td>
+                  <td><center><?php  echo $row['lyear'];?></td>
+              <td><center><?php  echo $row['totalPayment'];?></td>
               
              
                     </tr>
                 <?php
 $cnt++;
+$total = $row['totalPayment'] + $total;
 }?>
 <tr>
                   <td colspan="2" align="center">Total </td>
-              <td><?php  echo $total;?></td>
+              <td><center><?php  echo $total;?></td>
                  
                 </tr>             
                                 </tbody>

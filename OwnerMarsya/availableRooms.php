@@ -53,10 +53,11 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 				<table id = "table" class = "table table-bordered">
 					<thead>
 						<tr>
+							<th><center>Room Name</th>
 							<th><center>Price Per Night (RM)</th>
 							<th><center>Capacity</th>
 							<th><center>Room Description</th>
-									<th><center>Action</th>
+							<th><center>Action</th>
 				
 							
 						</tr>
@@ -67,6 +68,7 @@ $stmt = $conn->prepare("INSERT INTO bookings (bookingDate, checkInDate, checkOut
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>
+							<td><center><?php echo $fetch['roomName']?></td>
 						<td><center><?php echo $fetch['pricePerNight']?></td>
 							<td><center><?php echo $fetch['capacity']?></td>
 							<td><center><?php echo $fetch['location']?></td>

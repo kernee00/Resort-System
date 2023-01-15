@@ -122,13 +122,14 @@ $rtype=$_POST['requesttype'];
       };
     </script>
 
-    <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+    <div id="top_x_div" style="width: 900px; height: 500px;margin-left: 30%; margin-top:20px"></div>
 
     <?php
 
   }
 
   else { ?>
+    <!--<form action="" method="POST" style="margin-left: 30%; margin-top:20px" >-->
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -186,8 +187,9 @@ $rtype=$_POST['requesttype'];
         chart.draw(data, options);
       };
     </script>
+  <!--</form>-->
 
-    <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+    <div id="top_x_div" style="width: 900px; height: 500px; margin-left: 30%; margin-top:20px"></div>
 
     <?php
   }
