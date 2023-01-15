@@ -57,7 +57,7 @@
 <button class ="book">Update Details</button>
 
 <br><br>
-<a href="uploadPhoto.php?resortID=<?php echo $row['resortID'];?>" class="button">Update Photo Resort</a></button>
+<a href="uploadPhoto.php?resortID=<?php echo $row['resortID'];?>" class="button">Upload Resort Photo</a></button>
 
 
 
