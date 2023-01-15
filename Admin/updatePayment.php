@@ -8,6 +8,22 @@
          if (isset($_GET['paymentID'])){
         $payment_id = $_GET['paymentID'];
 
+        $query = $conn->query("SELECT * FROM payments WHERE paymentID = '$payment_id';") or die(mysqli_error());
+
+    while($fetch = $query->fetch_array()){
+
+
+        $status = $fetch['paymentStatus'];
+    }
+    if ($status != 'Paid'){
+
+         echo "<script>alert('Payment cannot be approved!');</script>";
+          echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
+
+    }
+
+    else {
+
         $sql = "SELECT * FROM payments WHERE paymentID = '$payment_id'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
@@ -85,6 +101,7 @@
    }
 
     }
+}
 }
 
     else {

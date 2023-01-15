@@ -2,9 +2,12 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: Cambria, cochin, Georgia, Times, 'Times New Roman', serif;
+	font-family: 'Glyphicons Halflings';
 	color: black;
+	font-weight: normal;
 }
+
+
 
 html {
 
@@ -22,7 +25,10 @@ main {
 	margin: auto;
 }
 
+
+
 main .card {
+	min-width: 200px;
 
 	max-width: 300px;
 	flex: 1 1 210px;
@@ -30,6 +36,13 @@ main .card {
 	height: 550px;
 	border: 1px solid lightgray;
 	margin: 20px;
+
+}
+
+main .card:nth-child(1),
+main .card:nth-child(2),
+main .card:nth-child(3){
+	display: inline-block;
 }
 
 main .card .image {
@@ -54,10 +67,6 @@ main .card .caption {
 main .card .caption p{
 
 	font-size: 1.5rem;
-}
-
-del {
-	text-decoration: line-through;
 }
 
 main .card .caption .rate {
@@ -116,12 +125,6 @@ main .card button:hover::after{
 }
 
 
-
-
-
-
-
-
 main .card a{
 	width: 50%;
 }
@@ -146,3 +149,16 @@ main .card a{
 .update:hover{
    background-color: var(--dark-red);
 }
+
+a:link {
+
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:link:hover {
+
+  background-color: transparent;
+  text-decoration: none;
+}
+

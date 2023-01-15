@@ -16,6 +16,7 @@
 		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
 		<link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
 		<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
+			<script src="https://kit.fontawesome.com/ba67cd3f0d.js" crossorigin="anonymous"></script>
 
 	<br />
 	<div class = "container-fluid">
@@ -45,7 +46,7 @@
 							
 							
 
-									<td><center><a class = "btn btn-warning" href = "updateOwnerPayment.php?ownerID=<?php echo $fetch['ownerID']?>"><i class = "glyphicon glyphicon-edit"></i>Pay</a> </td>
+									<td><center><a class = "btn btn-warning" href = "updateOwnerPayment.php?ownerID=<?php echo $fetch['ownerID']?>"><i class="fa-solid fa-circle-check"></i> Pay</a> </td>
 						
 						</tr>
 					<?php

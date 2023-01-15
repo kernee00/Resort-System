@@ -8,7 +8,24 @@
          if (isset($_GET['paymentID'])){
         $payment_id = $_GET['paymentID'];
         //change status to refund
-        $sql = "UPDATE payments SET paymentStatus = 'Refund' WHERE paymentID = '$payment_id'";
+
+    $query = $conn->query("SELECT * FROM payments WHERE paymentID = '$payment_id';") or die(mysqli_error());
+
+    while($fetch = $query->fetch_array()){
+
+
+        $status = $fetch['paymentStatus'];
+    }
+
+if($status != 'Pending Refund'){
+         echo "<script>alert('Payment cannot be refund!');</script>";
+          echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
+
+    }
+
+    else {
+
+        $sql = "UPDATE payments SET paymentStatus = 'Refunded' WHERE paymentID = '$payment_id'";
         $result = mysqli_query($conn, $sql);
      
 
@@ -25,7 +42,7 @@
        }
 
     }
-
+}
     else {
 
         echo "Session timed-out. Login again.";

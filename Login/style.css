@@ -11,6 +11,7 @@
 	margin:  0;
 	padding:  0;
 	box-sizing: border-box;
+  font-family: Cambria, cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
 
@@ -23,7 +24,7 @@ body {
 {
 	height: 100%;
 	width: 100%;
-	background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(background.jpg);
+	background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(background2.jpg);
 	background-position: center;
 	background-size: cover;
 	position: absolute;
@@ -46,7 +47,7 @@ body {
 }
 
 .logo{
-	color: var(--color-white);
+	color: #eeeee4;
 	font-size: 30px;
 
 }
@@ -93,11 +94,11 @@ nav ul li button {
 
 nav ul li button:hover
 {
-	color: aqua;
+	color: white;
 }
 
 nav ul li a:hover{
-	color: aqua;
+	color: white;
 }
 
 a {
@@ -114,7 +115,7 @@ a {
 .form-box {
 
 	width: 380px;
-	height: 480px;
+	height: 520px;
 	position: relative;
 	margin: 2% auto;
 	background: rgba(0,0,0,0.3);
@@ -178,6 +179,7 @@ a {
 	border-bottom: 1px solid#999;
 	outline: none;
 	background: transparent;
+	color: var(--color-white);
 }
 
 .submit-btn{
@@ -222,7 +224,7 @@ span{
     padding:10px 0;
     font-size:12px;
     cursor: pointer;
-    color: #F3C693;
+    color: var(--color-white);
     text-decoration: none;
 }
 
@@ -238,6 +240,7 @@ span{
 h1 {
 
 	left: 100px;
+	color: #eeeee4;
 }
 
 #register{
@@ -248,4 +251,18 @@ h1 {
 	font-size: 15;
 }
 
+.role-label{
+color: white;
 
+}
+
+::placeholder { 
+  color: #eeeee4;
+  opacity: 1; 
+}
+
+a:link {
+  color: #eeeee4;
+  background-color: transparent;
+  text-decoration: underline;
+}

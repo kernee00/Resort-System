@@ -16,6 +16,8 @@
 		<meta charset = "utf-8" />
 		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
 		<link rel = "stylesheet" type = "text/css" href = "dashboardStyle.css" />
+		<!--<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">-->
+		<script src="https://kit.fontawesome.com/ba67cd3f0d.js" crossorigin="anonymous"></script>
 		</head>
 		<body>
 
@@ -54,7 +56,7 @@
 
 							</div>
 							<div>
-								<span class ="las la-payments"></span>
+								<i class="fa-solid fa-dollar-sign"></i>
 
 							</div>
 
@@ -75,7 +77,7 @@
 
 							</div>
 							<div>
-								<span class ="las la-owner"></span>
+								<i class="fa-solid fa-money-bill-transfer"></i>
 
 							</div>
 
@@ -94,7 +96,7 @@
 
 							</div>
 							<div>
-								<span class ="las la-owner"></span>
+								<i class="fa-solid fa-comments-dollar"></i>
 
 							</div>
 
@@ -114,7 +116,7 @@
 
 							</div>
 							<div>
-								<span class ="las la-owner"></span>
+								<i class="fa-regular fa-chart-bar"></i>
 
 							</div>
 
@@ -127,7 +129,8 @@
 									<div class ="card-header">
 										<h3>Recent Payments</h3>
 										<form action="managePayment.php" method="POST">
-										<button>See All<span class = "las la-arrow-right"></span></button></form>
+										<button>See All  <i class="fa-solid fa-arrow-right"></i></button></form>
+
 
 
 								</div>
@@ -148,7 +151,7 @@
 
 
 									<?php
-						$query4 = $conn->query("SELECT *  FROM payments WHERE paymentStatus = 'Paid' OR paymentStatus = 'Refund';") or die(mysqli_error());
+						$query4 = $conn->query("SELECT *  FROM payments WHERE paymentStatus = 'Paid' OR paymentStatus = 'Pending Refund';") or die(mysqli_error());
 						while($row4 = $query4->fetch_array()){
 							$amount = $row4['totalPayment'];
 							$status = $row4['paymentStatus'];
@@ -174,13 +177,7 @@
 										
 								</div>
 								</div>
-
-							</div>
-							
-									
-								</div>
-							</div>
-
+			
 
 						</div>
 

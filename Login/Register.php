@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Register Page</title>
    <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="../Style/nav_bar.css">-->
     
     <!---we had linked our css file----->
 </head>
@@ -11,12 +12,11 @@
     <div class="FULL-PAGE">
         <div class="navbar">
          
-                <h1 class ="logo">Resort<span>Booking</span></h1>
+               <h1 class ="logo">Resort Reservation</h1>
            
             <nav>
                 <ul id='MenuItems'>
-                    <li><a href='#'>Home</a></li>
-                    <li><a href='#'>About Us</a></li>
+
                      <li><a href='loginV2.php'>Login</a></li>
             
                 </ul>
@@ -36,7 +36,7 @@
 							<input type ='email' class = 'input-field' placeholder='Email' required id = "email" name = "email">
 							<input type ='text' class = 'input-field' placeholder='Password' required id = "pass" name = "pass" minlength="8">
 							<input type ='text' class = 'input-field' placeholder='Confirm Password' required id = "cofirmPass" name = "confirmPass" minlength="8">
-						
+						<br><br>
 							<label class ="role-label">Select Role to Register</label>
 					
 							<select class = "form-select mb-3" aria-label="Default select example" id = "role" name ="role">
@@ -46,7 +46,7 @@
 								<option value = "customers">Customer</option>
 							</select>
 				
-							
+							<br><br>
 							<button type ='submit' class = 'submit-btn'>Register</button>
 						
 	         </form>

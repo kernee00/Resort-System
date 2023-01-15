@@ -11,6 +11,7 @@
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
     <title>Customer Main</title>
   <link rel="stylesheet" href="../Admin/userStyle.css">
+     <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
 
 </head>
 

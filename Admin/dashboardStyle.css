@@ -1,6 +1,6 @@
 :root{
 
-	--main-color: #DD2F6E;
+	--main-color: #0073ff;
 	--color-dark: #1D2231;
 	--text-grey: #8390A2;
 }
@@ -105,9 +105,11 @@ main {
 
 .recent-grid{
 	margin-top: 3.5rem;
+
 	display: grid;
 	grid-gap: 2rem;
-	grid-template-columns: 110% auto;
+	grid-template-columns: 200% auto;
+
 }
 
 
@@ -115,6 +117,7 @@ main {
 
 	background: #fff;
 	border-radius: 5px;
+
 }
 
 .card-header
@@ -150,6 +153,7 @@ thead tr{
 
 	border-top: 1px solid #f0f0f0;
 	border-bottom: 1px solid #f0f0f0;
+		
 	
 }
 

@@ -16,6 +16,7 @@
 		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
 		<link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
 		<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
+		<script src="https://kit.fontawesome.com/ba67cd3f0d.js" crossorigin="anonymous"></script>
 
 	<br />
 	<div class = "container-fluid">
@@ -39,7 +40,7 @@
 					</thead>
 					<tbody>
 					<?php
-						$query = $conn->query("SELECT p.bookingID, p.paymentID, paymentDate, paymentStatus, totalPayment, p.totalPayment-b.totalPrice AS charges FROM payments p,bookings b WHERE b.bookingID = p.bookingID AND paymentStatus != 'Approved' AND paymentStatus!= 'Refund' GROUP BY p.bookingID, p.paymentID ORDER BY p.bookingID, p.paymentID;") or die(mysqli_error());
+						$query = $conn->query("SELECT p.bookingID, p.paymentID, paymentDate, paymentStatus, totalPayment, p.totalPayment-b.totalPrice AS charges FROM payments p,bookings b WHERE b.bookingID = p.bookingID AND paymentStatus != 'Approved' AND paymentStatus!= 'Refunded' GROUP BY p.bookingID, p.paymentID ORDER BY p.bookingID, p.paymentID;") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>
@@ -51,7 +52,7 @@
 							<td><center><?php echo $fetch['paymentStatus']?></td>
 					
 
-							<td><center><a class = "btn btn-warning" href = "updatePayment.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Approve</a> <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "paymentProcess.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-remove"></i> Refund</a></center></td>
+							<td><center><a class = "btn btn-warning" href = "updatePayment.php?paymentID=<?php echo $fetch['paymentID']?>"><i class="fa-solid fa-circle-check"></i> Approve</a> <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "paymentProcess.php?paymentID=<?php echo $fetch['paymentID']?>"><i class="fa-solid fa-right-left"></i> Refund</a></center></td>
 						</tr>
 					<?php
 						}

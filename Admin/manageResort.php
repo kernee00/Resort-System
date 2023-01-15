@@ -24,6 +24,7 @@
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
     <title>Main Page</title>
   <link rel="stylesheet" href="../Style/displayStyle.css">
+    <!--<link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />-->
 
 </head>
 

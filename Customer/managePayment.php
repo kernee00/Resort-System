@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                     <?php
-                    $query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus != 'Refund' AND  payments.paymentStatus !='Approved' AND bookings.checkOutDate > SYSDATE() AND bookings.custID = '$user_id';") or die(mysqli_error());
+                    $query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus != 'Refunded' AND  payments.paymentStatus !='Approved' AND bookings.checkOutDate > SYSDATE() AND bookings.custID = '$user_id';") or die(mysqli_error());
 
                         while($fetch = $query->fetch_array()){
                     ?>  
