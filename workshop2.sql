@@ -109,7 +109,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`custID`, `custName`, `phoneNo`, `custEmail`, `custPassword`, `profile_image`) VALUES
-('sicario', 'krishna', '0177581926', 'krishnarram2010@gmail.com', 'mangkuk123', NULL),
+('sicario', 'krishna', '0177581926', 'krishnarram2010@gmail.com', 'krishna123', NULL),
 ('syirah', 'Rabiatul Adawiyah', '133828644', 'syirah02@gmail.com', 'syirah1234', NULL);
 
 -- --------------------------------------------------------
@@ -167,9 +167,11 @@ INSERT INTO `payments` (`paymentID`, `totalPayment`, `paymentDate`, `paymentType
 
 CREATE TABLE `ratings` (
   `ratingID` int(11) NOT NULL,
-  `ratingDateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `marksRated` double NOT NULL,
-  `comments` varchar(50) NOT NULL,
+  `ratingDateTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `marksRated` double(4,2) DEFAULT NULL,
+  `comments` varchar(50) DEFAULT NULL,
+  `commentsf` varchar(255) DEFAULT NULL,
+  `commentsc` varchar(255) DEFAULT NULL,
   `bookingID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -177,9 +179,11 @@ CREATE TABLE `ratings` (
 -- Dumping data for table `ratings`
 --
 
-INSERT INTO `ratings` (`ratingID`, `ratingDateTime`, `marksRated`, `comments`, `bookingID`) VALUES
-(1, '2023-01-10 00:00:00', 1, 'gg', 100000),
-(2, '2023-01-10 00:00:00', 3, 'krishna', 100003);
+INSERT INTO `ratings` (`ratingID`, `ratingDateTime`, `marksRated`, `comments`, `commentsf`, `commentsc`, `bookingID`) VALUES
+(18, '2023-01-14 00:00:00', 4.00, 'good', '', '', 100027),
+(19, '2023-01-14 00:00:00', 3.00, 'ok je', '', '', 100027),
+(20, '2023-01-14 00:00:00', 2.00, 'service okay', 'facilities okay', 'very clean', 100027);
+
 
 -- --------------------------------------------------------
 
@@ -449,6 +453,7 @@ ALTER TABLE `payments`
 -- Constraints for table `ratings`
 --
 ALTER TABLE `ratings`
+  MODIFY `ratingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
   ADD CONSTRAINT `test` FOREIGN KEY (`bookingID`) REFERENCES `bookings` (`bookingID`);
 
 --

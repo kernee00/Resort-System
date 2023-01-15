@@ -1,4 +1,6 @@
+<?php error_reporting (E_ALL ^ E_NOTICE); ?>
 <?php
+
 
 session_start();
     include_once '../connection.php';
