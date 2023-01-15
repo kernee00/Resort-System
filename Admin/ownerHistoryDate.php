@@ -15,15 +15,16 @@
 		<meta charset = "utf-8" />
 		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
 		
-		<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
+		<!--<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />-->
+           <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
 
 	<br />
  <title>Owner Payment History</title>
-    <link rel="stylesheet" href="manageStyle.css">
+    <!--<link rel="stylesheet" href="manageStyle.css">-->
 
          <h1 style="margin-left:40% ;margin-top:50px"   class="">Owner Payment History</h1>
          <br><br>
-     <div class ="insert-date" style="margin-left: 30%;">
+     <div class ="insert-date" style="margin-left: 30%;margin-right: 30%;">
           <form name="dateInput" action="ownerPaymentHistory.php" method="post" action="">
           	
 
@@ -50,6 +51,9 @@
 </table>
 
      </form>
+      <form action="manageOwnerPayment.php" method="POST" style="margin-left: 28%;">
+        <a href = 'manageOwnerPayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
+   </form>
 
      </div>
     </div>

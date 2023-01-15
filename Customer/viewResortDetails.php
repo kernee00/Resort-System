@@ -46,7 +46,7 @@
   <body>
     
       
-          <?php echo '<img src="../Owner/upload/' . $row['images'] . '" width="250" height = "250" />'?>
+          <?php echo '<img src="../OwnerMarsya/upload/' . $row['images'] . '" width="250" height = "250" />'?>
 
       
 

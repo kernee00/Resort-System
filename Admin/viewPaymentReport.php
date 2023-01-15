@@ -13,7 +13,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-   
+   <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
     <title>Resort Report</title>
     <h2 align="center" style=" margin-top:50px">Payment Report</h2>
 
@@ -21,7 +21,7 @@
   <body>
 
     <!---select date and method-->
-    <div class ="insert-date" style="margin-left: 30%; margin-top:20px">
+    <div class ="insert-date" style="margin-left: 30%; margin-top:20px; margin-right: 30%;">
       <form name="bwdatesdata" action="" method="post" action="">
       <table width="100%" height="117"  border="0" >
       <tr>

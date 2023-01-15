@@ -16,6 +16,7 @@
 		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
 		
 		<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
+           <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
 
 	<br />
  <title>View Bookings</title>
@@ -23,7 +24,7 @@
 
          <h1 style="margin-left:40% ;margin-top:50px"   class="">Reservations Information</h1>
          <br><br>
-     <div class ="insert-date" style="margin-left: 30%;">
+     <div class ="insert-date" style="margin-left: 30%;  margin-right: 30%;">
           <form name="dateInput" action="testResHistory.php" method="post" action="">
           	
 

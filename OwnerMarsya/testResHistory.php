@@ -34,6 +34,7 @@ $tdate=$_POST['tdate'];
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
     <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
     <link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
+      <script src="https://kit.fontawesome.com/ba67cd3f0d.js" crossorigin="anonymous"></script>
 
   <br />
  <title>Manage Bookings</title>
@@ -74,7 +75,7 @@ $tdate=$_POST['tdate'];
               <td><center><?php echo $fetch['totalPrice']?></td>
               
               <td><center><?php echo $fetch['resortName']?></td>
-                 <td><center><a class = "btn " href = "customerMain.php?custID=<?php echo $fetch['custID']?>"><i class = "glyphicon glyphicon-edit"></i> <?php echo $fetch['custID']?></a> </td>
+                 <td><center><a class = "btn " href = "customerMain.php?custID=<?php echo $fetch['custID']?>"><?php echo $fetch['custID']?></a> </td>
 
             
             </tr>

@@ -81,7 +81,7 @@ $tdate=$_POST['tdate'];
           ?>  
           </tbody>
         </table>
-         <a href = 'viewReservation.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
+         <a href = 'bookingByOwner.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
       </div>
     </div>
   </div>
