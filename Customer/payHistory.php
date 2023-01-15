@@ -109,7 +109,7 @@
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                       <center><a href="source_payment_form/payHistoryConfirm.php?paymentID=<?php echo $paymentID?>">Pay Now</a>
+                                       <center><a href="index.php?paymentID=<?php echo $paymentID?>">Pay Now</a>
                                         <!-- <center><a href="confirmPaymentProcess.php?bookingID=<?php echo $bookingID?>">Pay Now</a> -->
                                     </td>
                                 </tr>

@@ -8,6 +8,14 @@
   if (isset($_GET['paymentID'])){
     $paymentID = $_GET['paymentID'];
 
+    $update_payment = "update payments set paymentStatus = 'Paid' WHERE paymentID = '$paymentID'";
+
+$run_payment = mysqli_query($conn,$update_payment);
+
+if($run_payment){
+
+
+
 
     $query = $conn->query("SELECT * FROM bookings b, payments p, resorts r WHERE b.bookingID = p.bookingID AND b.resortID = r.resortID AND paymentID = '$paymentID';") or die(mysqli_error());
 
@@ -25,6 +33,7 @@
                             $totalPayment = $row['totalPayment'];
                             
                         }
+                    }
 
   
 }

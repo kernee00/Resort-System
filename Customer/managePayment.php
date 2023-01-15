@@ -51,7 +51,7 @@
 
                             <td><center>
 
-                                 <a class = "btn btn-warning" href = "payHistory.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Pay</a> <a class = "btn btn-warning" 
+                                 <a class = "btn btn-warning" href = "payHistory.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Pay</a> <a class = "btn btn-danger" 
                                 onclick = "confirmationRefund(this); return false;" 
 
                             href = "updatePayment.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Request Refund</a> 
