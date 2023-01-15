@@ -108,6 +108,7 @@
                                 <link rel="stylesheet" href="design.css">
                                 <tbody><tr>
                                     <td class="content-block">
+                                        <img src="resortLogo.jpg" alt="Logo" width="700" height="100" />
                                         <center><h2>Receipt</h2>
                                     </td>
                                 </tr>
