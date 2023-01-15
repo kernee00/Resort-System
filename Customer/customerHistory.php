@@ -56,7 +56,7 @@
 
                             href = "receiptPayment.php?bookingID=<?php echo $fetch['bookingID']?>"><i class = "glyphicon glyphicon-download"></i> View</a> <a class = "btn btn-danger"  
 
-                            href = "addReviewProcess.php?bookingID=<?php echo $fetch['bookingID']?>"><i class = "glyphicon glyphicon-star"></i> Feedback & Rate</a></center></td>
+                            href = "addReview3.php?bookingID=<?php echo $fetch['bookingID']?>"><i class = "glyphicon glyphicon-star"></i> Feedback & Rate</a></center></td>
 
                         </tr>
                     <?php

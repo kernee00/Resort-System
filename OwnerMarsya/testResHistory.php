@@ -11,7 +11,16 @@
 $fdate=$_POST['fdate'];
 $tdate=$_POST['tdate'];
 
- 
+   $dateTimestamp1 = strtotime($fdate);
+        $dateTimestamp2 = strtotime($tdate);
+        if ($dateTimestamp1 > $dateTimestamp2){
+
+            echo "<script>alert('Unavailable date selected!');</script>";
+            error_reporting(0);
+            echo"<meta http-equiv='refresh' content='0; url=viewReservation.php'/>";
+        
+
+        }
 
 
   

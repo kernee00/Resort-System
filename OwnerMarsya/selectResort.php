@@ -12,7 +12,7 @@ $fdate=$_GET['fdate'];
 $tdate=$_GET['tdate'];
 $custID = $_GET['custID'];
 
-    $sql = "SELECT * FROM resorts;;";
+    $sql = "SELECT * FROM resorts WHERE ownerID = '$user_id';";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 }

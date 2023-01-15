@@ -82,6 +82,19 @@ $fdate=$_POST['fdate'];
 $tdate=$_POST['tdate'];
 $rtype=$_POST['requesttype'];
 
+ $dateTimestamp1 = strtotime($fdate);
+        $dateTimestamp2 = strtotime($tdate);
+        if ($dateTimestamp1 > $dateTimestamp2){
+
+            echo "<script>alert('Unavailable date selected!');</script>";
+            error_reporting(0);
+            echo"<meta http-equiv='refresh' content='0; url=reportCustomer.php'/>";
+        
+
+        }
+
+
+
 ?>
 <?php if($rtype=='mtwise'){
 $month1=strtotime($fdate);

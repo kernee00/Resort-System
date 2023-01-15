@@ -16,7 +16,9 @@
         if ($dateTimestamp1 > $dateTimestamp2){
 
             echo "<script>alert('Unavailable date selected!');</script>";
+            error_reporting(0);
             echo"<meta http-equiv='refresh' content='0; url=bookingMain.php'/>";
+        
 
         }
     else {

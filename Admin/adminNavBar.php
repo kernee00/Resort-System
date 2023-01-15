@@ -13,9 +13,10 @@
 <body>
    
         <div class="navBar">
-                        
-            	<h1 class ="logo">Resort<span>Reservation</span></h1>
-           
+
+
+                 <li><a href='dashboard.php'><h1 class ="logo">Resort<span>Reservation</span></h1></a></li>
+      
                 <ul>
                     <li><a href='adminMain.php'>Profile</a></li>
                     <li><a href='manageAdmin.php'>Manage Admin</a></li>

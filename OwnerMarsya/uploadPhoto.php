@@ -3,6 +3,7 @@
     include_once '../connection.php';
     include_once 'ownerNavBar.php';
     $user_id = $_SESSION['user_id'];
+   
 
 
      if (isset($_GET['resortID'])){

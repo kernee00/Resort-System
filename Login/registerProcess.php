@@ -40,14 +40,23 @@ if($password != $confirmPassword)
 
 	if ($role == "owner")
 	{
-		$stmt = $conn->prepare("INSERT INTO $role (ownerID, ownerName, ownerPhoneNo, ownerEmail, accPassword) VALUES (?,?,?,?,?)");
+		$stmt = $conn->prepare("INSERT INTO owner (ownerID, ownerName, ownerPhoneNo, ownerEmail, accPassword) VALUES (?,?,?,?,?)");
         $stmt->bind_param("sssss", $username,$name,$phone, $email, $password);
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();
 		if($success>0)
 		{
-			echo "<script>alert('Owner register succesful! Please try to login.');</script>";
+
+			$query = $conn->query("SELECT * FROM owner WHERE ownerID LIKE '%$username%';") or die(mysqli_error());
+
+
+			while ($row=$query->fetch_array()) {
+			$user_id = $row['ownerID'];
+
+				}
+			
+			echo "<script>alert('Owner register succesful! Please try to login. Username: $user_id');</script>";
 			echo"<meta http-equiv='refresh' content='0; url=loginV2.php'/>";
 		}
 		else
@@ -60,14 +69,23 @@ if($password != $confirmPassword)
 	}
 
 	else if ($role == "customers"){
-		$stmt = $conn->prepare("INSERT INTO $role (custID, custName, phoneNo, custEmail, custPassword) VALUES (?,?,?,?,?)");
+		$stmt = $conn->prepare("INSERT INTO customers (custID, custName, phoneNo, custEmail, custPassword) VALUES (?,?,?,?,?)");
         $stmt->bind_param("sssss", $username,$name,$phone, $email, $password);
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();
 		if($success>0)
 		{
-			echo "<script>alert('Customer register succesful! Please try to login.');</script>";
+
+			$query = $conn->query("SELECT * FROM customers WHERE custID LIKE '%$username%';") or die(mysqli_error());
+
+
+			while ($row=$query->fetch_array()) {
+			$user_id = $row['custID'];
+
+				}
+
+			echo "<script>alert('Customer register succesful! Please try to login. Username: $user_id');</script>";
 			echo"<meta http-equiv='refresh' content='0; url=loginV2.php'/>";
 		}
 		else

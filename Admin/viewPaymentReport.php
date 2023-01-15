@@ -27,13 +27,13 @@
       <tr>
       <th width="27%" height="63" scope="row">From:</th>
       <td width="73%">
-      <input type="date" name="fdate" class="form-control" id="fdate" required>
+      <input type="date" name="fdate" class="form-control" id="fdate" >
       </td>
       </tr>
       <tr>
       <th width="27%" height="63" scope="row">To:</th>
       <td width="73%">
-      <input type="date" name="tdate" class="form-control" id="tdate" required></td>
+      <input type="date" name="tdate" class="form-control" id="tdate" ></td>
       </tr>
       <tr>
       <th width="27%" height="63" scope="row">Request Type :</th>
@@ -46,13 +46,17 @@
     <th width="27%" height="63" scope="row"></th>
     <td width="73%">
     <button class="btn-primary btn" type="submit" name="submit">Submit</button>
-      <a href = 'managePayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
+ 
+      
 
   </tr>
 </table>
      </form>
+     <form action="managePayment.php" method="POST" style="margin-left: 28%;">
+        <a href = 'managePayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
+   </form>
      </div>
-  
+  <br>
     <hr>
       <div class="row">
       <div class="col-xs-12">
@@ -63,6 +67,17 @@ $fdate=$_POST['fdate'];
 $tdate=$_POST['tdate'];
 $rtype=$_POST['requesttype'];
 
+
+        $dateTimestamp1 = strtotime($fdate);
+        $dateTimestamp2 = strtotime($tdate);
+        if ($dateTimestamp1 > $dateTimestamp2){
+
+            echo "<script>alert('Unavailable date selected!');</script>";
+            error_reporting(0);
+            echo"<meta http-equiv='refresh' content='0; url=viewPaymentReport.php'/>";
+        
+
+        }
  
 ?>
 <?php

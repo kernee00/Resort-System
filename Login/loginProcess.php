@@ -64,7 +64,7 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 				echo "Login success! Welcome ".$row['adminName']."!";
 				$_SESSION['role'] = "admin";
 				$_SESSION['user_id'] = $username;
-				header("location:../Admin/adminMain.php");
+				header("location:../Admin/dashboard.php");
 				exit();
 						
 			}
