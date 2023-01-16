@@ -40,7 +40,7 @@
 					</thead>
 					<tbody>
 					<?php
-						$query = $conn->query("SELECT p.bookingID, p.paymentID, paymentDate, paymentStatus, totalPayment, p.totalPayment-b.totalPrice AS charges FROM payments p,bookings b WHERE b.bookingID = p.bookingID AND paymentStatus != 'Approved' AND paymentStatus!= 'Refunded' GROUP BY p.bookingID, p.paymentID ORDER BY p.bookingID, p.paymentID;") or die(mysqli_error());
+						$query = $conn->query("SELECT p.bookingID, p.paymentID, paymentDate, paymentStatus, totalPayment, p.totalPayment-b.totalPrice AS charges FROM payments p,bookings b WHERE b.bookingID = p.bookingID AND paymentStatus = 'Paid' OR paymentStatus= 'Pending Refund' GROUP BY p.bookingID, p.paymentID ORDER BY p.bookingID, p.paymentID;") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>

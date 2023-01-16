@@ -16,21 +16,7 @@
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
-        if ($resultCheck > 0){
-
-            while ($row = mysqli_fetch_assoc($result)){
-
-                $name = $row['resortName'];
-                $address = $row['address'];
-                $city = $row['city'];
-                $state = $row['state'];
-                $phone = $row['resortPhoneNo'];
-                $ratings = $row['overallRatings'];
-                $keywords = $row['keywords'];
-                $description = $row['description'];
-                $coverPhoto = $row['coverPhoto'];
-                $images = $row['images'];    
-
+       
               
          
 ?>
@@ -45,14 +31,30 @@
      <link rel="stylesheet" href="../css/details.css">
   </head>
   <body>
-    
-      
-          <?php echo '<img src="../OwnerMarsya/upload/' . $row['images'] . '" width="250" height = "250" />'?>
+     <div class = "box">
+        <br>
+    </div>
+
+    <div class ="imagesDisplay">
+
+    <?php
+     if ($resultCheck > 0){
+
+            while ($row = mysqli_fetch_assoc($result)){
+
+                $name = $row['resortName'];
+                $address = $row['address'];
+                $city = $row['city'];
+                $state = $row['state'];
+                $phone = $row['resortPhoneNo'];
+                $ratings = $row['overallRatings'];
+                $keywords = $row['keywords'];
+                $description = $row['description'];
+                $coverPhoto = $row['coverPhoto'];
+                $images = $row['images'];    
 
       
-
-
-
+          echo '<img src="../OwnerMarsya/upload/' . $row['images'] . '" width="250" height = "250" />'?>
 
 
       <?php
@@ -67,31 +69,37 @@
      
       <div class="flex">
          <div class="inputBox">
+            <br> <br>
 
-            <span>Name:</span>
-            <label ><?php echo $name; ?></label>
+          
+           <strong><center><label class ="resortName"><?php echo $name; ?></label></strong><p>
 
-            <span>Address:</span>
-            <label ><?php echo $address; ?></label>
+                            <br> <br>
+<div class="Details-box">
 
-            <span>City:</span>
-              <label ><?php echo $city; ?></label>
+    <br>
 
-            <span>State:</span>
-              <label ><?php echo $state; ?></label>
-      
-            <span>Phone Number:</span>
-              <label ><?php echo $phone; ?></label>
-
-              <span>Ratings:</span>
-              <label ><?php echo $ratings; ?></label>
-         
-         <span>Keywords:</span>
-              <label ><?php echo $keywords; ?></label>
-
-              <span>Description:</span>
-              <label ><?php echo $description; ?></label>
-
+            <center><span class="desc">Address:</span>
+            <label class="desc"><?php echo $address; ?></label><p>
+ <br>
+            <center><span class="desc">City:</span>
+              <label class="desc"><?php echo $city; ?></label><p>
+                <br>
+            <center><span class="desc"> State:</span>
+              <label class="desc"><?php echo $state; ?></label><p>
+                 <br>
+           <center> <span class="desc">Phone Number:</span>
+              <label class="desc"><?php echo $phone; ?></label><p>
+                <br>
+              <center><span class="desc">Ratings:</span>
+              <label class="desc"><?php echo $ratings; ?></label><p>
+                <br>
+         <center><span class="desc">Keywords:</span>
+              <label class="desc"><?php echo $keywords; ?></label><p>
+                <br>
+              <center><span class="desc">Description:</span>
+              <label class="desc"><?php echo $description; ?></label><p>
+                <br>
               <!--pass value-->
                 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $resortID; ?>" class="box">
                 <input type="hidden" id = "fdate" name="fdate" value="<?php echo $fdate ?>" class="box">
@@ -103,9 +111,11 @@
          </div>
    
       </div>
-      <input type="submit" value="Book Now" name="submit" class="btn">
+         </div>
+      <br> <br>
+       <center><input type="submit" value="Book Now" name="submit" class="btn">
        <!--<a href="updatePPic.php" class="delete-btn">Back</a>-->
-       <input type="button" value="Back" onclick="history.back()">
+       <input class="btn" type="button" value="Back" onclick="history.back()">
  
    </form>
 

@@ -1,0 +1,72 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Glyphicons Halflings';
+	color: black;
+	font-weight: normal;
+}
+
+.imagesDisplay {
+
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.resortName {
+
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.btn {
+font-family: 'Roboto', sans-serif;
+font-size: 14px;
+font-weight: bold;
+background: #22A39F;
+width: 120px;
+height: 55px;
+padding: 20px;
+text-align: center;
+text-decoration: none;
+text-transform: uppercase;
+color: #fff;
+border-radius: 10px;
+cursor: pointer;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+-webkit-transition-duration: 0.3s;
+transition-duration: 0.3s;
+-webkit-transition-property: box-shadow, transform;
+transition-property: box-shadow, transform;
+margin-right: 1rem;
+border: none;
+
+
+}
+
+.btn:hover, .btn:focus, .btn:active{
+
+	box-shadow:0 0 20px rgba(0,0,0,0.5);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.Details-box{
+
+	font-size: 20px;
+	background:#abdbe3;
+	width: 500px;
+	height: 400px auto;
+	border-radius: 20px;
+
+}
+
+.desc{
+
+	
+	margin-top: 1rem;
+	font-family: 'Glyphicons Halflings', sans-serif;
+	color: black;
+	font-weight: normal;
+}
+

@@ -11,8 +11,8 @@
 $sysdate = date('y-m-d');
 //$tPayment = POST['tPayment'];
 
-$pType = 'Online banking';
-$pStatus = 'Unpaid';
+$pType = 'Cash';
+$pStatus = 'Cash';
 
     $query = $conn->query("SELECT SUM(prices) AS total FROM room_booking WHERE bookingID = '$bookingID';") or die(mysqli_error());
                         while($row = $query->fetch_array()){

@@ -63,6 +63,7 @@ if($run_payment){
                                 </tr>
                                 <tr>
                                     <td class="content-block">
+                                        <img src="resortLogo.jpeg" alt="Logo" width="700" height="100" />
                                         <table class="invoice">
                                             <tbody><tr>
                                                

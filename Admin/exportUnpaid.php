@@ -7,13 +7,9 @@ $output = '';
 
 if(isset($_SESSION["user_id"])){
 
-$fdate=$_GET['fdate'];
-$tdate=$_GET['tdate'];
-
-
 
      $user_id = $_SESSION['user_id'];
- $query = "SELECT * FROM bookings b, payments p, adminPayment a, resorts r WHERE p.bookingID = b.bookingID AND a.bookingID = p.bookingID AND b.resortID = r.resortID AND payOwnerStatus = 'Paid'AND adminPaymentDate BETWEEN '$fdate' AND '$tdate';";
+ $query = "SELECT * FROM bookings b, payments p, adminPayment a, resorts r WHERE p.bookingID = b.bookingID AND a.bookingID = p.bookingID AND b.resortID = r.resortID AND payOwnerStatus = 'Unpaid';";
  $result = mysqli_query($conn, $query);
  if(mysqli_num_rows($result) > 0)
  {

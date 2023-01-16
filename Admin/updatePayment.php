@@ -17,7 +17,7 @@
     }
     if ($status != 'Paid'){
 
-         echo "<script>alert('Payment cannot be approved!');</script>";
+         echo "<script>alert('Payment cannot be completed!');</script>";
           echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
 
     }
@@ -57,7 +57,7 @@
 
        if ($result1) {
         //update payment status to approved
-            $sql2 = "UPDATE payments SET paymentStatus = 'Approved' WHERE paymentID = '$payment_id'";
+            $sql2 = "UPDATE payments SET paymentStatus = 'Completed' WHERE paymentID = '$payment_id'";
         $result2 = mysqli_query($conn, $sql2);
      
 
@@ -68,14 +68,14 @@
 
             if ($result3){
 
-            echo"<script>alert ('Payment is approved.')</script>";
+            echo"<script>alert ('Payment is completed.')</script>";
 
             echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
         }
 
         else {
 
-            echo"<script>alert ('Payment failed to approve.')</script>";
+            echo"<script>alert ('Payment failed to complete.')</script>";
             
             echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
         }
@@ -87,7 +87,7 @@
 
        else {
 
-             echo"<script>alert ('Payment failed to approve.')</script>";
+             echo"<script>alert ('Payment failed to complete.')</script>";
              echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
        }
 
@@ -95,7 +95,7 @@
 
        else {
 
-             echo"<script>alert ('Payment failed to approve.')</script>";
+             echo"<script>alert ('Payment failed to complete.')</script>";
              echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
        }
    }

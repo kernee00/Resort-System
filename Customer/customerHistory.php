@@ -40,7 +40,7 @@
                     <tbody>
                     <?php
 
-                    $query = $conn->query("SELECT payments.bookingID, bookings.bookingDate, bookings.checkInDate, bookings.checkOutDate, payments.totalPayment FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus = 'Approved' AND bookings.checkOutDate < SYSDATE() AND bookings.custID = '$user_id';") or die(mysqli_error());
+                    $query = $conn->query("SELECT payments.bookingID, bookings.bookingDate, bookings.checkInDate, bookings.checkOutDate, payments.totalPayment FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus = 'Completed' AND bookings.checkOutDate < SYSDATE() AND bookings.custID = '$user_id';") or die(mysqli_error());
 
 
                         while($fetch = $query->fetch_array()){
@@ -64,7 +64,7 @@
                     ?>  
                     </tbody>
                 </table>
-                 <a href = 'reportPart/reportCustomer.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
+                 <!--<a href = 'reportPart/reportCustomer.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>-->
             </div>
         </div>
     </div>

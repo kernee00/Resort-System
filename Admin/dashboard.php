@@ -67,7 +67,7 @@
 							<div>
 
 								<?php
-						$query1 = $conn->query("SELECT COUNT(*) AS refundNum FROM  payments WHERE paymentStatus = 'Refund';") or die(mysqli_error());
+						$query1 = $conn->query("SELECT COUNT(*) AS refundNum FROM  payments WHERE paymentStatus = 'Pending Refund';") or die(mysqli_error());
 						while($row1 = $query1->fetch_array()){
 							$refundNum = $row1['refundNum'];
 						}

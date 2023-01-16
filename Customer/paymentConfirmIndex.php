@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once '../connection.php';
-    include_once 'customerNavBar.php';
+    //include_once 'customerNavBar.php';
     $user_id = $_SESSION['user_id'];
     $pType = 'online banking';
     $pStatus = 'Paid';
@@ -108,7 +108,7 @@
                                 <link rel="stylesheet" href="design.css">
                                 <tbody><tr>
                                     <td class="content-block">
-                                        <img src="resortLogo.jpg" alt="Logo" width="700" height="100" />
+                                        <img src="resortLogo.jpeg" alt="Logo" width="700" height="100" />
                                         <center><h2>Receipt</h2>
                                     </td>
                                 </tr>

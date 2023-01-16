@@ -64,7 +64,7 @@ $tdate=$_POST['tdate'];
 					</thead>
 					<tbody>
 					<?php
-						$query = $conn->query("SELECT  * FROM  bookings WHERE checkInDate >= '$fdate' AND checkOutDate <= '$tdate';") or die(mysqli_error());
+						$query = $conn->query("SELECT  * FROM  bookings b, payments p WHERE p.bookingID = b.bookingID AND checkInDate >= '$fdate' AND checkOutDate <= '$tdate' AND paymentStatus!='Cash';") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>

@@ -55,6 +55,7 @@
 					</tbody>
 				</table>
 					  <a href = 'ownerHistoryDate.php'><input type = 'submit' value = 'History' id = 'add_button'></a>
+					  			<a href = 'exportUnpaid.php'><input type = 'submit' value = 'Export' id = 'add_button'></a>
     				<a href = 'managePayment.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
 			</div>
 		</div>

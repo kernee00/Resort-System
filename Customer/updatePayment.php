@@ -28,7 +28,7 @@
 
             if ($checkIn < $sysdate || $cancelDays <= 3 ){ 
 
-            echo"<script>alert ('Refund request is not allowed!')</script>";
+            echo"<script>alert ('Refund request is not allowed! Cannot cancel 3 days before check in!')</script>";
             echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
             }
 
@@ -61,7 +61,7 @@
 
        else {
 
-             echo"<script>alert ('Payment failed to approve.')</script>";
+             echo"<script>alert ('Payment failed to refund.')</script>";
              echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
        }
 
@@ -69,7 +69,7 @@
 
        else {
 
-             echo"<script>alert ('Payment failed to approve.')</script>";
+             echo"<script>alert ('Payment failed to refund.')</script>";
              echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";
        }
    }

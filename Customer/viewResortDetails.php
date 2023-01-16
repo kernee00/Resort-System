@@ -15,6 +15,25 @@
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
+?>
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Image Slider</title>
+   <!-- <link rel="stylesheet" href="slides.css">-->
+     <link rel="stylesheet" href="../css/details.css">
+  </head>
+  <body>
+    <div class = "box">
+        <br>
+    </div>
+
+    <div class ="imagesDisplay">
+       <?php 
+
         if ($resultCheck > 0){
 
             while ($row = mysqli_fetch_assoc($result)){
@@ -29,24 +48,9 @@
                 $description = $row['description'];
                 $coverPhoto = $row['coverPhoto'];
                 $images = $row['images'];         
-?>
-
-
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Image Slider</title>
-   <!-- <link rel="stylesheet" href="slides.css">-->
-     <link rel="stylesheet" href="../css/details.css">
-  </head>
-  <body>
-
-    
-
-
         
-          <?php echo '<img src="../OwnerMarsya/upload/' . $row['images'] . '"width="250" height = "250" />'?>
+          echo '<img src="../OwnerMarsya/upload/' . $row['images'] . '"width="250" height = "250" />'?>
+     
 
 
       <?php
@@ -55,42 +59,43 @@
     }
 
         ?>
-
+</div>
         <div class = "details">
             <form action="availableRooms.php" method="POST" >
      
       <div class="flex">
          <div class="inputBox">
 
-
-
             <br> <br>
 
             <!-- <center><span>Name:</span> -->
-            <strong><center><label ><?php echo $name; ?></label></strong><p>
+            <strong><center><label class ="resortName"><?php echo $name; ?></label></strong><p>
 
                 <br> <br>
+<div class="Details-box">
 
-            <center><span>Address:</span>
-            <label ><?php echo $address; ?></label><p>
-
-            <center><span>City:</span>
-            <label ><?php echo $city; ?></label><p>
-
-            <center><span>State:</span>
-            <label ><?php echo $state; ?></label><p>
-      
-            <center><span>Phone Number:</span>
-            <label ><?php echo $phone; ?></label><p>
-
-              <center><span>Ratings:</span>
-            <label ><?php echo $ratings; ?></label><p>
-         
-             <center><span>Keywords:</span>
-               <label ><?php echo $keywords; ?></label><p>
-
-               <center><span>Description:</span>
-              <label ><?php echo $description; ?></label><p>
+    <br>
+            <center><span class="desc">Address:</span>
+            <label class="desc"><?php echo $address; ?></label><p>
+                <br>
+            <center><span class="desc">City:</span>
+            <label class="desc"><?php echo $city; ?></label><p>
+  <br>
+            <center><span class="desc">State:</span>
+            <label class="desc"><?php echo $state; ?></label><p>
+        <br>
+            <center><span class="desc">Phone Number:</span>
+            <label class="desc" ><?php echo $phone; ?></label><p>
+  <br>
+              <center><span class="desc">Ratings:</span>
+            <label class="desc"><?php echo $ratings; ?> / 5.0</label><p>
+           <br>
+             <center><span class="desc">Keywords:</span>
+               <label class="desc"><?php echo $keywords; ?></label><p>
+  <br>
+               <center><span class="desc">Description:</span>
+              <label class="desc"><?php echo $description; ?></label><p>
+                  <br>
 
               <!--pass value-->
                 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $resortID; ?>" class="box">
@@ -101,11 +106,13 @@
        
          </div>
    
+ </div>
+   
       </div>
       <br> <br>
       <center><input type="submit" value="Book Now" name="submit" class="btn">
        <!--<a href="updatePPic.php" class="delete-btn">Back</a>-->
-       <input type="button" value="Back" onclick="history.back()">
+       <input class = "btn" type="button" value="Back" onclick="history.back()">
  
    </form>
 

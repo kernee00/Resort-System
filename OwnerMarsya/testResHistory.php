@@ -56,7 +56,7 @@ $tdate=$_POST['tdate'];
               <th><center>Check In Date</th>
               <th><center>Check Out Date</th>
               <th><center>Total Price</th>
-              
+              <th><center>Payment Status</th>
               <th><center>Resort Name</th>
                 <th><center>Customer ID</th>
               
@@ -64,7 +64,7 @@ $tdate=$_POST['tdate'];
           </thead>
           <tbody>
           <?php
-            $query = $conn->query("SELECT  * FROM  bookings b, resorts r WHERE b.resortID = r.resortID AND checkInDate >= '$fdate' AND checkOutDate <= '$tdate';") or die(mysqli_error());
+            $query = $conn->query("SELECT  * FROM  bookings b, resorts r, payments p WHERE b.resortID = r.resortID AND b.bookingID = p.bookingID AND checkInDate >= '$fdate' AND checkOutDate <= '$tdate' ORDER BY bookingDate;") or die(mysqli_error());
             while($fetch = $query->fetch_array()){
           ?>  
             <tr>
@@ -73,7 +73,7 @@ $tdate=$_POST['tdate'];
               <td><center><?php echo $fetch['checkInDate']?></td>
               <td><center><?php echo $fetch['checkOutDate']?></td>
               <td><center><?php echo $fetch['totalPrice']?></td>
-              
+              <td><center><?php echo $fetch['paymentStatus']?></td>
               <td><center><?php echo $fetch['resortName']?></td>
                  <td><center><a class = "btn " href = "customerMain.php?custID=<?php echo $fetch['custID']?>"><?php echo $fetch['custID']?></a> </td>
 

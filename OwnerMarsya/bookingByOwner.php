@@ -25,7 +25,7 @@
          <h1 style="margin-left:40% ;margin-top:50px"   class="">Bookings Information</h1>
          <br><br>
      <div class ="insert-date" style="margin-left: 30%; margin-right: 30%;">
-          <form name="dateInput" action="displayCustList.php" method="post" action="">
+          <form name="dateInput" action="custInfo.php" method="post" action="">
             
 
              <table width="100%" height="117"  border="0">

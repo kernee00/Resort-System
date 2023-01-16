@@ -39,7 +39,7 @@
 					<?php
 
 
-						$query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.paymentDate, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus = 'Refund' OR payments.paymentStatus = 'Approved' AND bookings.custID = '$user_id';") or die(mysqli_error());
+						$query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.paymentDate, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus = 'Refunded' OR payments.paymentStatus = 'Completed' AND bookings.custID = '$user_id';") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>
@@ -59,7 +59,6 @@
 			</div>
 		</div>
 	</div>
-	<br />
 	<br />
 	
 </body>

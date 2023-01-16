@@ -63,6 +63,7 @@
                                 </tr>
                                 <tr>
                                     <td class="content-block">
+                                        <!--<img src="resortLogo.jpg" alt="Logo" width="700" height="100" />-->
                                         <table class="invoice">
                                             <tbody><tr>
                                                

@@ -37,7 +37,7 @@
 					</thead>
 					<tbody>
 					<?php
-						$query = $conn->query("SELECT  * FROM  payments WHERE paymentStatus = 'Refund' OR paymentStatus= 'Approved';") or die(mysqli_error());
+						$query = $conn->query("SELECT  * FROM  payments WHERE paymentStatus = 'Refunded' OR paymentStatus= 'Completed';") or die(mysqli_error());
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>
