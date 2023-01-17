@@ -45,19 +45,16 @@
         </div>
 
         <div class = "caption">
-            <p class = "rate">
-            
-            </p>
+        
             <p class="resort_name"><?php echo $row['resortName']; ?></p>
             <p class="resort_name"><?php echo $row['state']; ?></p>
-            <p class="resort_name"><?php echo $row['overallRatings'].'/5.0'; ?></p>
+            <p class="resort_name"><?php echo $row['overallRatings'].' / 5.0'; ?></p>
     </div>
     <form action="updateResort.php" method="POST">
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
 <button class ="book">Update Details</button>
 
-<br><br>
-<a href="uploadPhoto.php?resortID=<?php echo $row['resortID'];?>" class="button">Upload Resort Photo</a></button>
+<button class = "book"><a href="uploadPhoto.php?resortID=<?php echo $row['resortID'];?>" class="btn-upload">Upload Resort Photo</a></button>
 
 
 

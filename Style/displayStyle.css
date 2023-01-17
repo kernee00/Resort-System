@@ -29,7 +29,6 @@ main {
 
 main .card {
 	min-width: 200px;
-
 	max-width: 300px;
 	flex: 1 1 210px;
 	text-align: center;
@@ -61,7 +60,7 @@ main .card .caption {
 	padding-left: 1em;
 	text-align: center;
 	line-height: 3em;
-	height: 25%;
+	height: 18%;
 }
 
 main .card .caption p{
@@ -126,7 +125,7 @@ main .card button:hover::after{
 
 
 main .card a{
-	width: 50%;
+	width: 30%;
 }
 
 
@@ -160,5 +159,10 @@ a:link:hover {
 
   background-color: transparent;
   text-decoration: none;
+}
+
+.btn-upload{
+font-weight: bold;
+
 }
 

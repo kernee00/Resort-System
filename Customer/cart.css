@@ -83,3 +83,29 @@ main .card .caption button{
     font-weight: bold;
     width: 30%;
 }
+
+.btn-remove{
+
+font-family: 'Roboto', sans-serif;
+font-size: 12px;
+font-weight: bold;
+text-align: center;
+text-decoration: none;
+color: red;
+cursor: pointer;
+-webkit-transition-duration: 0.3s;
+transition-duration: 0.3s;
+-webkit-transition-property: box-shadow, transform;
+transition-property: box-shadow, transform;
+margin-right: 1rem;
+margin-left: 20rem;
+border: none;
+
+}
+
+.btn-remove:hover, .btn-remove:focus, .btn-remove:active{
+
+
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}

@@ -66,7 +66,7 @@ else {
                 <p class="location">Location: <?php echo $row["location"]; ?></p>
                 <p class="description">Description: <?php echo $row["description"]; ?></p>
              
-                <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "removeRoom.php?roomID=<?php echo $row['roomID']?>&bookingID=<?php echo $bookingID?>"><i class = "glyphicon glyphicon-remove"></i> Remove from Booking</a>
+                <a class = "btn-remove" onclick = "confirmationDelete(this); return false;" href = "removeRoom.php?roomID=<?php echo $row['roomID']?>&bookingID=<?php echo $bookingID?>"><i class = "glyphicon glyphicon-remove"></i> Remove from Booking</a>
             </div>
 
         </div>
