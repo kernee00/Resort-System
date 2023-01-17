@@ -30,6 +30,7 @@
                         <tr>
                             <th><center>Booking ID</th>
                             <th><center>Booking Date</th>
+                            <th><center>Resort</th>
                             <th><center>Check In Date</th>
                             <th><center>Check Out Date</th>
                             <th><center>Total Paid (RM)</th>
@@ -40,7 +41,7 @@
                     <tbody>
                     <?php
 
-                    $query = $conn->query("SELECT payments.bookingID, bookings.bookingDate, bookings.checkInDate, bookings.checkOutDate, payments.totalPayment FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus = 'Completed' AND bookings.checkOutDate < SYSDATE() AND bookings.custID = '$user_id';") or die(mysqli_error());
+                    $query = $conn->query("SELECT p.bookingID, b.bookingDate, b.checkInDate, b.checkOutDate, p.totalPayment, resortName FROM bookings b, payments p, resorts r WHERE b.bookingID = p.bookingID AND b.resortID = r.resortID AND paymentStatus = 'Completed' AND checkOutDate < SYSDATE() AND b.custID = '$user_id';") or die(mysqli_error());
 
 
                         while($fetch = $query->fetch_array()){
@@ -48,6 +49,7 @@
                         <tr>
                             <td><center><?php echo $fetch['bookingID']?></td>
                             <td><center><?php echo $fetch['bookingDate']?></td>
+                            <td><center><?php echo $fetch['resortName']?></td>
                             <td><center><?php echo $fetch['checkInDate']?></td>
                             <td><center><?php echo $fetch['checkOutDate']?></td>
                             <td><center><?php echo $fetch['totalPayment']?></td>
