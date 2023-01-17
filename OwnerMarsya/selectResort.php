@@ -81,7 +81,7 @@ $custID = $_GET['custID'];
                                         $filtervalues = $_GET['search'];
                                         $fdate = $_GET['fdate'];
                                         $tdate = $_GET['tdate'];
-                                        $query = "SELECT * FROM resorts WHERE CONCAT(resortName,address,city,keywords) LIKE '%$filtervalues%' ;";
+                                        $query = "SELECT * FROM resorts WHERE CONCAT(resortName,address,city,keywords) LIKE '%$filtervalues%';";
                                         $query_run = mysqli_query($con, $query);
 
                                         if(mysqli_num_rows($query_run) > 0)
@@ -102,7 +102,7 @@ $custID = $_GET['custID'];
                                         else
                                         {
                                             echo"<script>alert ('No Record.')</script>";
-                                            echo"<meta http-equiv='refresh' content='0; url=testSearchResort.php'/>";
+                                            echo"<meta http-equiv='refresh' content='0; url=selectResort.php'/>";
                                             ?>
                                               
 

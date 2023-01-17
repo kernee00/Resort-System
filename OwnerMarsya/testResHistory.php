@@ -64,7 +64,7 @@ $tdate=$_POST['tdate'];
           </thead>
           <tbody>
           <?php
-            $query = $conn->query("SELECT  * FROM  bookings b, resorts r, payments p WHERE b.resortID = r.resortID AND b.bookingID = p.bookingID AND checkInDate >= '$fdate' AND checkOutDate <= '$tdate' ORDER BY bookingDate;") or die(mysqli_error());
+            $query = $conn->query("SELECT  * FROM  bookings b, resorts r, payments p WHERE b.resortID = r.resortID AND b.bookingID = p.bookingID AND checkInDate >= '$fdate' AND checkOutDate <= '$tdate' AND ownerID = '$user_id' ORDER BY bookingDate;") or die(mysqli_error());
             while($fetch = $query->fetch_array()){
           ?>  
             <tr>

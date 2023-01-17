@@ -22,7 +22,7 @@
  <title>Manage Bookings</title>
     <link rel="stylesheet" href="manageStyle.css">
 
-         <h1 style="margin-left:40% ;margin-top:50px"   class="">Bookings Information</h1>
+         <h1 style="margin-left:45% ;margin-top:50px"   class="">Add Reservation</h1>
          <br><br>
      <div class ="insert-date" style="margin-left: 30%; margin-right: 30%;">
           <form name="dateInput" action="custInfo.php" method="post" action="">

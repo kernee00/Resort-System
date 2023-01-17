@@ -33,15 +33,16 @@
 
     else {
 
+$sql = "CALL insertData('".$username."','".$name."','".$phone."','".$email."','".$password."')";
+if (mysqli_query($conn,$sql)){
 
-
-$stmt = $conn->prepare("INSERT INTO owner (ownerID, ownerName, ownerPhoneNo, ownerEmail, accPassword) VALUES (?,?,?,?,?)");
+/*$stmt = $conn->prepare("INSERT INTO owner (ownerID, ownerName, ownerPhoneNo, ownerEmail, accPassword) VALUES (?,?,?,?,?)");
         $stmt->bind_param("sssss", $username,$name,$phone, $email, $password);
         $stmt->execute();
         $success = $stmt->affected_rows;
         $stmt->close();
         if($success>0)
-        {
+        {*/
             echo "<script>alert('Owner register succesful!');</script>";
             echo"<meta http-equiv='refresh' content='0; url=manageOwner.php'/>";
         }

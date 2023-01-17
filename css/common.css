@@ -32,3 +32,20 @@
 		margin: 0 auto;
 		height: 1.7px;
 	}
+
+	.btn-submit{
+		background: #2ec1ac;
+		border-radius: 10px;
+		border: none;
+		height: 30px;
+		width: 70px;
+		
+
+	}
+
+	.btn-submit:hover{
+
+		background-color: #279e8c;
+		border-color: #279e8c;
+		cursor: pointer;
+	}
