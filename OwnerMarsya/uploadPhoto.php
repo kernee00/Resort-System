@@ -25,7 +25,7 @@ else {
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
     <title>Images</title>
-    <!--<link rel="stylesheet" href="../Style/nav_bar.css">-->
+    <link rel="stylesheet" href="../Style/upload.css">
     <style type="text/css">
         .formdesign{
             width: 50%;
@@ -39,16 +39,17 @@ else {
 
 
 <body>
-    <h2 align="center">Resort Images</h2>
+    <br><h2 align="center">Resort Images</h2><br>
  
    <div class = "formdesign">
+    <div class = "upload">
        
        <form action="uploadProcess.php" method="POST" enctype="multipart/form-data">
         Please select image <br><br>
         <input type = "file" name="image[]" multiple><br><br>
         <input type ="submit" name ="submit" value ="Upload">
         <input type="hidden" id = "resortID" name="resortID" value="<?php echo $resortID ?>" class="box">
-       </form><br>
+       </form><br></div>
 
        <?php
        //echo "$resortID";
@@ -68,8 +69,8 @@ else {
         echo "No image! Please upload images for resort.";
        }
        ?>
-      <br>
-        <a href="manageResort.php" class="delete-btn">Back to Main</a>
+      <br><br>
+        <a href="manageResort.php" class="main-btn">Back to Main</a><br><br>
 
    </div>
       

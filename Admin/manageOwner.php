@@ -47,7 +47,7 @@
 							<td><center><?php echo $fetch['ownerEmail']?></td>
 							<td><center><?php echo $fetch['accPassword']?></td>
 
-							<td><center><a class = "btn btn-warning" href = "updateOwner.php?ownerID=<?php echo $fetch['ownerID']?>"><i class = "glyphicon glyphicon-edit"></i> Edit</a> <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "deleteOwner.php?ownerID=<?php echo $fetch['ownerID']?>"><i class = "glyphicon glyphicon-remove"></i> Delete</a></center></td>
+							<td><center><a class = "btn btn-warning" href = "updateOwner.php?ownerID=<?php echo $fetch['ownerID']?>"><i class = "glyphicon glyphicon-edit"></i> Edit</a> <!--<a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "deleteOwner.php?ownerID=<?php echo $fetch['ownerID']?>"><i class = "glyphicon glyphicon-remove"></i> Delete</a>--></center></td>
 						</tr>
 					<?php
 						}

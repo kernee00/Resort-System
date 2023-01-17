@@ -24,9 +24,9 @@
                
             }
             
-            $cancelDays = (strtotime($sysdate) - strtotime($checkIn)) / (60 * 60 * 24);
+            $cancelDays = -((strtotime($sysdate) - strtotime($checkIn)) / (60 * 60 * 24));
 
-            if ($checkIn < $sysdate || $cancelDays <= 3 ){ 
+            if ( $cancelDays <= 3 ){ 
 
             echo"<script>alert ('Refund request is not allowed! Cannot cancel 3 days before check in!')</script>";
             echo"<meta http-equiv='refresh' content='0; url=managePayment.php'/>";

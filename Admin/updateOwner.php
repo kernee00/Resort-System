@@ -63,8 +63,8 @@
             <input type="password" id = "pass1" name="pass1" placeholder="Enter new password" class="box">
             <span>Confirm password :</span>
             <input type="password" id = "pass2" name="pass2" placeholder="Confirm new password" class="box">
-                <span>Admin password :</span>
-            <input type="password" id = "admin_pass" name="admin_pass" placeholder="Enter Admin Password" class="box" required>
+                <!--<span>Admin password :</span>
+            <input type="password" id = "admin_pass" name="admin_pass" placeholder="Enter Admin Password" class="box" required>-->
          </div>
       </div>
       <input type="submit" value="Update Account" name="update_profile" class="btn">

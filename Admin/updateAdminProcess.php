@@ -5,13 +5,13 @@
 
 
       $user_id = $_SESSION['user_id'];
-      $owner_id = $_POST['owner_id'];
+      $admin_id = $_POST['admin_id'];
 
       if(isset($_POST['update_profile'])){
-        $owner_id = $_POST['owner_id'];
+        $admin_id = $_POST['admin_id'];
       
  
-        $sql = "SELECT * FROM owner WHERE ownerID = '$owner_id'";
+        $sql = "SELECT * FROM admin WHERE adminID = '$admin_id'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
@@ -19,19 +19,17 @@
 
             while ($row = mysqli_fetch_assoc($result)){
 
-                $name = $row['ownerName'];
-                $phone = $row['ownerPhoneNo'];
-                $email = $row['ownerEmail'];
-                $password = $row['accPassword'];
+                $name = $row['adminName'];
+                $phone = $row['adminPhoneNo'];
+                $email = $row['adminEmail'];
+                $password = $row['adminPassword'];
                 $image = $row['profile_image'];
 
                
             }
         }
    
-       
-        
-
+    
                  if (empty($_POST['update_name'])) {
            $new_name = $name;
             }
@@ -76,28 +74,28 @@
       if($new_pass2 != $new_pass1)
     {
         echo "<script>alert('The two passwords do not match.');</script>";
-        echo"<meta http-equiv='refresh' content='0; url=updateOwner.php'/>";
+        echo"<meta http-equiv='refresh' content='0; url=updateAdmin.php'/>";
     }
 
     else {
 
 
-$update_profile = "update owner set ownerName = '$new_name', ownerPhoneNo = '$new_phone', ownerEmail = '$new_email', accPassword = '$new_pass2' WHERE ownerID = '$owner_id'";
+$update_profile = "update admin set adminName = '$new_name', adminPhoneNo = '$new_phone', adminEmail = '$new_email', adminPassword = '$new_pass2' WHERE adminID = '$admin_id'";
 
 $run_profile = mysqli_query($conn,$update_profile);
 
 if($run_profile){
 
-echo "<script> alert('Owner has been updated successfully. Redirecting to main page.') </script>";
+echo "<script> alert('Admin has been updated successfully. Redirecting to main page.') </script>";
 
-   echo"<meta http-equiv='refresh' content='0; url=manageOwner.php'/>";
+   echo"<meta http-equiv='refresh' content='0; url=manageAdmin.php'/>";
 
 }
 
 else {
     echo "<script> alert('Failed to update owner!') </script>";
 
-   echo"<meta http-equiv='refresh' content='0; url=manageOwner.php'/>";
+   echo"<meta http-equiv='refresh' content='0; url=manageAdmin.php'/>";
 
 }
 

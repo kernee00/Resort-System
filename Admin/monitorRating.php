@@ -22,7 +22,7 @@
       <body>  
         <div class ="selection">
           <form name = "select-resort" action="" method="POST" style="margin-left: 30%; margin-right: 30%;">
-      <label>Resort :</label><br>
+      <label>Resort:</label><br>
       <select class = "resort" name="resort">
       <!--<option value="">--- Select ---</option> -->
       <?php 
@@ -55,6 +55,7 @@ $query1="SELECT * FROM resorts WHERE resortID = '$resortID';" ;
          while ($row1=$result1->fetch_assoc()) {
 
                    $resortName = $row1['resortName'];
+                   $overallRating = $row1['overallRatings'];
 
         }
  
@@ -73,6 +74,7 @@ $query1="SELECT * FROM resorts WHERE resortID = '$resortID';" ;
 
                            $query="SELECT r.resortID, marksRated, COUNT(marksRated) AS numbers FROM resorts r, ratings s, bookings b WHERE b.resortID = r.resortID AND b.bookingID = s.bookingID AND r.resortID = '$resortID' GROUP BY r.resortID, marksRated ORDER BY r.resortID, marksRated;" ;
                           $result=$conn->query($query);
+                           $rowCount = mysqli_num_rows($result);
                            if(mysqli_num_rows($result)>=1){
                           while($row = mysqli_fetch_array($result))  
                           {  
@@ -105,16 +107,13 @@ $query1="SELECT * FROM resorts WHERE resortID = '$resortID';" ;
                 <center>
                 <?php
                
-                $query ="SELECT r.resortID, marksRated,COUNT(marksRated) AS numbers, resortName FROM resorts r, ratings s, bookings b WHERE b.resortID = r.resortID AND b.bookingID = s.bookingID AND r.resortID = '$resortID' GROUP BY r.resortID, marksRated ORDER BY r.resortID, marksRated;";
+                /*$query ="SELECT r.resortID, marksRated,COUNT(marksRated) AS numbers, resortName FROM resorts r, ratings s, bookings b WHERE b.resortID = r.resortID AND b.bookingID = s.bookingID AND r.resortID = '$resortID' GROUP BY r.resortID, marksRated ORDER BY r.resortID, marksRated;";
                 $query_run = mysqli_query($conn, $query);
-                $row = mysqli_num_rows($query_run);
+                $row = mysqli_num_rows($query_run);*/
 
-                /*while($result = mysqli_fetch_array($query_run))  
-                          {  
-                               $result=['resortName'];
-                          }  */
                 echo '<h3> Resort: '.$resortName.'</h3>';
-                echo '<h3> Total Number of Ratings: '.$row.'</h3>';
+                  echo '<h3> Overall Rating: '.$overallRating.'</h3>';
+                echo '<h3> Total Number of Ratings: '.$rowCount.'</h3>';
                 ?> 
                 </center>
                 <div id="piechart" style="width: 100%; height: 400px; margin-left: 10%; margin-right: auto;"></div> 

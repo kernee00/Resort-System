@@ -30,6 +30,8 @@
                         <tr>
                             <th><center>Payment ID</th>
                             <th><center>Booking ID</th>
+                            <th><center>Check In Date</th>
+                            <th><center>Check Out Date</th>
                             <th><center>Amount (RM)</th>
                             <th><center>Status</th>
                         
@@ -38,20 +40,22 @@
                     </thead>
                     <tbody>
                     <?php
-                    $query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.totalPayment, payments.paymentStatus FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus = 'Pending Refund' OR  payments.paymentStatus ='Paid' AND bookings.checkOutDate > SYSDATE() AND bookings.custID = '$user_id';") or die(mysqli_error());
+                    $query = $conn->query("SELECT payments.paymentID, bookings.bookingID, payments.totalPayment, payments.paymentStatus, checkInDate, checkOutDate FROM bookings INNER JOIN payments ON payments.bookingID = bookings.bookingID WHERE payments.paymentStatus = 'Pending Refund' OR  payments.paymentStatus ='Paid' AND bookings.checkOutDate > SYSDATE() AND bookings.custID = '$user_id';") or die(mysqli_error());
 
                         while($fetch = $query->fetch_array()){
                     ?>  
                         <tr>
                         <td><center><?php echo $fetch['paymentID']?></td>
                             <td><center><?php echo $fetch['bookingID']?></td>
+                            <td><center><?php echo $fetch['checkInDate']?></td>
+                            <td><center><?php echo $fetch['checkOutDate']?></td>
                             <td><center><?php echo $fetch['totalPayment']?></td>
                             <td><center><?php echo $fetch['paymentStatus']?></td>
                     
 
                             <td><center>
 
-                                 <a class = "btn btn-warning" href = "payHistory.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Pay</a> <a class = "btn btn-danger" 
+                                 <!--<a class = "btn btn-warning" href = "payHistory.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Pay</a> --><a class = "btn btn-danger" 
                                 onclick = "confirmationRefund(this); return false;" 
 
                             href = "updatePayment.php?paymentID=<?php echo $fetch['paymentID']?>"><i class = "glyphicon glyphicon-edit"></i> Request Refund</a> 

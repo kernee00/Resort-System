@@ -52,7 +52,7 @@
 							<td><center><?php echo $fetch['location']?></td>
 							<td><center><?php echo $fetch['description']?></td>
 
-							<td><center><a class = "btn btn-warning" href = "editRoom.php?roomID=<?php echo $fetch['roomID']?>"><i class = "glyphicon glyphicon-edit"></i> Edit</a> <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "deleteroom.php?roomID=<?php echo $fetch['roomID'];?>"><i class = "glyphicon glyphicon-remove"></i> Delete</a></center></td>
+							<td><center><a class = "btn btn-warning" href = "editRoom.php?roomID=<?php echo $fetch['roomID']?>"><i class = "glyphicon glyphicon-edit"></i> Edit</a> <!--<a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "deleteroom.php?roomID=<?php echo $fetch['roomID'];?>"><i class = "glyphicon glyphicon-remove"></i> Delete</a>--></center></td>
 						</tr>
 					<?php
 					

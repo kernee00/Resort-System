@@ -22,8 +22,8 @@
                 $rating = $row['overallRatings'];
                 $keywords = $row['keywords'];
                 $ownerID = $row['ownerID'];
-                //$resortId = $row['resortID'];
-                $onClick = "document.forms.myform.resortID.value='$resortID ';document.forms.myform.submit();";
+                $description = $row['description'];
+                //$onClick = "document.forms.myform.resortID.value='$resortID ';document.forms.myform.submit();";
                
             }
         }
@@ -50,7 +50,7 @@
 <body>
        <div class = "update-profile">
 
-<form action="updateResortProcess.php" method="POST">
+<form action="updateResortProcess.php" method="POST" enctype="multipart/form-data">
      
       <div class="flex">
          <div class="inputBox">
@@ -65,16 +65,21 @@
             <input type="text" id = "update_city" name="update_city" placeholder="<?php echo $city; ?>" class="box">
             <span>State:</span>
             <input type="text" id = "update_state" name="update_state" placeholder="<?php echo $state; ?>" class="box">
+             <span>Phone Number:</span>
+            <input type="text" id = "update_phone" name="update_phone" placeholder="<?php echo $phone; ?>" class="box">
           
              
          </div>
          <div class="inputBox">
-              <span>Phone Number:</span>
-            <input type="text" id = "update_phone" name="update_phone" placeholder="<?php echo $phone; ?>" class="box">
+             
               <span>Rating:</span>
             <input type="text" id = "ratings" name="ratings" disabled placeholder="<?php echo $rating; ?>" class="box">
               <span>Keyword:</span>
             <input type="text" id = "update_keyword" name="update_keyword" placeholder="<?php echo $keywords; ?>" class="box">
+                    <span>Description:</span>
+            <input type="text" id = "update_desc" name="update_desc" placeholder="<?php echo $description; ?>" class="box">
+              <span>Update Resort Cover Photo:</span>
+            <input type="file" name="update_image" accept="image/jpg, image/jpeg, image/png" class="box">
     
      
          </div>
