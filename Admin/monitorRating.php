@@ -8,7 +8,7 @@
 ?>
 <?php  
  $connect = mysqli_connect("localhost", "root", "", "workshop2");  
- $query = "SELECT marksRated, count(*) as number FROM ratings GROUP BY marksRated";  
+ $query = "SELECT overallRatings, resortName, count(*) as number FROM resorts GROUP BY overallRatings";  
  $result = mysqli_query($connect, $query);  
  ?> 
  
@@ -23,11 +23,11 @@
            function drawChart()  
            {  
                 var data = google.visualization.arrayToDataTable([  
-                          ['Rating', 'Number'],  
+                          ['Rating','Number'],  
                           <?php  
                           while($row = mysqli_fetch_array($result))  
                           {  
-                               echo "['".$row["marksRated"]."', ".$row["number"]."],";  
+                               echo "['".$row["overallRatings"]."', ".$row["number"]." ],";  
                           }  
                           ?>  
                      ]);  
@@ -50,7 +50,7 @@
                 <center>
                 <?php
                 $connect = mysqli_connect("localhost", "root", "", "workshop2");  
-                $query ="SELECT marksRated FROM ratings ORDER BY marksRated";
+                $query ="SELECT overallRatings FROM resorts ORDER BY overallRatings";
                 $query_run = mysqli_query($connect, $query);
                 $row = mysqli_num_rows($query_run);
                 echo '<h3> Total Ratings Registered: '.$row.'</h3>';

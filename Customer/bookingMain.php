@@ -117,7 +117,12 @@
                         <!--<button type="submit" name = "submit" class="btn text-white shadow-none custom-bg">Submit</button>-->
                         <button type="submit" name = "submit" class="btn-submit">Submit</button>
                     </div>
+			
+                    <td><center><a class = "btn btn-warning" 
 
+                             
+
+                            href = "ratingHistory.php"><i class = "glyphicon glyphicon-star"></i>Search Resort By Overall Ratings</a></center></td>
                 </div>
             </form>
         </div>

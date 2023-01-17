@@ -24,6 +24,7 @@
                     <li><a href='manageResort.php'>Manage Resorts</a></li>
                    <li><a href='manageReservation.php'>Manage Bookings</a></li>      
                     <li><a href='managePayment.php'>Manage Payment</a></li>
+                    <li><a href='monitorRating.php'>Monitor Rating</a></li>
                     <li><a href='../Login/logout.php'>Logout</a></li>
                    
           

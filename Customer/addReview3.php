@@ -5,20 +5,9 @@
 
    if (isset($_SESSION['user_id'])){
     $user_id = $_SESSION['user_id'];
-    $bookingID = $_GET['bookingID'];
-
-    $query = $conn->query("SELECT * FROM ratings WHERE bookingID = '$bookingID';") or die(mysqli_error());
-
-
-$num=mysqli_num_rows($query);
-if($num>0){
-         echo "<script>alert('The booking has been reviewed!');</script>";
-          echo"<meta http-equiv='refresh' content='0; url=customerHistory.php'/>";
+    $role = $_SESSION['role'];
 
     }
-
-}
-
 
     else {
 
@@ -35,8 +24,8 @@ if($num>0){
 <head>
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
-       <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
-        <!--<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />-->
+        <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
+        <link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
 
     <br />
     <div class = "container-fluid">
@@ -63,20 +52,17 @@ if($num>0){
             <br>
             <br><label>
             <span>Comment on Service:</span>
-
-            <textarea id ="comments" name = "comments" row = "5" cols="50"> </textarea>
+            <input name="comments" type="text" placeholder="Comments:" required></label>
 
             <br>
             <br><label>
             <span>Comment on Facilities:</span>
-            <textarea id ="commentsf" name = "commentsf" row = "5" cols="50"> </textarea>
+            <input name="commentsf" type="text" placeholder="Comments:" required></label>
 
             <br>
             <br><label>
             <span>Comment on Cleanliness:</span>
-            <textarea id ="commentsc" name = "commentsc" row = "5" cols="50"> </textarea>
-
-            <input type="hidden" name = "bookingID" value = "<?php echo $bookingID ?>">
+            <input name="commentsc" type="text" placeholder="Comments:" required></label>
 
          </div>
 
