@@ -1,4 +1,4 @@
-<?php
+  <?php
     include_once '../connection.php';
     include_once 'customerNavBar.php';
 
@@ -16,7 +16,7 @@
    
 
 
-    $books =$conn->prepare("SELECT * FROM ratings WHERE marksRated = ?");
+    $books =$conn->prepare("SELECT resortName, overallRatings, address, city, state, resortPhoneNo FROM resorts WHERE overallRatings = ?");
              $books->bind_param('s',$rating_history);
              $books->execute();
     $resultbooks = $books->get_result();
