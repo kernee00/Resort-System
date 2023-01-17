@@ -55,6 +55,7 @@
               <p class="resort_name"><?php echo $row['ownerID']; ?></p>
     </div>
     <form action="updateResort.php" method="POST">
+        <br>
 <input type="hidden" id = "resortID" name="resortID" value="<?php echo $row['resortID']; ?>" class="box">
 <button class ="book">Update Details</button>
 

@@ -41,12 +41,12 @@ $tdate=$_POST['tdate'];
  <title>Manage Bookings</title>
  
 
- <h2 style="margin-left:35% ;margin-top:80px"   class="">Bookings Information From <?php echo $fdate?> To <?php echo $tdate?></h2>
+ <h2 style="margin-left:35% ;margin-top:80px"   class="">Reservation Information From <?php echo $fdate?> To <?php echo $tdate?></h2>
 
 	<div class = "container-fluid">
 		<div class = "panel panel-default">
 			<div class = "panel-body">
-				<!--<div class = "alert alert-info">Manage Bookings</div>-->
+				<div class = "alert alert-info">Reservation Record</div>
 				<br />
 				<br />
 				<table id = "table" class = "table table-bordered">

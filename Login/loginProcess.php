@@ -19,10 +19,10 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 			//if owner table matched
 			if ($row['ownerID'] == $username && $row['accPassword'] == $password) {
 				
-
-				echo "<script> alert('Login success!') </script>";
 				$_SESSION['role'] = "owner";
 				$_SESSION['user_id'] = $username;
+				echo "<script> alert('Login success!') </script>";
+				
 				//$role = "owner";
 				//$user_id = $row['ownerID'];
 				header("location:../OwnerMarsya/ownerMain.php");
@@ -38,11 +38,11 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 			//if owner not match, select from customer table
 
 			if ($row['custID'] == $username && $row['custPassword'] == $password) {
-				
-
-				echo "<script> alert('Login success!') </script>";
 				$_SESSION['role'] = "cust";
 				$_SESSION['user_id'] = $username;
+
+				echo "<script> alert('Login success!') </script>";
+				
 				//$role = "customer";
 				//$user_id = $row['custID'];
 				header("location:../Customer/customerMain.php");
@@ -60,10 +60,10 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 			//if all not matched then select from admin table
 
 			if ($row['adminID'] == $username && $row['adminPassword'] == $password) {
-
-				echo "<script> alert('Login success!') </script>";
 				$_SESSION['role'] = "admin";
 				$_SESSION['user_id'] = $username;
+				echo "<script> alert('Login success!') </script>";
+				
 				header("location:../Admin/dashboard.php");
 				exit();
 						

@@ -22,7 +22,7 @@
     <div class = "container-fluid">
         <div class = "panel panel-default">
             <div class = "panel-body">
-                <div class = "alert alert-info">Booking History</div>
+                <div class = "alert alert-info">Reservation History</div>
                 <br />
                 <br />
                 <table id = "table" class = "table table-bordered">
