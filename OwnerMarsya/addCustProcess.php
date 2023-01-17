@@ -9,7 +9,7 @@
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $password = $_POST['pass'];
+    //$password = $_POST['pass'];
     $fdate = $_POST['fdate'];
     $tdate = $_POST['tdate'];
 
@@ -20,10 +20,16 @@
     $name = stripcslashes($name);
     $email = stripcslashes($email);
     $phone = stripcslashes($phone);
-    $password = stripcslashes($password);
+    //$password = stripcslashes($password);
 
       if(isset($_POST['add_cust'])){
-        
+
+        $query = $conn->query("SELECT * FROM owner WHERE ownerID = '$user_id';") or die(mysqli_error());
+                        while($fetch = $query->fetch_array()){
+
+                            $password = $fetch['accPassword'];
+                        }
+  
 
 $stmt = $conn->prepare("INSERT INTO customers (custID, custName, phoneNo, custEmail, custPassword) VALUES (?,?,?,?,?)");
         $stmt->bind_param("sssss", $username,$name,$phone, $email, $password);

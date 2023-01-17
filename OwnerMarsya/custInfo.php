@@ -53,8 +53,8 @@ $tdate=$_POST['tdate'];
             <input type="email" id = "email" name="email" placeholder="Email Address" class="box" required>
             <span>Phone Number:</span>
             <input type="text" id = "phone" name="phone" placeholder="Contact Number" class="box" required>
-             <span>Password :</span>
-            <input type="password" id = "pass" name="pass" placeholder="Confirm new password" class="box" required>
+             <!--<span>Password :</span>
+            <input type="password" id = "pass" name="pass" placeholder="Confirm new password" class="box" required>-->
               <input type="hidden" id = "fdate" name="fdate" value = "<?php echo $fdate ?>">
                 <input type="hidden" id = "tdate" name="tdate" value = "<?php echo $tdate ?>">
          </div>

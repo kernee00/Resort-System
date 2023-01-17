@@ -81,7 +81,7 @@
       </div>
       <input type="submit" value="Update Resort" name="update_resort" class="btn">
       <a href="manageRoom.php?resortID=<?php echo $resortID; ?>" class="btn">Update Resort Rooms</a>
-      <a href="manageResort.php" class="delete-btn" style="background-color: skyblue;">Back</a>
+      <a href="manageResort.php" class="delete-btn" style="background-color: #e74c3c;">Back</a>
    </form>
 
 </div>

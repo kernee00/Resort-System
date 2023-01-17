@@ -102,6 +102,7 @@
 
 .btn{
    background-color: #434242;
+   text-decoration: none;
 }
 
 .btn:hover{
@@ -119,12 +120,15 @@
    cursor: pointer;
    font-size: 20px;
    margin-top: 10px;
+   text-decoration: none;
 }
 
 .delete-btn{
    background-color: var(--red);
+   text-decoration: none;
 }
 
 .delete-btn:hover{
    background-color: var(--dark-red);
+    text-decoration: none;
 }

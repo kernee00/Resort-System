@@ -49,7 +49,7 @@
          </div>
       </div>
       <input type="submit" value="Add" name="add_resort" class="btn">
-       <a href="manageRoom.php?resortID=<?php echo $resortID; ?>" class="delete-btn" style="background-color: skyblue;">Back</a>
+       <a href="manageRoom.php?resortID=<?php echo $resortID; ?>" class="delete-btn" style="background-color: #e74c3c;">Back</a>
    </form>
 
 </div>
