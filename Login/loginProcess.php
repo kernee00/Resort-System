@@ -20,7 +20,7 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 			if ($row['ownerID'] == $username && $row['accPassword'] == $password) {
 				
 
-				echo "Login success! Welcome ".$row['ownerName']."!";
+				echo "<script> alert('Login success!') </script>";
 				$_SESSION['role'] = "owner";
 				$_SESSION['user_id'] = $username;
 				//$role = "owner";
@@ -40,7 +40,7 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 			if ($row['custID'] == $username && $row['custPassword'] == $password) {
 				
 
-				echo "Login success! Welcome ".$row['custName']."!";
+				echo "<script> alert('Login success!') </script>";
 				$_SESSION['role'] = "cust";
 				$_SESSION['user_id'] = $username;
 				//$role = "customer";
@@ -61,7 +61,7 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 
 			if ($row['adminID'] == $username && $row['adminPassword'] == $password) {
 
-				echo "Login success! Welcome ".$row['adminName']."!";
+				echo "<script> alert('Login success!') </script>";
 				$_SESSION['role'] = "admin";
 				$_SESSION['user_id'] = $username;
 				header("location:../Admin/dashboard.php");

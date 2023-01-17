@@ -137,23 +137,23 @@
     <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
         <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
         
-            <img src="images/Facilities/wifi.jpeg" width="200px" height="150px" >
+            <img src="images/wifi.jpeg" width="200px" height="150px" >
             <h5 class="mt-3">Wifi</h5>
         </div>
         <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-            <img src="images/Facilities/entertainment.jpeg" width="200px" height="150px">
+            <img src="images/entertainment.jpeg" width="200px" height="150px">
             <h5 class="mt-3">Entertainment</h5>
         </div>
         <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-            <img src="images/Facilities/transport.jpeg" width="200px" height="150px">
+            <img src="images/transport.jpeg" width="200px" height="150px">
             <h5 class="mt-3">Transport Services</h5>
         </div>
         <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-            <img src="images/Facilities/health.jpeg" width="200px" height="150px">
+            <img src="images/health.jpeg" width="200px" height="150px">
             <h5 class="mt-3">Health Club</h5>
         </div>
         <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-            <img src="images/Facilities/food.jpeg" width="200px" height="150px">
+            <img src="images/food.jpeg" width="200px" height="150px">
             <h5 class="mt-3">Food & Beverages</h5>
         </div>
      
