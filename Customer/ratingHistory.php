@@ -49,14 +49,14 @@
          <div class="inputBox">
          
             <span>Rating Marks:</span>
-            <input name="ratinghis" type="number" min="1" max="5" placeholder="Rating (1-5)" required>
+            <input name="ratinghis" type="number" min="1" max="5" step=".01" placeholder="Rating (1-5)" required>
             
 
          </div>
 
       </div>
       <input type="submit" value="Check" name="rating_history" class="btn">
-      <a href="customerHistory.php" class="btn">Back</a>
+      <a href="bookingMain.php" class="btn">Back</a>
    </form>
                     </tbody>
                 </table>
@@ -74,13 +74,16 @@
     if(isset($valuebook)>0)
     {
     ?>
-    <table border="1" cellspacing="0" cellpadding="5">
+    <table id = "table" class = "table table-bordered">
+    <thead>
     <tr>
-        <th>ID</th>
-        <th>Date Time</th>
-        <th>Ratings</th>
-        <th>Comments</th>
-        <th>Booking ID</th>
+        <th>Resort Name</th>
+        <th>Overall Ratings</th>
+        <th>Resort Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Phone Number of the Resort</th>
+
     </tr>
     <?php
        if(count($valuebook)>0)
@@ -88,16 +91,18 @@
     foreach ($valuebook as $valuebook) {
      ?>
 <tr>
-    <td><?php echo $valuebook['ratingID']; ?></td>
-    <td><?php echo $valuebook['ratingDateTime']; ?></td>
-    <td><?php echo $valuebook['marksRated']; ?></td>
-    <td><?php echo $valuebook['comments']; ?></td>
-    <td><?php echo $valuebook['bookingID']; ?></td>
+    <td><?php echo $valuebook['resortName']; ?></td>
+    <td><?php echo $valuebook['overallRatings']; ?></td>
+    <td><?php echo $valuebook['address']; ?></td>
+    <td><?php echo $valuebook['city']; ?></td>
+    <td><?php echo $valuebook['state']; ?></td>
+    <td><?php echo $valuebook['resortPhoneNo']; ?></td>
+
 </tr>
      <?php
    }
 }else{
-    echo "<tr><td colspan='3'>No Data Found</td></tr>";
+    echo "<tr><td colspan='3'>Please enter another value</td></tr>";
 }
 ?>
 </table>
