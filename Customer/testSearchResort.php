@@ -162,8 +162,8 @@
             <p class="resort_name"><?php echo $row['resortName']; ?></p>
             <p class="resort_name"><?php echo $row['address']; ?></p>
             <p class="resort_name"><?php echo $row['city'] .", ". $row['state']; ?>
-            <p class="resort_name"><?php echo $row['overallRatings'].'/5.0'; ?></p>
-            <p class="resort_name"><?php echo $row['resortPhoneNo']; ?></p>
+            <!--<p class="resort_name"><?php echo $row['overallRatings'].'/5.0'; ?></p>-->
+            <!--<p class="resort_name"><?php echo $row['resortPhoneNo']; ?></p>-->
     </div>
 <form action="viewResortDetails.php" method="POST">
     <br><br><br>

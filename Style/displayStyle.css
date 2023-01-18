@@ -29,7 +29,7 @@ main {
 
 main .card {
 	min-width: 200px;
-	max-width: 300px;
+	max-width: 450px;
 	flex: 1 1 210px;
 	text-align: center;
 	height: 550px;

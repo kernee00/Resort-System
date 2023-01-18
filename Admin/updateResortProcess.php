@@ -9,8 +9,6 @@
       if(isset($_POST['update_resort'])){
 
          $resort_id = $_POST['resort_id'];
-
-      
  
         $sql = "SELECT * FROM resorts WHERE resortID = '$resort_id'";
         $result = mysqli_query($conn, $sql);
@@ -83,7 +81,7 @@
         }
 
 
-                 if (empty($_POST['update_deesc'])) {
+                 if (empty($_POST['update_desc'])) {
            $new_desc = $desc;
             }
         else{
@@ -99,7 +97,7 @@
        if(!empty($update_image)){
       if($update_image_size > 60000){
          echo "<script> alert('Image size too large!') </script>";
-          echo"<meta http-equiv='refresh' content='0; url=updateResort.php'/>";
+          echo"<meta http-equiv='refresh' content='0; url=manageResort.php'/>";
       }
 
       else{
@@ -113,7 +111,7 @@
             $new_image = addslashes(file_get_contents($update_image_tmp_name));
 
 
-            $update_resort = "update resorts set resortName = '$new_name', resortPhoneNo = '$new_phone', address = '$new_address', city = '$new_city', state = '$new_state', keywords = '$new_keywords', description = '$desc', coverPhoto = '$new_image' WHERE resortID = '$resort_id'";
+            $update_resort = "update resorts set resortName = '$new_name', resortPhoneNo = '$new_phone', address = '$new_address', city = '$new_city', state = '$new_state', keywords = '$new_keywords', description = '$new_desc', coverPhoto = '$new_image' WHERE resortID = '$resort_id'";
 
 $run_resort = mysqli_query($conn,$update_resort);
 
@@ -126,7 +124,7 @@ echo "<script> alert('Resort has been updated successfully. Redirecting to main 
 }
          }else{
             echo "<script> alert('Failed to update image!') </script>";
-            echo"<meta http-equiv='refresh' content='0; url=updateResort.php'/>";
+            echo"<meta http-equiv='refresh' content='0; url=manageResort.php'/>";
          }
       }
 
@@ -135,7 +133,7 @@ echo "<script> alert('Resort has been updated successfully. Redirecting to main 
 
 else {
 
-            $update_resort = "update resorts set resortName = '$new_name', resortPhoneNo = '$new_phone', address = '$new_address', city = '$new_city', state = '$new_state', keywords = '$new_keywords', description = '$desc' WHERE resortID = '$resort_id'";
+            $update_resort = "update resorts set resortName = '$new_name', resortPhoneNo = '$new_phone', address = '$new_address', city = '$new_city', state = '$new_state', keywords = '$new_keywords', description = '$new_desc' WHERE resortID = '$resort_id'";
 
 $run_resort = mysqli_query($conn,$update_resort);
 

@@ -43,7 +43,7 @@
 					<?php
 				
 
-						$query = $conn->query("SELECT b.bookingID, b.totalPrice AS amount, a.payOwnerStatus, adminPaymentDate FROM  bookings b, payments p, adminPayment a, resorts r WHERE p.bookingID = b.bookingID AND a.bookingID = p.bookingID AND b.resortID = r.resortID AND a.payOwnerStatus = 'Unpaid' OR a.payOwnerStatus = 'Paid' AND owmerID = '$user_id' GROUP BY b.bookingID, a.payOwnerStatus;") or die(mysqli_error());
+						$query = $conn->query("SELECT b.bookingID, b.totalPrice AS amount, a.payOwnerStatus, adminPaymentDate FROM  bookings b, payments p, adminPayment a, resorts r WHERE p.bookingID = b.bookingID AND a.bookingID = p.bookingID AND b.resortID = r.resortID AND a.payOwnerStatus = 'Unpaid' OR a.payOwnerStatus = 'Paid' AND ownerID = '$user_id' GROUP BY b.bookingID, a.payOwnerStatus;") or die(mysqli_error());
 						//add if else
 						while($fetch = $query->fetch_array()){
 					?>	

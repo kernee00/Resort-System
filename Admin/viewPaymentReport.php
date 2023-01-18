@@ -159,7 +159,7 @@ $rtype=$_POST['requesttype'];
               //display by the payment that admin received
           
 //payment received by owner
-         $query="SELECT DATE_FORMAT(paymentDate, '%Y-%m') AS 'YEAR-MONTH', SUM(totalPrice) AS Payments FROM payments p, bookings b WHERE b.bookingID = p.bookingID AND paymentDate BETWEEN '$fdate' AND '$tdate' AND paymentStatus = 'Approved' GROUP BY DATE_FORMAT(paymentDate, '%Y-%m') ORDER BY DATE_FORMAT(paymentDate, '%Y-%m');" ;
+         $query="SELECT DATE_FORMAT(paymentDate, '%Y-%m') AS 'YEAR-MONTH', SUM(totalPrice) AS Payments FROM payments p, bookings b WHERE b.bookingID = p.bookingID AND paymentDate BETWEEN '$fdate' AND '$tdate' AND paymentStatus = 'Completed' GROUP BY DATE_FORMAT(paymentDate, '%Y-%m') ORDER BY DATE_FORMAT(paymentDate, '%Y-%m');" ;
         $result=$conn->query($query);
         //display data from db
         if(mysqli_num_rows($result)>=1){

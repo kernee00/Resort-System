@@ -66,7 +66,7 @@
                     ?>  
                     </tbody>
                 </table>
-                 <!--<a href = 'reportPart/reportCustomer.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>-->
+                 <a href = 'reportPart/reportCustomer.php'><input type = 'submit' value = 'Report' id = 'add_button'></a>
             </div>
         </div>
     </div>
@@ -96,4 +96,4 @@
 </script>
 </html>
 
-<a href = '../Customer/reportPart/reportCustomer.php'><input style = 'margin:10px' type = 'submit' value = 'Report ' id = 'add_button'></a>
+<!--<a href = '../Customer/reportPart/reportCustomer.php'><input style = 'margin:10px' type = 'submit' value = 'Report ' id = 'add_button'></a>-->

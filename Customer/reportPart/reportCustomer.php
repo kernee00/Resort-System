@@ -121,7 +121,7 @@ $y2=date("Y",$month2);
 
 
 
-$query = $conn->query("SELECT totalPayment, month(paymentDate) as lmonth, year(paymentDate) as lyear from payments where paymentDate between '$fdate' and '$tdate' group by totalPayment,lmonth,lyear and totalPayment = 'Approved';") or die(mysqli_error());
+$query = $conn->query("SELECT totalPayment, month(paymentDate) as lmonth, year(paymentDate) as lyear from payments p, bookings b where b.bookingID = p.bookingID AND paymentDate between '$fdate' and '$tdate'  and paymentStatus = 'Completed' AND custID = '$user_id' group by  totalPayment,lmonth,lyear;") or die(mysqli_error());
 
 
 $num=mysqli_num_rows($query);
@@ -170,7 +170,7 @@ $y2=date("Y",$year2);
 </thead>
 
 <?php
-$ret=mysqli_query($conn,"SELECT totalPayment, month(paymentDate) as lmonth, year(paymentDate) as lyear from payments where paymentDate between '$fdate' and '$tdate' group by totalPayment, lmonth,lyear and totalPayment = 'Approved';");
+$ret=mysqli_query($conn,"SELECT totalPayment, month(paymentDate) as lmonth, year(paymentDate) as lyear from payments p, bookings b where b.bookingID = p.bookingID AND paymentDate between '$fdate' and '$tdate'  and paymentStatus = 'Completed' AND custID = '$user_id' group by  lmonth,lyear;");
 
 $num=mysqli_num_rows($ret);
 if($num>0){

@@ -106,7 +106,7 @@
 							<div>
 
 									<?php
-						$query3 = $conn->query("SELECT SUM(totalAdminPayment) AS monthSales FROM adminPayment;") or die(mysqli_error());
+						$query3 = $conn->query("SELECT SUM(totalAdminPayment) AS monthSales FROM adminPayment WHERE payOwnerStatus = 'Paid';") or die(mysqli_error());
 						while($row3 = $query3->fetch_array()){
 							$monthly = $row3['monthSales'];
 						}
