@@ -66,7 +66,7 @@ $run_resort = mysqli_query($conn,$new_resort);
 
 if($run_resort){
 
-echo "<script> alert('Resort is added successfully!') </script>";
+echo "<script> alert('Resort is added successfully! Please add rooms for resort in manage resort.') </script>";
 
  echo"<meta http-equiv='refresh' content='0; url=manageResort.php'/>";
 

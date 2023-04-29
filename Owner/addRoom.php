@@ -36,23 +36,20 @@
 
          <span>Room Name:</span>
             <input type="text" id = "roomname" name="roomname" placeholder="Room Name" class="box" required>
-            <span>Price per Night:</span>
+            <span>Price per Night (RM):</span>
             <input type="text" id = "price" name="price" placeholder="Price per Night" class="box" required>
             <span>Capacity:</span>
             <input type="text" id = "capacity" name="capacity" placeholder="Capacity" class="box" required>
             <span>Location:</span>
             <input type="text" id = "location" name="location" placeholder="Location" class="box" required>
-                       <span>Description:</span>
+            <span>Description:</span>
             <input type="text" id = "desc" name="desc" placeholder="Description" class="box" required>
 
         
          </div>
-         <div class="inputBox">
-    
-            
-         </div>
       </div>
       <input type="submit" value="Add" name="add_resort" class="btn">
+       <a href="manageRoom.php?resortID=<?php echo $resortID; ?>" class="delete-btn" style="background-color: #e74c3c;">Back</a>
    </form>
 
 </div>

@@ -51,6 +51,7 @@ else {
 				<table id = "table" class = "table table-bordered">
 					<thead>
 						<tr>
+							<th><center>Room Name</th>
 							<th><center>Price Per Night (RM)</th>
 							<th><center>Capacity</th>
 							<th><center>Description</th>
@@ -65,6 +66,7 @@ else {
 						while($fetch = $query->fetch_array()){
 					?>	
 						<tr>
+							<td><center><?php echo $fetch['roomName']?></td>
 						<td><center><?php echo $fetch['pricePerNight']?></td>
 							<td><center><?php echo $fetch['capacity']?></td>
 							<td><center><?php echo $fetch['description']?></td>

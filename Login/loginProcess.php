@@ -25,7 +25,7 @@ $result = mysqli_query($conn, $ownerLogin) or die(mysqli_error($conn));
 				
 				//$role = "owner";
 				//$user_id = $row['ownerID'];
-				header("location:../OwnerMarsya/ownerMain.php");
+				header("location:../Owner/ownerMain.php");
 			} else  {
 
 				//echo "Failed to login!";

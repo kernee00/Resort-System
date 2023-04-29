@@ -82,7 +82,7 @@ $roomID = $_GET['roomID'];
       <input type="submit" value="Update Room" name="update_room" class="btn">
       <a href="manageRoom.php?roomID=<?php echo $roomID; ?>">
 
-       <a href="manageRoom.php?resortID=<?php echo $resortID; ?>" class="delete-btn">Back</a>
+       <a href="manageRoom.php?resortID=<?php echo $resortID; ?>" class="delete-btn"style="background-color: skyblue";>Back</a>
    </form>
 
 </div>

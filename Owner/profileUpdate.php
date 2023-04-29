@@ -68,7 +68,7 @@
          </div>
       </div>
       <input type="submit" value="Update profile" name="update_profile" class="btn">
-      <a href="ownerMain.php" class="delete-btn">Back</a>
+      <a href="ownerMain.php" class="delete-btn"style="background-color: skyblue";>Back</a>
    </form>
 </div>
 

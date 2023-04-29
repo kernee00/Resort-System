@@ -49,7 +49,7 @@
                 $coverPhoto = $row['coverPhoto'];
                 $images = $row['images'];         
         
-          echo '<img src="../OwnerMarsya/upload/' . $row['images'] . '"width="250" height = "250" />'?>
+          echo '<img src="../Owner/upload/' . $row['images'] . '"width="250" height = "250" />'?>
      
 
 

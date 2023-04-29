@@ -28,6 +28,7 @@
 					<thead>
 						<tr>
 							<th><center>Room ID</th>
+							<th><center>Room Name</th>
 							<th><center>Price per Night</th>
 							<th><center>Capacity </th>
 							<th><center>Location</th>
@@ -45,12 +46,13 @@
 					?>	
 						<tr>
 						<td><center><?php echo $fetch['roomID']?></td>
+							<td><center><?php echo $fetch['roomName']?></td>
 							<td><center><?php echo $fetch['pricePerNight']?></td>
 							<td><center><?php echo $fetch['capacity']?></td>
 							<td><center><?php echo $fetch['location']?></td>
 							<td><center><?php echo $fetch['description']?></td>
 
-							<td><center><a class = "btn btn-warning" href = "updateOwner.php?roomID=<?php echo $fetch['roomID']?>"><i class = "glyphicon glyphicon-edit"></i> Edit</a> <a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "deleteroom.php?roomID=<?php echo $fetch['roomID'];?>"><i class = "glyphicon glyphicon-remove"></i> Delete</a></center></td>
+							<td><center><a class = "btn btn-warning" href = "editRoom.php?roomID=<?php echo $fetch['roomID']?>"><i class = "glyphicon glyphicon-edit"></i> Edit</a> <!--<a class = "btn btn-danger" onclick = "confirmationDelete(this); return false;" href = "deleteroom.php?roomID=<?php echo $fetch['roomID'];?>"><i class = "glyphicon glyphicon-remove"></i> Delete</a>--></center></td>
 						</tr>
 					<?php
 					
@@ -60,7 +62,10 @@
 				</table>
 
 				<form action="addRoom.php?resortID=<?php echo $resortID;?>" method="POST">
-					<input type="submit" value="Add Room" name="add_resort" class="btn">
+					<input type="submit" value="Add Room" name="add_resort" class="btn" style="background-color: skyblue;">
+					<br></br>
+
+					<a href="manageResort.php?resortID=<?php echo $resortID; ?>"class="btn" style="background-color: skyblue; color: black;">Back</a>
 
 	
 

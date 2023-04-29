@@ -16,7 +16,6 @@
 		<meta charset = "utf-8" />
 		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
 		<link rel = "stylesheet" type = "text/css" href = "dashboardStyle.css" />
-		<!--<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">-->
 		<script src="https://kit.fontawesome.com/ba67cd3f0d.js" crossorigin="anonymous"></script>
 		</head>
 		<body>
@@ -31,14 +30,6 @@
 						Dashboard
 					</h1>
 
-				
-					<!--<div class ="user-wrapper">
-						<img src ="image/users.jpg" width="40px" height="40px" alt="">
-						<div>
-							<h4>John Doe</h4>
-							<small>Super admin</small>
-						</div>
-					</div>-->
 				</header>
 				<main>
 					<div class ="cards">

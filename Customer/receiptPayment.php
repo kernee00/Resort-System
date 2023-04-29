@@ -19,6 +19,8 @@
 
     $query = $conn->query("SELECT p.totalPayment, p.paymentID, p.paymentDate, b.bookingID, o.roomID, r.resortName, b.checkInDate, b.checkOutDate FROM bookings b JOIN resorts r on b.resortID=r.resortID JOIN room_booking o on b.bookingID=o.bookingID JOIN payments p on p.bookingID=b.bookingID WHERE b.bookingID = '$bookingID';") or die(mysqli_error());
 
+     if(mysqli_num_rows($query) > 0){
+
                         while($row = $query->fetch_array())
 
                         {
@@ -33,6 +35,14 @@
                             $totalPayment = $row['totalPayment'];
                             
                         }
+                    }
+
+                    else {
+
+                             echo "<script> alert('Failed to generate receipt.') </script>";
+                
+                 echo"<meta http-equiv='refresh' content='0; url=customerHistory.php'/>";
+                    }
 
   
 }

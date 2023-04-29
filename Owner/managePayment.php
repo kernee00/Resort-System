@@ -14,7 +14,9 @@
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
     <title>Manage Payment</title>
-    <link rel="stylesheet" href="manageStyle.css">
+    
+
+    <link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
 
     <style type = "text/css">
         table {
@@ -42,7 +44,7 @@
 
 <body>
 
-    <h1 style="margin-left:40% ;margin-top:80px"   class="">Payment Information</h1>
+    <h1 style="margin-left:40% ;margin-top:80px"   class="">Payment History</h1>
 
     <table class="table" border="2" cellspacing="7">
         <tr>
@@ -88,18 +90,14 @@
         ?>
 
     </table>
-    <a href = 'approveHistory.php'><input type = 'button' value = 'HISTORY' id = 'add_button'></a>
-    <br><br>
+    
     
 
    <script>
        
-    function checkdelete(){
+    
 
-
-        return confirm('Are you sure you want to refund this payment?');
-
-    }
+    
 
 
 

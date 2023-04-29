@@ -48,5 +48,12 @@ if(isset($_SESSION["user_id"])){
   header('Content-Disposition: attachment; filename=download.xls');
   echo $output;
  }
+
+ else {
+
+
+               echo "<script>alert('There is no unpaid amount to be export!');</script>";
+               echo"<meta http-equiv='refresh' content='0; url=manageOwnerPayment.php'/>";
+ }
 }
 ?>

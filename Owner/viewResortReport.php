@@ -4,7 +4,7 @@
     include_once 'ownerNavBar.php';
 
      $user_id = $_SESSION['user_id'];
-     $role = "admin";
+
 
 ?>
 
@@ -13,6 +13,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
+    <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
     <title>Resort Report</title>
     <h2 align="center">Resort Report</h2>
 
@@ -20,28 +21,31 @@
   <body>
 
     <!---select date and method-->
-      <form name="bwdatesdata" action="" method="post" action="">
-      <table width="100%" height="117"  border="0">
+      <form name="bwdatesdata" action="" method="post" action="" style="margin-left: 30%; margin-right: 30%;">
+     
+             <table width="100%" height="117"  border="0">
       <tr>
       <th width="27%" height="63" scope="row">From:</th>
       <td width="73%">
-      <input type="date" name="fdate" class="form-control" id="fdate">
+      <input type="date" name="fdate" class="form-control" id="fdate" required>
       </td>
       </tr>
       <tr>
       <th width="27%" height="63" scope="row">To:</th>
       <td width="73%">
-      <input type="date" name="tdate" class="form-control" id="tdate"></td>
+      <input type="date" name="tdate" class="form-control" id="tdate" required></td>
       </tr>
+      
       <tr>
 
     <th width="27%" height="63" scope="row"></th>
     <td width="73%">
     <button class="btn-primary btn" type="submit" name="submit">Submit</button>
+
   </tr>
 </table>
      </form>
-<a href = 'manageReservation.php'><input type = 'submit' value = 'Back' id = 'add_button'></a>
+
      </div>
     </div>
     <hr>
@@ -68,7 +72,7 @@ $tdate=$_POST['tdate'];
            <?php 
               //display by year
 
-            $query="SELECT b.resortID, resortName, YEAR(bookingDate) AS YEAR, sum(totalPrice) AS SALES FROM bookings b, resorts r WHERE b.resortID = r.resortID AND bookingDate BETWEEN '$fdate' AND '$tdate' GROUP BY b.resortID ,YEAR(bookingDate) ORDER BY b.resortID, YEAR(bookingDate);" ;
+            $query="SELECT b.resortID, resortName, YEAR(bookingDate) AS YEAR, sum(totalPrice) AS SALES FROM bookings b, resorts r WHERE b.resortID = r.resortID AND bookingDate BETWEEN '$fdate' AND '$tdate' AND ownerID = '$user_id' GROUP BY b.resortID ,YEAR(bookingDate) ORDER BY b.resortID, YEAR(bookingDate);" ;
         $result=$conn->query($query);
         //display data from db
         if(mysqli_num_rows($result)>=1){
@@ -108,7 +112,7 @@ $tdate=$_POST['tdate'];
       };
     </script>
 
-    <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+    <div id="top_x_div" style="width: 900px; height: 500px; margin-left: 30%;" ></div>
 
 
     <?php

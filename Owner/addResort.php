@@ -22,6 +22,7 @@
     <meta name ="viewreport" content="width=device-width, initial-scale =1.0">
     <title>Add Owner</title>
   <link rel="stylesheet" href="../Admin/profileStyle.css">
+   <!--<link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />-->
 
 </head>
 
@@ -50,7 +51,7 @@
             <span>Keywords:</span>
             <input type="text" id = "keywords" name="keywords" placeholder="Keywords for Resort" class="box" required>
             <span>Description:</span>
-            <input type="text" id = "desc" name="desc" placeholder="Keywords for Resort" class="box" required>
+            <input type="text" id = "desc" name="desc" placeholder="Description for Resort" class="box" required>
             <span>Resort Cover Photo:</span>
             <input type="file" name="resort_image" accept="image/jpg, image/jpeg, image/png" class="box">
          </div>

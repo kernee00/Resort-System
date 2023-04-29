@@ -9,14 +9,16 @@
         $sql = "DELETE FROM rooms WHERE roomID ='$roomID'";
         
        if ($conn->query($sql) == TRUE) {
-            echo"<script>alert ('Room is removed from manage room.')</script>";
-            echo"<meta http-equiv='refresh' content='0; url=manageRoom.php?resortID=$roomID'/>";
+            echo"<script>alert ('Room is sucessfully deleted.');
+            window.history.back();</script>";
+            //echo"<meta http-equiv='refresh' content='0; url=manageRoom.php?resortID=".$resortID."'/>";
        }
 
        else {
 
-             echo"<script>alert ('Failed to delete room from manage room.')</script>";
-             echo"<meta http-equiv='refresh' content='0; url=manageRoom.php?resortID=$bookingID'/>";
+             echo"<script>alert ('Failed to delete room from manage room.');
+             window.history.back();</script>";
+             //echo"<meta http-equiv='refresh' content='0; url=manageRoom.php?resortID=$resortID'/>";
        }
 
     }
